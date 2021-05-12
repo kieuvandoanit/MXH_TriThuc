@@ -1,24 +1,30 @@
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    background-color: #E8EBFF;
 }
 #container{
     max-width: 1300px;
     margin: 0px auto;
+    background-color: #E8EBFF;
 }
 #header{
     padding: 10px 0px;
     display: flex;
-    justify-content: space-around;  
+    justify-content: space-between;  
     border-bottom: 2px solid rgb(156, 143, 147);
 }
 #logo a{
+    margin-left: 5px;
     font-weight: 700;
     font-size: 20px;
 }
 #logo a:hover{
     text-decoration: none;
+}
+#sign_in_up{
+    display: flex;
+    margin-right: 5px;
 }
 #sign_in, #sign_up{
     border: none;
@@ -41,4 +47,16 @@ body{
 }
 #sign_in:hover{
     background-color: #d7d8dd;
+}
+
+
+.header_menu button{
+    background: none;
+    color: #5E72E4;
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+    padding: 5px 0px;
+    font-weight: 600;
+    font-size: 16px;
 }
