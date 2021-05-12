@@ -1,0 +1,44 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #E8EBFF;
+}
+#container{
+    max-width: 1300px;
+    margin: 0px auto;
+}
+#header{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;  
+    border-bottom: 2px solid rgb(156, 143, 147);
+}
+#logo a{
+    font-weight: 700;
+    font-size: 20px;
+}
+#logo a:hover{
+    text-decoration: none;
+}
+#sign_in, #sign_up{
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    padding: 5px 0px;
+    font-weight: 600;
+    font-size: 16px;
+}
+#sign_up{
+    color: white;
+    background-color: #5E72E4;
+}
+#sign_in{
+    color: #5E72E4;
+    background: none;
+}
+#sign_up:hover{
+    background-color: #828fdd;
+}
+#sign_in:hover{
+    background-color: #d7d8dd;
+}
