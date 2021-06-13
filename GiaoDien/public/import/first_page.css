@@ -1,3 +1,6 @@
+.container{
+    background-color: antiquewhite;
+}
 #title{
     text-align: center;
     font-size: 35px;
@@ -12,10 +15,11 @@
     text-align: center;
 }
 .take_part_in{
-    margin-top: 15px;
+    margin: 15px 0px;
     background: #5E72E4;
     color: white;
     font-weight: 500;
+    /* margin-bottom: 15px; */
 }
 .take_part_in:hover{
     background-color: #6477e0;
