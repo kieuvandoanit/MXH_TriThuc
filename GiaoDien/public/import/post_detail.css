@@ -39,14 +39,14 @@ form.search input[type=text] {
      margin-top: 15px;
      display: flex;
  }
- .post_thumb{
+ .post_thumb_detail{
      margin: 5px 10px;
      width: 500px;
      height: 300px; 
      overflow: hidden;
      border-radius: 10px;
  }
- .post_thumb>img{
+ .post_thumb_detail>img{
      width: 100%;
      height: auto;
  }
