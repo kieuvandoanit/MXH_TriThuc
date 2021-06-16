@@ -1,4 +1,78 @@
-.sidenav {
+.button_class {
+    padding-top: 12px;
+}
+a{
+    /* text-decoration: none; */
+    color:rgb(219, 219, 219);
+}
+.homebtn{
+    text-decoration: none !important;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+aside{
+    z-index: 1000;
+    position: fixed;
+    width: 12%;
+    height: 100%;
+    overflow-y: auto;
+    background: #37474F;
+}
+.sidenav{
+    padding-left: 0;
+}
+ul{
+    list-style-type: none;
+    
+}
+.sidenav a{
+    background: none;
+    border-bottom: 1px solid #455A64;
+    color: #CFD8DC;
+    font-size: 14px;
+    padding: 16px 24px;
+    text-decoration: none;
+}
+ul li a{
+    display: block;
+}
+.sidenav a:hover{
+    background: none;
+    color: #ECEFF1;
+  }
+.sidebar .nav a i{
+    margin-right: 16px;
+}
+article {
+    float: right;
+    /* padding: 20px; */
+    width: 88%;
+    background-color: #f1f1f1;
+}
+footer{
+    color: rgb(219, 219, 219);
+    float: right;
+    padding: 10px;
+    width: 88%;
+    background: #3b4e57;
+}
+.team_members{
+    float: right;
+    padding: 0px 0px 0px 40px;
+}
+.team_members p{
+    font-size: 12px;
+    margin-bottom: 10px;
+
+}
+footer div div p{
+    font-size: 18px;
+}
+.body_card{
+    min-height: 500px;
+}
+/* .sidenav {
     height: 100%;
     width: 180px;
     position: fixed;
@@ -26,11 +100,18 @@
     background-color: #2f323e;
 }
 #footer{
+    display: flex;
     position: fixed;
-    margin-left: 11.7%;
+    left: 180px;
     bottom: 0;
     width: 86.4%;
 }
 .body_card{
-    padding-left: 180px;
+    display: flex;
+    left: 180px;
+    padding-left: 184px;
 }
+div ul li{
+    padding-left: 10px;
+    padding-top: 40px;
+} */
