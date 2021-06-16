@@ -10,15 +10,27 @@
     padding-top: 20px;
   }
 .sidenav a {
-    padding: 16px 16px 6px 16px;
+    padding: 6px 0px 6px 0px;
     text-decoration: none;
     font-size: 18px;
     color: #818181;
     display: block;
 }
 #container{
-    max-width: 1600px;
+    max-width: 100%;
     width: auto !important;
     margin: 0px auto;
+    padding-left: 0;
+}
+#header{
     background-color: #2f323e;
+}
+#footer{
+    position: fixed;
+    margin-left: 11.7%;
+    bottom: 0;
+    width: 86.4%;
+}
+.body_card{
+    padding-left: 180px;
 }
