@@ -6,24 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../public/font-awesome/css/all.css">
-    <link rel="stylesheet" href="../../public/import/admin_page.css">
+    <link rel="stylesheet" href="../../public/admin_style.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
     <title>Document</title>
 </head>
 <body>
-    <nav class=" navbar navbar-dark bg-dark" >
+    <nav class=" navbar navbar-dark bg-dark" style="height:9vh; position: sticky; top:0;">
         <!-- style="background-color: #E8EBFF;"> -->
             <div class="col-8"><a class="homebtn" href="">TEAM UDPT#01</a></div>
-            <div class="col-2"></div>
+            <div class="col"></div>
             <div class="row col-2" >
-                <div ><a class="btn far fa-bell button_class" href="#" style="font-size: 23px;"></a></div>
-                <div ><a class="btn far fa-user-circle button_class" href="#" style="font-size: 23px;"></a></div>
+                <div ><a class="btn far fa-bell button_class" href="#" style=""></a></div>
+                <div ><a class="btn far fa-user-circle button_class" href="#" style=""></a></div>
                 <div ><a id="sign_in" class="btn" href="#" style="font-size: 23px;">Hi,Admin</a></div>
             </div>
     </nav>
-    
-    <section>
-        <aside>
+    <div class="body" style="min-height:90vh;display:flex">
+        <div class="sidenav">
             <ul class="sidenav">
                 <li>
                     <a href="#"><i class="fas fa-chart-bar"></i> Tổng quan</a>
@@ -50,47 +49,20 @@
                     <a href="#"><i class="fas fa-user-cog"></i> Admins</a>
                 </li>
               </ul>
-        </aside>
-        <article>
-        <!-- Bắt đầu code ở đây  -->
-            <div class="card body_card " style="background-color: aliceblue;">
-                <ul>
-                    <li>Cài đặt</li>
-                    <li>
-                        <ul>
-                        <li>Cài đặt thông báo</li>
-                        <li>Gửi thông báo qua mail (admin@gmail.com</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <ul>
-                        <li>Chế độ duyệt tự động</li>
-                        <li>Bật</li>
-                        </ul>
-                    </li>
-                </ul>                
-            </div>
-        <!-- Kết thúc code ở đây  -->
-        </article>
-    </section>
-    <footer>
-        <div class="row">
-            <div class="col-3 menu">
-                <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li><a href="">Bài viết</a></li>
-                <li><a href="">Bảng xếp hạng</a></li>
-                </ul>
-                <p>TEAM UDPT#01</p>
-            </div>
-            <div class="col-6"></div>
-            <div class="col-sm-2 info_author team_members">
-                <p class="info_author_name">1712348 Kiều Văn Đoàn</p>
-                <p class="info_author_name">1712374 Lê Khắc Dương</p>
-                <p class="info_author_name">1712398 Võ Thị Ngọc Duyên</p>
-                <p class="info_author_name">1712452 Lê Hận Thương Hoài</p>
-            </div>
         </div>
-    </footer>
+        <div class="content" >
+        <!-- Bắt đầu code ở đây  -->
+        
+            <!-- Kết thúc code ở đây  -->
+        </div>
+        <!-- <div class="footer" style="
+            height: 100px;
+            position: fixed;
+            width: calc(100% - 200px);
+            bottom: 0;
+            background-color: violet;
+        "></div> -->
+        </div>
+    </div>
 </body>
 </html>
