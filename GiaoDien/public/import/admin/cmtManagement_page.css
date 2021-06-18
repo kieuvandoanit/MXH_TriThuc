@@ -1,0 +1,33 @@
+@import "./filter_btn_class.css";
+.cmtFilterClass{
+    min-width: 150px;
+    height: 29px;
+    border-radius: 5px;
+}
+.content-table{
+
+    border-collapse: collapse;
+    margin: 15px 35px 15px 0;
+    font-size: 0.9em;
+    min-width: 1100px;
+}
+.content-table thead tr{
+    background-color: rgb(78, 156, 95);
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+}
+.content-table th,
+.content-table td{
+    min-width: 135px;
+    padding: 12px 4px;
+}
+.content-table tbody tr{
+    border-bottom: 1px solid black;
+}
+.cmt-btn{
+    min-width: 100px !important;
+}
+.cmt-btn i{
+    padding-right: 13px;
+}
