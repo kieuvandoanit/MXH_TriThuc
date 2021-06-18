@@ -1,7 +1,18 @@
 
+.navbar{
+    height:9vh;
+    position: sticky;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+}
 .button_class {
-    padding-top: 12px;
-    font-size: 23px;
+    position:flex;
+    padding-top: 1vh;
+    font-size: 3vh;
+    margin: auto;
 }
 a{
     /* text-decoration: none; */
@@ -23,9 +34,8 @@ body {
 } */
 .sidenav{
     padding-left: 0;
-
     width: 200px;
-    background-color: darkgrey;
+    background-color: rgb(173, 173, 173);
     /* position: sticky; */
 }
 ul{
@@ -52,10 +62,18 @@ ul li a{
 }
 .content{
     width:calc(100% - 200px);
-    min-height:91vh;
+    min-height:90vh;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     /* overflow: auto; */
-    background-color: rgb(253, 232, 204);
+    background-color: rgb(248, 243, 236);
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+/* for createComment_page.html*/
+
+form label{
+    font-size: 20px;
 }
