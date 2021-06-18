@@ -1,0 +1,16 @@
+.container{
+/* 
+    border-collapse: collapse;
+    margin: 15px 35px 15px 0;
+    font-size: 0.9em; */
+    /* min-width: 1100px; */
+    max-width: 1220px;
+    margin: 0px auto;
+}
+.user-btn{
+    min-width: 100px !important;
+    text-align: right;
+}
+.user-btn i{
+    padding-right: 13px;
+}
