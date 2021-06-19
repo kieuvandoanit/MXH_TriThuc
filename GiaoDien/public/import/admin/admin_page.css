@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: space-between;
+    background-color: #4558be !important;
 }
 .button_class {
     position:flex;
@@ -36,7 +37,8 @@ body {
 .sidenav{
     padding-left: 0;
     width: 200px;
-    background-color: rgb(173, 173, 173);
+    background-color: #dadada;
+    border-right: 1px solid #455A64;
     /* position: sticky; */
 }
 ul{
@@ -46,6 +48,7 @@ ul{
 .sidenav a{
     background: none;
     border-bottom: 1px solid #455A64;
+    
     color: black;/*#CFD8DC;*/
     font-size: 14px;
     padding: 16px 24px;
@@ -68,7 +71,7 @@ ul li a{
     flex-direction: column;
     flex-grow: 1;
     /* overflow: auto; */
-    background-color: rgb(247, 247, 247);
+    /* background-color: #F1F1F1; */
     padding-left: 40px;
     padding-top: 40px;
     padding-right: 20px;
