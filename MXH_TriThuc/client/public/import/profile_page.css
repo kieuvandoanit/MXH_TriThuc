@@ -1,0 +1,117 @@
+#top_profile_page{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.background{
+    height: 350px;
+    background-color: #000033;
+}
+.avatar{
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.avatar_size{
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width: 300px;
+    height: 300px;
+}
+div#your_info.col-md-6{
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+#pf_posts{
+    margin: 20px 50px 30px 50px;
+    padding-bottom: 40px;
+    /*border-bottom: 2px solid rgb(133, 129, 129);*/
+}
+.posts{
+    margin-top: 30px;
+}
+.post_name{
+    font-size: 18px;
+    font-weight: bold;
+}
+.posts_detail{
+    padding-top: 10px;
+}
+
+.posts_title_detail{
+    padding-top: 10px;
+}
+.posts_react{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 5px;
+    margin-left: 50px;
+}
+.posts_like, .posts_comment{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    background-color: #5E72E4;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px 0px;
+    color: white;
+}
+.posts_like p, .posts_comment p{
+    margin: 0;
+    font-weight: 600;
+}
+.left_titles{
+    padding-top: 20px;
+    padding-left: 30px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.left_t{
+    padding-top: 10px;
+    padding-left: 50px;
+    font-style: oblique;
+}
+.background_pf_posts{
+    background-color: white;
+    border-radius: 20px;
+}
+.image1{
+    border-radius:50%;
+    margin-left: 30px;
+    /*margin-top: 5px;*/
+    width: 40px;
+    height: 40px;
+}
+.image2{
+    border-radius:50%;
+    margin-left: 30px;
+    margin-top: 15px;
+    width: 40px;
+    height: 40px;
+}
+.content{
+    padding-top: 20px;
+    margin: 0px 40px 10px 40px;
+    text-align: justify;
+}
+.post_images{
+    width: 100%;
+    height:590px;
+    margin-bottom: 5px;
+    padding: 10px 50px 0px 50px;
+}
+.post_images>img{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+#comment{
+    margin-top: 30px;
+    width: 100%;
+}
+.comment{
+    margin: 20px 50px 10px 100px;
+}

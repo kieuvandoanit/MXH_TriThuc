@@ -1,0 +1,26 @@
+#footer{
+    margin-top:15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #C4C4C4;
+}
+.menu{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.menu>p{
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.menu>ul>li>a{
+    color: black;
+    /* margin: 10px 0px; */
+}
+.menu>ul>li>a:hover{
+    text-decoration: none;
+    color: rgb(56, 53, 53);
+}
+.info_author{
+    margin-top: 10px;
+}

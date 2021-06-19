@@ -1,0 +1,25 @@
+.form{
+    width:100%;
+}
+.login_form{
+    width: 500px;
+    height: 500px;
+    margin: 0px auto;
+    /* background-color: white; */
+}
+.login_form>h3{
+    margin-top: 15px;
+    font-weight: 600;
+}
+.login_form span{
+    color: red;
+}
+.login_form input#username,.login_form input#password{
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgb(95, 89, 89);
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+
+

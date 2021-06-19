@@ -1,0 +1,160 @@
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+   
+.clearfix {
+    clear: both;
+    display: block;
+}
+
+#top_home_page{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* Style category */
+div#category.col-md-3{
+    padding-left: 5px;
+}
+.list_category{
+    padding-left: 5px;
+    margin-top: 45px;
+}
+.category_item{
+    padding: 5px 0px;
+    
+}
+.category_item a{
+    color: #5E72E4;
+    font-weight: 550;
+}
+.category_item a:hover{
+    text-decoration: none;
+}
+/* Style phần tìm kiếm, slide  */
+#search{
+    margin-bottom: 10px;
+}
+/* Style phần most view  */
+#most_view{
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgb(133, 129, 129);
+}
+.most_view_header .title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.left_title{
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 600 !important;
+}
+.right_title{
+    padding-right: 10px;
+}
+.right_title a{
+    text-decoration: none;
+    color: black;
+}.right_title a:hover{
+    text-decoration: none;
+}
+/* Style phần post  */
+.post{
+    border: 2px solid #5E72E4;
+    border-radius: 15px;
+}
+.post_thumb{
+    width: 100%;
+    height: 190px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.post_thumb>img{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.post div.post_title{
+    height: 50px;
+    display: block;
+}
+.post_title .post_link{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-left: 5px;
+}
+.post_title .post_link:hover{
+    text-decoration: none;
+}
+.post_describe{
+    margin: 15px 5px 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    /* width: 100%; */
+    box-sizing: content-box;
+}
+.post_author{
+    display: flex;
+    /* margin-right: 10px; */
+}
+.author_name{
+    margin-right: 5px;
+}
+.author_link{
+    color: black;
+}
+.author_link:hover{
+    text-decoration: none;
+}
+.author_icon i{
+    font-weight: 600;
+}
+.post_rating{
+    margin-left: 5px;
+    margin-top: 15px;
+    display: flex;
+}
+.rate{
+    margin-right: 5px;
+}
+.rate i{
+    color: #F2C94C;
+}
+.post_react{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 5px;
+}
+.post_like, .post_comment{
+    display: flex;
+    width: 45%;
+    justify-content: space-around;
+    background-color: #5E72E4;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px 0px;
+    color: white;
+}
+.post_like p, .post_comment p{
+    margin: 0;
+    font-weight: 600;
+}
+/* Style phan new post  */
+#new_post{
+    margin: 30px 0px;
+}
+.new_post_header{
+    margin-bottom: 20px;
+}
+.new_post_header .title{
+    display: flex;
+    justify-content: space-between;
+}

@@ -32,9 +32,11 @@ class App{
 
         }else{  //Case 2: arr[0] != admin
             //Xu ly controller
-            if(file_exists("./MXH_TriThuc/client/controllers/".$arr[0].".php")){
-                $this->controller = $arr[0];
-                unset($arr[0]);
+            if(isset($arr[0])){
+                if(file_exists("./MXH_TriThuc/client/controllers/".$arr[0].".php")){
+                    $this->controller = $arr[0];
+                    unset($arr[0]);
+                }
             }
             require_once ("./MXH_TriThuc/client/controllers/".$this->controller.".php");
             $this->controller = new $this->controller;
@@ -50,9 +52,57 @@ class App{
                 call_user_func_array([$this->controller, $this->action],$this->params);
         }
     }
+    function Middleware($url){
+        //url: trangchu/detail/3
+        $arr = explode("/",filter_var(trim($url,"/")));
+        if($arr[0] == 'admin'){
+            if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(isset($arr[1])){
+                $temp[0] = $arr[0];
+                $temp[1] = $arr[1];
+                $url = implode("/",$temp);
+            }else{
+                if(isset($arr[0])){
+                    $url = $arr[0];
+                }else{
+                    $url = '/';
+                }
+            }
+        }
+        $routeUser = [
+            'profile',
+            'profile/edit',
+            'post/create',
+            'post/edit'
+        ];
+        
+        foreach($routeUser as $item){
+            if($url == $item){
+                if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     function UrlProcess(){
         if(isset($_GET['url'])){
-            return explode("/",filter_var(trim($_GET['url'],"/")));
+            $url = $_GET['url'];
+            $checkRoute = $this->Middleware($url);
+            if(!$checkRoute){
+                $url = '/redirect';
+            }
+            return explode("/",filter_var(trim($url,"/")));
+
+
+            
         }
     }
     
