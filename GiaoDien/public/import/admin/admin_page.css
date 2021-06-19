@@ -4,6 +4,7 @@
     position: sticky;
     top:0;
     display: flex;
+    z-index: 10;
     flex-direction: column;
     justify-content: center;
     align-content: space-between;
@@ -70,6 +71,7 @@ ul li a{
     background-color: rgb(248, 243, 236);
     padding-left: 40px;
     padding-top: 40px;
+    padding-right: 20px;
 }
 
 /* for createComment_page.html*/
