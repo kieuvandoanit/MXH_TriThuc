@@ -18,6 +18,10 @@ class Controller{
     public function ViewClient($view, $data=[]){
         require_once "./MXH_TriThuc/client/views/".$view.".php";
     }
+
+    public function redirect($url){
+        header('Location: '._LINK_ROOT.$url);
+    }
 }
 
 ?>

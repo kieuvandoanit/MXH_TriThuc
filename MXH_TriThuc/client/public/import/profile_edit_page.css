@@ -1,0 +1,15 @@
+.edit_avatar{
+    position: relative;
+    margin-left: 300px;
+}
+#info{
+    margin-top: 30px;
+    width: 100%;
+}
+.info{
+    margin: 20px 50px 10px 100px;
+}
+.replace{
+    margin-right: 5px;
+    margin-top: 5px;
+}
