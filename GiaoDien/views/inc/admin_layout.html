@@ -52,69 +52,43 @@
         </div>
         <div class="content" >
         <!-- Bắt đầu code ở đây  -->
-        <h2>Quản trị viên</h2>
+        <h2>Tạo admin mới</h2>
+        <br><br>
+        <h4 style="margin: 0 100px 0 15px;">Thông tin admin</h4>
         <br>
-        <div class="row">
-            <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Thêm bộ lọc</option>
-                    <option value="1">Họ tên</option>
-                    <option value="2">Số điện thoại</option>
-                    <option value="3">Email</option>
-                  </select>
+        <form action="" style="margin: 0 100px 0 15px;">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="id">Họ tên</label>
+                        <input type="text" id="adminName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Số điện thoại</label>
+                        <input type="text" id="phoneNumber" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Mật khẩu</label>
+                        <input type="text" id="password" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="id">Email</label>
+                        <input type="text" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Tên đăng nhập</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                </div>
             </div>
-            <div class="col-8"></div>
-            <div class="col-2">
-                <a href="#" class="btn btn-secondary" style="border-radius: 45px;">
-                    <i class="fas fa-plus"></i>
-                    <b>Admin mới</b>
-                </a>
+            <br>
+            <div class="button-class" style="float: right;">
+                <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-ban"></i> Hủy</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo</button>
             </div>
-        </div>
-        <br>
-        
-        <div class="container">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Họ tên</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Email</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td class="user-btn">
-                        <i class="fas fa-info-circle"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-trash-alt"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+        </form>
         <!-- Kết thúc code ở đây  -->
         </div>
         <!-- <div class="footer" style="
