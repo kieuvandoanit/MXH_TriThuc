@@ -20,7 +20,7 @@ class Controller{
     }
 
     public function redirect($url){
-        header('Location: '._LINK_ROOT.$url);
+        header('Location: '.HOST.$url);
     }
 }
 
