@@ -1,0 +1,19 @@
+.form_register{
+    width: 500px;
+    height: 500px;
+    margin: 0px auto;
+    /* background-color: white; */
+}
+.form_register>input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.form_register span{
+    color: red;
+}
+.form_register h3{
+    font-weight: 600;
+}

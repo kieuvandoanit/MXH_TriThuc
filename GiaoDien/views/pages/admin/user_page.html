@@ -1,69 +1,68 @@
 <h2>Quản lí người dùng</h2>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Thêm bộ lọc</option>
-                    <option value="1">Họ tên</option>
-                    <option value="2">Số điện thoại</option>
-                    <option value="3">Email</option>
-                    <option value="3">Hạng thành viên</option>
-                  </select>
-            </div>
-            <div class="col-8"></div>
-            <div class="col-2">
-                <a href="#" class="btn btn-primary" style="border-radius: 45px;">
-                    <i class="fas fa-plus"></i>
-                    <b>Người dùng mới</b>
-                </a>
-            </div>
-        </div>
-        <br>
-        
-        <div class="container">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Họ tên</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Hạng thành viên</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td>Newbie</td>
-                    <td class="user-btn">
-                        <i class="fas fa-info-circle"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-trash-alt"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td>Học sinh</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td>Giáo viên</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Thương Hoài</th>
-                    <td>+84123456789</td>
-                    <td>hoai.le@gmail.com</td>
-                    <td>Tiến sĩ</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+<br>
+<div class="" style="justify-content: space-between; display: flex; flex-direction: row; ">
+  <div class="user-filter">
+      <div >
+          <select name="" id="" class="userFilterClass" >
+              <option value="" checked>Thêm bộ lọc</option>
+              <option value="" checked>Họ tên</option>
+              <option value="" checked>Số điện thoại</option>
+              <option value="" checked>Email</option>
+              <option value="" checked>Hạng thành viên</option>
+          </select>
+      </div>
+  </div>
+  <div class="">
+      <a href="#" class="btn btn-primary" style="border-radius: 45px;">
+          <i class="fas fa-plus"></i>
+          <b>Tạo người dùng</b>
+      </a>
+  </div>
+</div>
+ <br>
+<table class="content-table table-sorttable">
+  <thead>
+      <tr>
+          <th>Họ tên <i class="fas fa-sort"></i></th>
+          <th style="min-width: 10px;">Số điện thoại <i class="fas fa-sort"></i></th>
+          <th style="min-width: 10px;">Email <i class="fas fa-sort"></i></th>
+          <th style="min-width: 10px;">Hạng thành viên <i class="fas fa-sort"></i></th>
+          <th style="min-width: 10px;"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>Thương Hoài</td>
+        <td>+84123456789</td>
+        <td>hoai.le@gmail.com</td>
+        <td>Newbie</td>
+          <td class="user-btn">
+              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
+              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
+              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
+          </td>
+      </tr>
+      <tr>
+          <td>Thương Hoài</td>
+          <td>+84123456789</td>
+          <td>hoai.le@gmail.com</td>
+          <td>Học sinh</td>
+          <td class="user-btn">
+              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
+              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
+              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
+          </td>
+      </tr>
+      <tr>
+          <td>Thương Hoài</td>
+          <td>+84123456789</td>
+          <td>hoai.le@gmail.com</td>
+          <td>Giáo viên</td>
+          <td class="user-btn">
+              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
+              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
+              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
+          </td>
+      </tr>
+    </tbody>
+</div>

@@ -1,11 +1,22 @@
-.container{
-/* 
-    border-collapse: collapse;
-    margin: 15px 35px 15px 0;
-    font-size: 0.9em; */
-    /* min-width: 1100px; */
-    max-width: 1220px;
-    margin: 0px auto;
+.user-filter{
+    display: flex;
+    align-items: center;
+     /* padding-left: 15px; */
+}
+.user-filter div{
+    padding-right: 30px;
+}
+.user-filter div select{
+    min-height: 36px;
+}
+thead th{
+    text-transform: uppercase;
+    /* align-items: center; */
+}
+.userFilterClass{
+    min-width: 270px;
+    height: 30px;
+    border-radius: 5px;
 }
 .user-btn{
     min-width: 100px !important;

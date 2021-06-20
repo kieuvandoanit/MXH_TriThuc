@@ -1,0 +1,154 @@
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    margin-top: 15px;
+  }
+  
+  /* Style the submit button */
+  form.search button {
+    margin-top: 15px;
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #497497;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.search button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+ /* header post  */
+ .header_post{
+     background-color: #213647;
+     margin-top: 15px;
+     display: flex;
+ }
+ .post_thumb_detail{
+     margin: 5px 10px;
+     width: 500px;
+     height: 300px; 
+     overflow: hidden;
+     border-radius: 10px;
+ }
+ .post_thumb_detail>img{
+     width: 100%;
+     height: auto;
+ }
+ .post_info{
+     margin-left: 30px;
+     width: 52%;
+     color: white;
+ }
+ .post_title{
+     margin-top: 20px;
+     color: white;
+     font-size: 20px;
+     font-weight: 500;
+     margin-bottom: 20px;
+     height: 70px;
+     overflow: hidden;
+ }
+ .post_time{
+    margin-bottom: 20px;
+ }
+ .post_username{
+    margin-bottom: 20px;
+ }
+ .post_rank i{
+     color:#F2C94C;
+ }
+ .post_info .post_react{
+     width: 300px;
+ }
+ .post_description{
+     margin: 20px 30px;
+ }
+
+
+ /* Comment   */
+
+ .list_comment{
+    margin-top: 20px;
+ }
+ .comment_item{
+     display: flex;
+     margin: 5px 0px;
+ }
+ .user_comment_thumb{
+     width: 50px;
+     height: 50px;
+     overflow: hidden;
+     border-radius: 50%;
+     margin-right: 15px;
+ }
+ .user_comment_thumb>img{
+     width: 100%;
+ }
+ .user_comment{
+     font-weight: 600;
+ }
+ /* rating  */
+ .rating{
+     display: flex;
+     width: 100%;
+ }
+ .rating_score{
+     margin-left: 15px;
+     width: 200px;
+     height: 200px;
+     border: 2px solid rgb(112, 102, 102);
+     border-radius: 10px;
+     background-color: white;
+ }
+ .rating_score_detail{
+     height: 200px;
+     margin-left: 30px;
+     border: 2px solid rgb(112, 102, 102);
+     border-radius: 10px;
+ }
+ .name_star{
+     display: flex;
+     width: 700px;
+     margin-left: 15px;
+ }
+ .progress{
+     margin: 3px 10px;
+     width: 80%;
+     border-radius: 15px;
+ }
+ .progress .progress-bar{
+     width: 80%;
+     height: 15px;
+     background-color: #F2C94C;
+ }
+ .name_star p{
+     font-weight: 600;
+     font-size: 16px;
+ }
+ .name_star p i{
+     color: #F2C94C;
+ }
+ .rating_score>p.rating_score_info{
+    font-size: 90px;
+    text-align: center;
+    color: #927b33;
+ }
+ .number_ranked{
+     color: black;
+ }

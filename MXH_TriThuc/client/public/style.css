@@ -1,0 +1,15 @@
+/*STYLE*/
+@import "../public/import/header.css";
+@import "../public/import/first_page.css";
+@import "../public/import/home_page.css";
+@import "../public/import/post_page.css";
+@import "../public/import/post_detail.css";
+@import "../public/import/rank_post.css";
+@import "../public/import/profile_page.css";
+@import "../public/import/profile_edit_page.css";
+@import "../public/import/register.css";
+@import "../public/import/login.css";
+
+
+
+@import "../public/import/footer.css";
