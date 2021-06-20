@@ -59,6 +59,21 @@ class User extends Controller{
             $this->redirect('/user/register');
         }
     }
+
+    public function handleLogin(){ 
+        if(isset($_POST['btn_login'])){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $user = $this->userModel->getUser($username, $password);
+            if(!empty($user)){
+                $_SESSION['username'] = $username;
+                $_SESSION['isLogin'] = true;
+                $this->redirect('/');
+            }else{
+                $this->redirect('/user');
+            }
+        }
+    }
 }
 
 ?>

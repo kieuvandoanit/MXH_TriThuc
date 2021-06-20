@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <base href="http://localhost:8080/DoAnUDPT/MXH_TriThuc/"/>
+  <base href="<?php echo _BASELINK_;?>"/>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,20 @@
             <button class="btn">Bài viết</button>
             <button class="btn">BXH</button>
           </div>
-          <button id="sign_in" class="btn">Đăng nhập</button>
-          <button id="sign_up" class="btn">Đăng ký</button>
+          <?php 
+            if(isset($_SESSION['username'])){
+              echo $_SESSION['username'];
+            }
+          ?>
+
+          <?php 
+            if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == false){
+              ?>
+                <button id="sign_in" class="btn">Đăng nhập</button>
+                <button id="sign_up" class="btn">Đăng ký</button>
+              <?php
+            }
+          ?>
+          
         </div>
       </div>

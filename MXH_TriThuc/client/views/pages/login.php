@@ -2,7 +2,7 @@
         <div class="login_form">
           <h3 class="text-center">Đăng nhập</h3>
   
-          <form action="" class="login">
+          <form action="<?php echo HEADERLINK.'/user/handleLogin' ?>" class="login" method="POST">
             <label for="username">Tên đăng nhập (<span>*</span>):</label><br>
             <input type="text" name="username" id="username" placeholder="Nhập tên đăng nhập">
             <br>
@@ -10,8 +10,8 @@
             <input type="password" name="password" id="password" placeholder="Nhập mật khẩu"><br>
   
   
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
-            <p>Bạn chưa có tài khoản? <a href="">Đăng ký</a></p>
+            <input type="submit" class="btn btn-primary" name="btn_login" value="Đăng nhập"/>
+            <p>Bạn chưa có tài khoản? <a href="<?php echo HEADERLINK.'/user/register'?>">Đăng ký</a></p>
           </form>
         </div>
       </div>
