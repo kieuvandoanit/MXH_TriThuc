@@ -45,10 +45,10 @@
                   <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown">Kiều Văn Đoàn<i class="fas fa-caret-down"></i></a>
                   <ul class="dropdown-menu">
                     <li class="nav-link dropdown">
-                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>
                     </li>
                     <li class="nav-link dropdown">
-                      <a class="dropdown-item" href="#">Đăng xuất</a>
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/logout'; ?>">Đăng xuất</a>
                     </li>
                   </ul>
                 </li>
@@ -59,10 +59,10 @@
           ?>
 
           <?php 
-            if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == false){
+            if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == false || empty($_SESSION['isLogin'])){
               ?>
-                <button id="sign_in" class="btn">Đăng nhập</button>
-                <button id="sign_up" class="btn">Đăng ký</button>
+                <button id="sign_in" class="btn" style="background:#203ace; margin-right: 3px; height: 40px; margin-top: 10px;"><a href="<?php echo HEADERLINK."/user";?>" style="color: white;">Đăng nhập</a></button>
+                <button id="sign_in" class="btn" style="background:#203ace; height: 40px; margin-top: 10px;"><a href="<?php echo HEADERLINK."/user/register";?>" style="color: white;">Đăng ký</a></button>
               <?php
             }
           ?>

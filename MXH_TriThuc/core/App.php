@@ -75,8 +75,8 @@ class App{
             }
         }
         $routeUser = [
-            'profile',
-            'profile/edit',
+            'user/profile',
+            'user/editProfile',
             'post/create',
             'post/edit'
         ];

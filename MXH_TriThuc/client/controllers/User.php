@@ -74,6 +74,19 @@ class User extends Controller{
             }
         }
     }
+
+    public function logout(){
+        
+        session_destroy();
+        $this->redirect('/user');
+        echo "Davao";
+    }
+
+    public function profile(){
+        $this->ViewClient('inc/header');
+        $this->ViewClient('pages/profile_page');
+        $this->ViewClient('inc/footer');
+    }
 }
 
 ?>
