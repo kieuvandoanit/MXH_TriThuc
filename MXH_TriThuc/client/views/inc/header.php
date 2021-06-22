@@ -48,6 +48,9 @@
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>
                     </li>
                     <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/changePassword'; ?>">Đổi mật khẩu</a>
+                    </li>
+                    <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/logout'; ?>">Đăng xuất</a>
                     </li>
                   </ul>

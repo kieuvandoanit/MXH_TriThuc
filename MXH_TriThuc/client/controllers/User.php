@@ -110,7 +110,7 @@ class User extends Controller{
     }
 
     public function handleEditProfile(){
-        echo '<pre>'; print_r($_POST); echo '</pre>';
+        // echo '<pre>'; print_r($_POST); echo '</pre>';
         if(isset($_POST['btn_update'])){
             $fullname = $_POST['fullname'];
             $phoneNumber = $_POST['phoneNumber'];
@@ -131,6 +131,35 @@ class User extends Controller{
         $this->ViewClient('inc/header');
         $this->ViewClient('pages/find_password');
         $this->ViewClient('inc/footer');
+    }
+
+    public function handleFindPass(){
+        if(isset($_POST['btn_findPass'])){
+            require_once('MXH_TriThuc/plugin/sendMail.php');
+            $email = $_POST['email'];
+            $user = $this->userModel->getUserByEmail($email);
+            if(!empty($user)){
+                $userID = $user[0]['User_id'];
+                $title="XÁC NHẬN TÌM MẬT KHẨU!";
+                $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/user/confirmHandleFindPass/'.$userID.'<br/> Mật khẩu sau khi kích hoạt là: 12345';
+                sendMail($title, $body, $email);
+                $this->redirect('/user');
+            }
+            
+        }else{
+            $this->redirect('/user');
+        }
+        
+    }
+
+    public function confirmHandleFindPass($id){
+        $newPassword = '12345';
+        $result = $this->userModel->changePassword($id,$newPassword);
+        if($result){
+            $this->redirect('/user');
+        }else{
+            $this->redirect('/user/findPass');
+        }
     }
 }
 

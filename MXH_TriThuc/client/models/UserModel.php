@@ -21,6 +21,16 @@ class UserModel extends DB{
         }
     }
 
+    public function getUserByEmail($email){
+        $sql = "SELECT * FROM `user` WHERE `email`='$email'";
+            $rows = mysqli_query($this->conn, $sql);
+            $arr = [];
+            while($row = mysqli_fetch_array($rows)){
+                $arr[] = $row;
+            }
+            return $arr;
+    }
+
     
 
     public function createUser($username, $password, $email){
@@ -60,6 +70,15 @@ class UserModel extends DB{
         $userID = $_SESSION['userID'];
 
         $sql = "UPDATE `user_profile` SET `avatar`='$userThumb',`name`='$fullname',`phone`='$phoneNumber',`email`='$email',`address` = '$address' WHERE `user_id` = $userID";
+        $result = false;
+         if(mysqli_query($this->conn, $sql)){
+             $result = true;
+         }
+         return $result;
+    }
+
+    public function changePassword($id, $newPassword){
+        $sql = "UPDATE `user` SET `Password` = '$newPassword' WHERE `User_id` = $id";
         $result = false;
          if(mysqli_query($this->conn, $sql)){
              $result = true;
