@@ -38,11 +38,11 @@
               ?>
               <div class="author_login">
               <div class="img_user_thumb">
-                <img src="https://i.vietgiaitri.com/2020/6/3/xinh-dep-lai-co-minh-day-cung-nguc-day-hotgirl-len-hinh-ben-bo-ma-bi-don-cap-dai-gia-19f-4981007.jpg" alt="">
+                <img src="<?php echo isset($_SESSION['avatar'])?$_SESSION['avatar']:'client/public/assets/avatar.jpg'; ?>" alt="">
               </div>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown username_login">
-                  <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown">Kiều Văn Đoàn<i class="fas fa-caret-down"></i></a>
+                  <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown"><?php echo isset($_SESSION['fullname'])?$_SESSION['fullname']:$_SESSION['username']; ?><i class="fas fa-caret-down"></i></a>
                   <ul class="dropdown-menu">
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>

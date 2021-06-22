@@ -1,19 +1,20 @@
+
 <div id = "profile_page">
     <div id = "top_profile_page" class="background">
       <div class="col-md-6">
         <div class="avatar">
-          <img class="avatar_size" src="client/public/assets/avatar.jpg" alt="">
+          <img class="avatar_size" src="<?php echo isset($data['user'][0]['Avatar'])?$data['user'][0]['Avatar']:'client/public/assets/avatar.jpg';?>" alt="">
         </div>
       </div>
       <div id="your_info" class="col-md-6">
         <ul class="">
           <li class="name">
-            <h1>THƯƠNG HOÀI</h1>
+            <h1><?php echo isset($data['user'][0]['Name'])?$data['user'][0]['Name']:'Họ tên chưa cập nhật'; ?></h1>
           </li>
-          <li class="job">Sinh viên</li>
-          <li class="phone">0123456789</li>
-          <li class="mail">abc@gmail.com</li>
-          <li class="address">Núi Thành, quận Bình Thạnh, HCM</li>
+          <li class="job"><?php echo isset($data['user'][0]['Level_id'])?$data['user'][0]['Level_id']:'Level chưa cập nhật'; ?></li>
+          <li class="phone"><?php echo isset($data['user'][0]['Phone'])?$data['user'][0]['Phone']:'Số điện thoại chưa cập nhật';?></li>
+          <li class="mail"><?php echo isset($data['user'][0]['Email'])?$data['user'][0]['Email']:'Email chưa cập nhật';?></li>
+          <li class="address"><?php echo isset($data['user'][0]['address'])?$data['user'][0]['address']:'Địa chỉ chưa cập nhật';?></li>
         </ul>
         <div class="posts_react col-md-6 col-md-offset-3">
           <div class="posts_like">
@@ -28,8 +29,8 @@
       </div>
       <div class="replace">
         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-pencil"></i>
+          <button class="btn btn-default">
+            <a href="<?php echo HEADERLINK.'/user/editProfile/'?>"><i class="glyphicon glyphicon-pencil"></i></a>
           </button>
         </div>
       </div>

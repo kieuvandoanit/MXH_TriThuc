@@ -50,10 +50,15 @@ class User extends Controller{
             }
         }
         
-        // echo '<pre>'; print_r($error); echo '</pre>'; 
         if(empty($error)){
             if($this->userModel->createUser($username, $password, $email)){
-                $this->redirect('/user');
+                $user = $this->userModel->getUser($username, $password);
+                $userID = $user[0]['User_id'];
+                if($this -> userModel->createUserProfile($userID)){
+                    $this->redirect('/user');
+                }else{
+                    $this->redirect('/user/register');
+                }
             };
         }else{
             $this->redirect('/user/register');
@@ -65,7 +70,13 @@ class User extends Controller{
             $username = $_POST['username'];
             $password = $_POST['password'];
             $user = $this->userModel->getUser($username, $password);
+            $userInfo = $this->userModel->getUserProfile($user[0]['User_id']);
             if(!empty($user)){
+                // echo '<pre>'; print_r($user); echo '</pre>';
+                $_SESSION['fullname']=$userInfo[0]['Name'];
+                $_SESSION['avatar']=$userInfo[0]['Avatar'];
+                $_SESSION['userID'] = $user[0]['User_id'];
+                $_SESSION['email'] = $user[0]['email'];
                 $_SESSION['username'] = $username;
                 $_SESSION['isLogin'] = true;
                 $this->redirect('/');
@@ -79,12 +90,46 @@ class User extends Controller{
         
         session_destroy();
         $this->redirect('/user');
-        echo "Davao";
+        // echo "Davao";
     }
 
     public function profile(){
+        $data['user'] = $this-> userModel-> getUserProfile($_SESSION['userID']);
+
         $this->ViewClient('inc/header');
-        $this->ViewClient('pages/profile_page');
+        $this->ViewClient('pages/profile_page',$data);
+        $this->ViewClient('inc/footer');
+    }
+
+    public function editProfile(){
+        $data['user'] = $this-> userModel-> getUserProfile($_SESSION['userID']);
+        
+        $this->ViewClient('inc/header');
+        $this->ViewClient('pages/profile_edit_page', $data);
+        $this->ViewClient('inc/footer');
+    }
+
+    public function handleEditProfile(){
+        echo '<pre>'; print_r($_POST); echo '</pre>';
+        if(isset($_POST['btn_update'])){
+            $fullname = $_POST['fullname'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $userThumb = $_POST['user_thumb'];
+
+            $result = $this->userModel-> updateProfile($fullname, $phoneNumber, $email, $address, $userThumb);
+            if($result){
+                $this->redirect('/user/profile');
+            }else{
+                $this->redirect('/user/editProfile');
+            }
+        } 
+    }
+
+    public function findPass(){
+        $this->ViewClient('inc/header');
+        $this->ViewClient('pages/find_password');
         $this->ViewClient('inc/footer');
     }
 }
