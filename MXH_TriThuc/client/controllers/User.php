@@ -161,6 +161,37 @@ class User extends Controller{
             $this->redirect('/user/findPass');
         }
     }
+
+    public function changePassword(){
+        $this->ViewClient('inc/header');
+        $this->ViewClient('pages/change_password');
+        $this->ViewClient('inc/footer');
+    }
+
+    public function handleChangePass(){
+        echo '<pre>'; print_r($_POST); echo '</pre>';
+        if(isset($_POST['btn_changePass'])){
+            $userID = $_SESSION['userID'];
+            $oldPass = $_POST['oldPassword'];
+            $newPass=$_POST['newPassword'];
+            $reNewPass =$_POST['reNewPassword'];
+            if($newPass != $reNewPass){
+                $this->redirect('/user/changePassword');
+            }else{
+                $user = $this->userModel->getUserByID($userID);
+                if($oldPass == $user[0]['Password']){
+                    $result = $this->userModel->changePassword($userID, $newPass);
+                    if($result){
+                        $this->redirect('/user/profile');
+                    }else{
+                        $this->redirect('/user/changePassword');
+                    }
+                }else{
+                    $this->redirect('/user/changePassword');
+                }
+            }
+        } 
+    }
 }
 
 ?>

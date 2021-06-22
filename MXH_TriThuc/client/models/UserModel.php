@@ -31,6 +31,16 @@ class UserModel extends DB{
             return $arr;
     }
 
+    public function getUserByID($id){
+        $sql = "SELECT * FROM `user` WHERE `User_id`=$id";
+            $rows = mysqli_query($this->conn, $sql);
+            $arr = [];
+            while($row = mysqli_fetch_array($rows)){
+                $arr[] = $row;
+            }
+            return $arr;
+    }
+
     
 
     public function createUser($username, $password, $email){

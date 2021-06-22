@@ -1,0 +1,97 @@
+
+.navbar{
+    height:9vh;
+    position: sticky;
+    top:0;
+    display: flex;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    background-color: #4558be !important;
+}
+.button_class {
+    position:flex;
+    padding-top: 1vh;
+    font-size: 3vh;
+    margin: auto;
+}
+a{
+    /* text-decoration: none; */
+    color:rgb(219, 219, 219);
+}
+.homebtn{
+    text-decoration: none !important;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* aside{
+    z-index: 1000;
+    position: fixed;
+    width: 12%;
+    height: 100%;
+    overflow-y: auto;
+    background: #37474F;
+} */
+.sidenav{
+    padding-left: 0;
+    width: 200px;
+    background-color: #dadada;
+    border-right: 1px solid #455A64;
+    /* position: sticky; */
+}
+ul{
+    list-style-type: none;
+    
+}
+.sidenav a{
+    background: none;
+    border-bottom: 1px solid #455A64;
+    
+    color: black;/*#CFD8DC;*/
+    font-size: 14px;
+    padding: 16px 24px;
+    text-decoration: none;
+}
+.sidenav a:hover{
+    background: none;
+    color: #ECEFF1;
+}
+.sidebar .nav a i{
+    margin-right: 16px;
+}
+ul li a{
+    display: block;
+}
+.content{
+    width:calc(100% - 200px);
+    min-height:90vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* overflow: auto; */
+    /* background-color: #F1F1F1; */
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-right: 20px;
+}
+
+/* for createComment_page.html*/
+
+form label{
+    font-size: 20px;
+}
+.homeCard{
+    justify-content: space-between; display: flex;align-items: center;
+}
+.homeCard div{
+    background-color: rgb(224, 203, 182);
+    min-width: 250px;
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 20px;
+}
