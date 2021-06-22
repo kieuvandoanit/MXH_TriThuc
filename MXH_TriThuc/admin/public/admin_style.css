@@ -4,3 +4,6 @@
 @import "../public/import/admin/postManagement_page.css";
 @import "../public/import/admin/userManagement_page.css";
 @import "../public/import/admin/categoryManagement_page.css";
+@import "../public/import/admin/login.css";
+@import "../public/import/admin/forgot_pass.css";
+@import "../public/import/admin/change_pass.css";

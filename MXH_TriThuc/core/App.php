@@ -53,13 +53,38 @@ class App{
         }
     }
     function Middleware($url){
-        //url: trangchu/detail/3
         $arr = explode("/",filter_var(trim($url,"/")));
-        if($arr[0] == 'admin'){
-            if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
-                return true;
+        $routeAdmin = [
+            'user',
+            'user/findPass'
+        ];
+        $routeUser = [
+            'user/profile',
+            'user/editProfile',
+            'post/create',
+            'post/edit'
+        ];
+        if($arr[0] == 'admin'){  
+            if(isset($arr[2])){
+                $temp[0] = $arr[1];
+                $temp[1] = $arr[2];
+                $url = implode("/",$temp);
             }else{
-                return false;
+                if(isset($arr[1])){
+                    $url = $arr[1];
+                }else{
+                    $url = '/';
+                }
+            }
+            foreach($routeAdmin as $item){
+                if($url == $item){
+                    return true;
+                }else{
+                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                        return true;
+                    }
+                    return false;
+                }
             }
         }else{
             if(isset($arr[1])){
@@ -73,31 +98,29 @@ class App{
                     $url = '/';
                 }
             }
-        }
-        $routeUser = [
-            'user/profile',
-            'user/editProfile',
-            'post/create',
-            'post/edit'
-        ];
-        
-        foreach($routeUser as $item){
-            if($url == $item){
-                if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
-                    return true;
-                }else{
-                    return false;
+            foreach($routeUser as $item){
+                if($url == $item){
+                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                        return true;
+                    }else{
+                        return false;
+                    }
                 }
             }
+            return true;
         }
-        return true;
     }
     function UrlProcess(){
         if(isset($_GET['url'])){
             $url = $_GET['url'];
             $checkRoute = $this->Middleware($url);
+            $temp = explode("/",filter_var(trim($url,"/")));
             if(!$checkRoute){
-                $url = '/redirect';
+                if($temp[0] == 'admin'){
+                    $url = 'admin/redirect';
+                }else{
+                    $url = '/redirect';
+                }
             }
             return explode("/",filter_var(trim($url,"/")));
 

@@ -10,7 +10,6 @@ class DB{
         $this->conn = mysqli_connect($this->servername, $this->username, $this->password);
         mysqli_select_db($this->conn,$this->dbname);
         mysqli_query($this->conn, "SET NAMES 'utf8'");
-        // var_dump($this->conn);
     }
 
 }
