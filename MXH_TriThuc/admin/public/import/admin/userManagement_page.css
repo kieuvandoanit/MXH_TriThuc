@@ -1,0 +1,27 @@
+.user-filter{
+    display: flex;
+    align-items: center;
+     /* padding-left: 15px; */
+}
+.user-filter div{
+    padding-right: 30px;
+}
+.user-filter div select{
+    min-height: 36px;
+}
+thead th{
+    text-transform: uppercase;
+    /* align-items: center; */
+}
+.userFilterClass{
+    min-width: 270px;
+    height: 30px;
+    border-radius: 5px;
+}
+.user-btn{
+    min-width: 100px !important;
+    text-align: right;
+}
+.user-btn i{
+    padding-right: 13px;
+}
