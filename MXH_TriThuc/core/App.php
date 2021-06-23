@@ -56,7 +56,8 @@ class App{
         $arr = explode("/",filter_var(trim($url,"/")));
         $routeAdmin = [
             'user',
-            'user/findPass'
+            'user/findPass',
+            'user/handleLogin'
         ];
         $routeUser = [
             'user/profile',
@@ -66,6 +67,7 @@ class App{
         ];
         if($arr[0] == 'admin'){  
             if(isset($arr[2])){
+                // echo "davao";
                 $temp[0] = $arr[1];
                 $temp[1] = $arr[2];
                 $url = implode("/",$temp);
@@ -76,16 +78,18 @@ class App{
                     $url = '/';
                 }
             }
+            // echo $url;
             foreach($routeAdmin as $item){
                 if($url == $item){
+                    // echo "davao";
                     return true;
                 }else{
                     if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
                         return true;
                     }
-                    return false;
                 }
             }
+            return false;
         }else{
             if(isset($arr[1])){
                 $temp[0] = $arr[0];
@@ -123,9 +127,6 @@ class App{
                 }
             }
             return explode("/",filter_var(trim($url,"/")));
-
-
-            
         }
     }
     

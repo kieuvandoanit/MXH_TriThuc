@@ -1,7 +1,7 @@
 <?php
 class Redirect extends Controller{
     public function SayHi(){
-        $this->redirect('/admin/user');
+        header('Location: '.HOST.'/admin/user');
     }
 }
 

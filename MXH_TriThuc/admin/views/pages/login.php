@@ -11,8 +11,7 @@
   
   
             <input type="submit" class="btn btn-primary" name="btn_login" value="Đăng nhập"/>
-            <p>Bạn chưa có tài khoản? <a href="<?php echo HEADERLINK.'/user/register'?>">Đăng ký</a></p>
-            <a href="<?php echo HEADERLINK.'/user/findPass'?>">Quên mật khẩu?</a>
+            <a href="<?php echo HEADERLINK.'/admin/user/findPass'?>">Quên mật khẩu?</a>
           </form>
         </div>
       </div>
