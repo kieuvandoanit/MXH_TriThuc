@@ -144,6 +144,8 @@ class User extends Controller{
                 $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/user/confirmHandleFindPass/'.$userID.'<br/> Mật khẩu sau khi kích hoạt là: 12345';
                 sendMail($title, $body, $email);
                 $this->redirect('/user');
+            }else{
+                $this->redirect('/user');
             }
             
         }else{

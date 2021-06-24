@@ -28,7 +28,7 @@ function sendMail($Title, $Body, $email){
         $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
         $mail->CharSet = 'UTF-8';
         //Recipients
-        $mail->setFrom('kieuvandoanit@gmail.com', 'KVD');
+        $mail->setFrom('kieuvandoanit@gmail.com', 'K');
         $mail->addAddress($email, 'SV');     // Add a recipient
         //$mail->addAddress('ellen@example.com');               // Name is optional
         $mail->addReplyTo('kieuvandoanit1@gmail.com', 'Information');

@@ -53,11 +53,11 @@ class UserModel extends DB{
         return false;
     }
 
-    public function createUserProfile($avatar='',$fullname='',$phoneNumber='', $email='', $address='', $userID){
+    public function createUserProfile($avatar='',$fullname='',$gender='',$phoneNumber='', $email='', $address='', $userID){
         if($avatar==''){
-            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
         }else{
-            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
         }
         if(mysqli_query($this->conn, $sql)){
             return true;

@@ -141,11 +141,42 @@ class User extends Controller{
 
     public function createUser(){
         $data['page_title'] = 'Tạo người dùng';
-        $this->viewAdmin('inc/header');
+        $this->viewAdmin('inc/header',$data);
         $this->viewAdmin('pages/addUser_page');
         $this->viewAdmin('inc/footer');
     }
+    
 
+    public function handleCreateUser(){
+        // echo '<pre>'; print_r($_POST); echo '</pre>'; 
+
+        if(isset($_POST['btn_createUser'])){
+            $fullname = $_POST['fullname'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $gender = $_POST['gender'];
+            $avatar = $_POST['avatar'];
+            $address = $_POST['address'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $postNumber = $_POST['postNumber'];
+            $email = $_POST['email'];
+
+            if($_POST['password'] == $_POST['rePassword']){
+                $addUserSuccess = $this->userModel->createUser(2,$username, $password, $email);
+                if($addUserSuccess){
+                    $userNew = $this->userModel->getUser($username, $password);
+                    $addUserProfileSuccess = $this->userModel->createUserProfile($avatar,$fullname,$gender,$phoneNumber, $email, $address, $userNew[0]['UType_id']);
+                    if($addUserProfileSuccess){
+                        $this->redirect('/admin/user/userPage');
+                    }
+                }else{
+                    $this->redirect('/admin/user/createUser');
+                }
+            }else{
+                $this->redirect('/admin/user/createUser');
+            }
+        }
+    }
 
 }
 
