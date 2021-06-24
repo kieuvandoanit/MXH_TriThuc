@@ -57,7 +57,9 @@ class App{
         $routeAdmin = [
             'user',
             'user/findPass',
-            'user/handleLogin'
+            'user/handleLogin',
+            'user/handleFindPass',
+            'user/confirmHandleFindPass'
         ];
         $routeUser = [
             'user/profile',
@@ -84,7 +86,7 @@ class App{
                     // echo "davao";
                     return true;
                 }else{
-                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true && $_SESSION['auth'] == 'admin'){
                         return true;
                     }
                 }
@@ -104,7 +106,7 @@ class App{
             }
             foreach($routeUser as $item){
                 if($url == $item){
-                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
+                    if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true && $_SESSION['auth']=='user'){
                         return true;
                     }else{
                         return false;

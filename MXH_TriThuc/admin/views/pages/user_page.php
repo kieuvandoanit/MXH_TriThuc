@@ -1,3 +1,4 @@
+<!-- <?php echo '<pre>'; print_r($data); echo '</pre>';  ?> -->
 <h2>Quản lí người dùng</h2>
 <br>
 <div class="" style="justify-content: space-between; display: flex; flex-direction: row; ">
@@ -31,38 +32,24 @@
       </tr>
   </thead>
   <tbody>
-      <tr>
-        <td>Thương Hoài</td>
-        <td>+84123456789</td>
-        <td>hoai.le@gmail.com</td>
-        <td>Newbie</td>
-          <td class="user-btn">
-              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
-              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
-              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
-          </td>
-      </tr>
-      <tr>
-          <td>Thương Hoài</td>
-          <td>+84123456789</td>
-          <td>hoai.le@gmail.com</td>
-          <td>Học sinh</td>
-          <td class="user-btn">
-              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
-              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
-              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
-          </td>
-      </tr>
-      <tr>
-          <td>Thương Hoài</td>
-          <td>+84123456789</td>
-          <td>hoai.le@gmail.com</td>
-          <td>Giáo viên</td>
-          <td class="user-btn">
-              <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a>
-              <a class="delete-icon" href="" title="delete post"><i class="far fa-trash-alt"></i></a>
-              <a class="info-icon" href="" title="information of post"><i class="fas fa-info-circle"></i></a>
-          </td>
-      </tr>
+        <?php 
+        foreach($data['listUser'] as $user){
+            ?>
+            <tr>
+            <td><?php echo $user['Name']; ?></td>
+            <td><?php echo $user['Phone']; ?></td>
+            <td><?php echo $user['email']; ?></td>
+            <td><?php echo $user['Level_id'] ?></td>
+              <td class="user-btn">
+                  <!-- <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a> -->
+                  <a class="delete-icon" href="<?php echo HEADERLINK.'/admin/user/deleteUser/'.$user['User_id'].'/2'; ?>" title="Xóa user"><i class="far fa-trash-alt"></i></a>
+                  <a class="info-icon" href="<?php echo HEADERLINK.'/admin/user/profile/'.$user['User_id']; ?>" title="Thông tin"><i class="fas fa-info-circle"></i></a>
+              </td>
+            </tr>
+            <?php  
+        }
+        
+        ?>
+      
     </tbody>
 </div>
