@@ -22,7 +22,7 @@ class UserModel extends DB{
     }
 
     public function getUserByEmail($email){
-        $sql = "SELECT * FROM `user` WHERE `email`='$email'";
+        $sql = "SELECT * FROM `user` WHERE `email`='$email' AND `UType_id` = 2";
             $rows = mysqli_query($this->conn, $sql);
             $arr = [];
             while($row = mysqli_fetch_array($rows)){
@@ -44,7 +44,7 @@ class UserModel extends DB{
     
 
     public function createUser($username, $password, $email){
-        $sql = "INSERT INTO `user` VALUES (null,'$username', '$email','$password',null, null)";
+        $sql = "INSERT INTO `user` VALUES (null,'$username', '$email','$password',null, 2)";
          $result = false;
          if(mysqli_query($this->conn, $sql)){
              $result = true;
@@ -65,7 +65,7 @@ class UserModel extends DB{
     }
 
     public function createUserProfile($userID){
-        $sql = "INSERT INTO `user_profile` VALUES (null, null, null, null, null, null, null, null, $userID, null)";
+        $sql = "INSERT INTO `user_profile` VALUES (null, null, null,null, null, null, null, null, null, $userID, null)";
 
         $result = false;
          if(mysqli_query($this->conn, $sql)){

@@ -44,6 +44,40 @@ class UserModel extends DB{
         return $arr;
     }
 
+    public function getListUser($type){
+        
+        $sql = "SELECT * FROM `user` as u, `user_profile` as p WHERE u.User_id=p.User_id AND u.UType_id=$type"; 
+
+        $rows = mysqli_query($this->conn, $sql);
+        $arr=[];
+        while($row=mysqli_fetch_array($rows)){
+            $arr[]=$row;
+        }
+        return $arr;
+    }
+
+    public function getUserByEmail($email){
+        $sql = "SELECT * FROM `user` WHERE `email`='$email' AND `UType_id` = 1";
+            $rows = mysqli_query($this->conn, $sql);
+            $arr = [];
+            while($row = mysqli_fetch_array($rows)){
+                $arr[] = $row;
+            }
+            return $arr;
+    }
+
+    public function getProfile($userID){
+        
+        $sql = "SELECT * FROM `user` as u, `user_profile` as p WHERE u.User_id=p.User_id AND u.User_id=$userID"; 
+
+        $rows = mysqli_query($this->conn, $sql);
+        $arr=[];
+        while($row=mysqli_fetch_array($rows)){
+            $arr[]=$row;
+        }
+        return $arr;
+    }
+
     public function createUser($UType_id, $username, $password, $email){
         $sql = "INSERT INTO `user` VALUES(null, '$username', '$email','$password',null,$UType_id)";
 
@@ -53,11 +87,11 @@ class UserModel extends DB{
         return false;
     }
 
-    public function createUserProfile($avatar='',$fullname='',$phoneNumber='', $email='', $address='', $userID){
+    public function createUserProfile($avatar='',$fullname='',$gender='',$phoneNumber='', $email='', $address='', $userID){
         if($avatar==''){
-            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
         }else{
-            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
         }
         if(mysqli_query($this->conn, $sql)){
             return true;
@@ -77,6 +111,15 @@ class UserModel extends DB{
         }else{
             return false;
         }
+    }
+
+    public function changePassword($id, $newPassword){
+        $sql = "UPDATE `user` SET `Password` = '$newPassword' WHERE `User_id` = $id";
+        $result = false;
+         if(mysqli_query($this->conn, $sql)){
+             $result = true;
+         }
+         return $result;
     }
 
     

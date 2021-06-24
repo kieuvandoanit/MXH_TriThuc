@@ -26,7 +26,7 @@
   <div id="site">
     <div class="container">
       <div id="header">
-        <div id="logo"><a href="">TEAM UDPT#01</a></div>
+        <div id="logo"><a href="<?php echo HEADERLINK.'/admin'; ?>">TEAM UDPT#01</a></div>
         <div id="sign_in_up">
           <div class="header_menu">
             <button class="btn">Trang chủ</button>

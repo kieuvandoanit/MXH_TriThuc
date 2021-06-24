@@ -79,6 +79,7 @@ class User extends Controller{
                 $_SESSION['email'] = $user[0]['email'];
                 $_SESSION['username'] = $username;
                 $_SESSION['isLogin'] = true;
+                $_SESSION['auth'] = 'user';
                 $this->redirect('/');
             }else{
                 $this->redirect('/user');
@@ -140,20 +141,21 @@ class User extends Controller{
             $user = $this->userModel->getUserByEmail($email);
             if(!empty($user)){
                 $userID = $user[0]['User_id'];
+                $newPass = rand(10000,99999);
                 $title="XÁC NHẬN TÌM MẬT KHẨU!";
-                $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/user/confirmHandleFindPass/'.$userID.'<br/> Mật khẩu sau khi kích hoạt là: 12345';
+                $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/user/confirmHandleFindPass/'.$userID.'/'.$newPass.'<br/> Mật khẩu sau khi kích hoạt là: '.$newPass;
                 sendMail($title, $body, $email);
                 $this->redirect('/user');
+            }else{
+                $this->redirect('/user');
             }
-            
         }else{
             $this->redirect('/user');
         }
-        
     }
 
-    public function confirmHandleFindPass($id){
-        $newPassword = '12345';
+    public function confirmHandleFindPass($id,$newPassword){
+        // $newPassword = '12345';
         $result = $this->userModel->changePassword($id,$newPassword);
         if($result){
             $this->redirect('/user');
