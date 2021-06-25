@@ -65,7 +65,8 @@ class App{
             'user/profile',
             'user/editProfile',
             'post/create',
-            'post/edit'
+            'post/edit',
+            'post/handleAddPost'
         ];
         if($arr[0] == 'admin'){  
             if(isset($arr[2])){
