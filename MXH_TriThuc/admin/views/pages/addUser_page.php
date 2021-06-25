@@ -2,7 +2,7 @@
 <br><br>
 <h4 style="margin: 0 100px 0 15px;">Thông tin người dùng</h4>
 <br>
-<form action="" style="margin: 0 100px 0 15px;">
+<form action="<?php echo HEADERLINK.'/admin/user/handleCreateUser';?>" method="POST" style="margin: 0 100px 0 15px;">
     <div class="row">
         <div class= "col-3">
             <img src="client/public/assets/avatar.jpg" width="150px" height="150px" alt="...">

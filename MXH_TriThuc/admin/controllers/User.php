@@ -28,6 +28,7 @@ class User extends Controller{
                 $_SESSION['avatar'] = $userInfo[0]['Avatar'];
                 $_SESSION['userID'] = $user[0]['User_id'];
                 $_SESSION['isLogin'] = true;
+                $_SESSION['auth']= 'admin';
 
                 $this->redirect('/admin');
             }else{
@@ -55,14 +56,26 @@ class User extends Controller{
             $user = $this->userModel->getUserByEmail($email);
             if(!empty($user)){
                 $userID = $user[0]['User_id'];
+                $newPass = rand(10000,99999);
                 $title="XÁC NHẬN TÌM MẬT KHẨU!";
-                $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/user/confirmHandleFindPass/'.$userID.'<br/> Mật khẩu sau khi kích hoạt là: 12345';
+                $body='Nếu đúng là bạn, xin hãy click vào đường link dưới đây:<br/>'.HOST.'/admin/user/confirmHandleFindPass/'.$userID.'/'.$newPass.'<br/> Mật khẩu sau khi kích hoạt là: '.$newPass;
                 sendMail($title, $body, $email);
                 $this->redirect('/user');
+            }else{
+                $this->redirect('/user');
             }
-            
         }else{
             $this->redirect('/user');
+        }
+    }
+
+    public function confirmHandleFindPass($id,$newPassword){
+        // $newPassword = '12345';
+        $result = $this->userModel->changePassword($id,$newPassword);
+        if($result){
+            $this->redirect('/admin/user');
+        }else{
+            $this->redirect('/admin/user/findPass');
         }
     }
 
@@ -124,28 +137,76 @@ class User extends Controller{
     public function editUser(){
 
     }
-    public function profile(){
-
+    public function profile($id){
+        $data['page_title'] = 'Thông tin user';
+        $data['userProfile']=$this->userModel->getProfile($id);
+        if(!empty($data['userProfile'])){
+            $this->viewAdmin('inc/header', $data);
+            $this->viewAdmin('pages/profile',$data);
+            $this->viewAdmin('inc/footer');
+        }
     }
-    public function deleteUser($id){
+    public function deleteUser($id, $type=1){
         $this->userModel->deleteUser($id);
-        $this->redirect('/admin/user/adminPage');
+        if($type==1){
+            $this->redirect('/admin/user/adminPage');
+        }else{
+            $this->redirect('/admin/user/userPage');
+        }
+        
     }
 
     public function userPage(){
         $data['page_title'] = 'Quản lý user';
-        $this->viewAdmin('inc/header');
-        $this->viewAdmin('pages/user_page');
-        $this->viewAdmin('inc/footer');
+        $data['listUser'] = $this->userModel->getListUser(2);
+        if(!empty($data['listUser'])){
+
+            $this->viewAdmin('inc/header', $data);
+            $this->viewAdmin('pages/user_page', $data);
+            $this->viewAdmin('inc/footer');
+        }
+
+        
     }
 
     public function createUser(){
         $data['page_title'] = 'Tạo người dùng';
-        $this->viewAdmin('inc/header');
+        $this->viewAdmin('inc/header',$data);
         $this->viewAdmin('pages/addUser_page');
         $this->viewAdmin('inc/footer');
     }
+    
 
+    public function handleCreateUser(){
+        // echo '<pre>'; print_r($_POST); echo '</pre>'; 
+
+        if(isset($_POST['btn_createUser'])){
+            $fullname = $_POST['fullname'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $gender = $_POST['gender'];
+            $avatar = $_POST['avatar'];
+            $address = $_POST['address'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $postNumber = $_POST['postNumber'];
+            $email = $_POST['email'];
+
+            if($_POST['password'] == $_POST['rePassword']){
+                $addUserSuccess = $this->userModel->createUser(2,$username, $password, $email);
+                if($addUserSuccess){
+                    $userNew = $this->userModel->getUser($username, $password);
+                    $addUserProfileSuccess = $this->userModel->createUserProfile($avatar,$fullname,$gender,$phoneNumber, $email, $address, $userNew[0]['User_id']);
+                    if($addUserProfileSuccess){
+                        $this->redirect('/admin/user/userPage');
+                    }
+                }else{
+                    $this->redirect('/admin/user/createUser');
+                }
+            }else{
+                $this->redirect('/admin/user/createUser');
+            }
+        }
+    }
 
 }
 
