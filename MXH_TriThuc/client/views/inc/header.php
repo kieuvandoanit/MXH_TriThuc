@@ -29,10 +29,9 @@
         <div id="logo"><a href="<?php echo HEADERLINK.'/'; ?>">TEAM UDPT#01</a></div>
         <div id="sign_in_up">
           <div class="header_menu">
-            <a href=""><button class="btn">Trang chủ</button></a>
+            <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>"><button class="btn">Trang chủ</button></a>
             <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
             <a href=""><button class="btn">BXH</button></a>
-            
           </div>
           <?php 
             if(isset($_SESSION['username'])){
