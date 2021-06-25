@@ -98,12 +98,16 @@ div#category.col-md-3{
     display: flex;
     justify-content: space-between;
     font-weight: 500;
-    /* width: 100%; */
+    height: 40px;
+    overflow: hidden;
     box-sizing: content-box;
+}
+.post_datetime{
+    width: 50%;
 }
 .post_author{
     display: flex;
-    /* margin-right: 10px; */
+    width: 50%;
 }
 .author_name{
     margin-right: 5px;

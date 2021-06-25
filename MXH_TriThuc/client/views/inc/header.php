@@ -26,12 +26,13 @@
   <div id="site">
     <div class="container">
       <div id="header">
-        <div id="logo"><a href="<?php echo HEADERLINK.'/admin'; ?>">TEAM UDPT#01</a></div>
+        <div id="logo"><a href="<?php echo HEADERLINK.'/'; ?>">TEAM UDPT#01</a></div>
         <div id="sign_in_up">
           <div class="header_menu">
-            <button class="btn">Trang chủ</button>
-            <button class="btn">Bài viết</button>
-            <button class="btn">BXH</button>
+            <a href=""><button class="btn">Trang chủ</button></a>
+            <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
+            <a href=""><button class="btn">BXH</button></a>
+            
           </div>
           <?php 
             if(isset($_SESSION['username'])){
@@ -49,6 +50,9 @@
                     </li>
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/changePassword'; ?>">Đổi mật khẩu</a>
+                    </li>
+                    <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/post/addPost'; ?>">Thêm bài viết</a>
                     </li>
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/logout'; ?>">Đăng xuất</a>

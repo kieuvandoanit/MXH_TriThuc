@@ -1,8 +1,10 @@
 <?php
 class User extends Controller{
     protected $userModel;
+    protected $postModel;
     public function __construct(){
         $this->userModel = $this->ModelClient("UserModel");
+        $this->postModel = $this->ModelClient("PostModel");
     }
     // [GET] /user
     public function SayHi(){
@@ -96,6 +98,7 @@ class User extends Controller{
 
     public function profile(){
         $data['user'] = $this-> userModel-> getUserProfile($_SESSION['userID']);
+        $data['postList'] = $this->postModel->getPostByUser($_SESSION['userID']);
 
         $this->ViewClient('inc/header');
         $this->ViewClient('pages/profile_page',$data);
