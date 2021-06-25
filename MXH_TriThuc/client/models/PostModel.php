@@ -67,6 +67,16 @@ class PostModel extends DB{
         }
         return $result;
     }
+
+    public function getSlider(){
+        $sql = "SELECT `thumb` FROM `post` ORDER BY `viewed` ASC LIMIT 5";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
 
 ?>
