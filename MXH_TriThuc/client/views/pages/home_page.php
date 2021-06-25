@@ -111,9 +111,9 @@
                     </div>
                   </div>
                   <div class="post_react">
-                    <div class="post_like">
+                    <div class="post_like" id="<?php echo $data['post_view'][$i]['Post_id']; ?>">
                       <i class="fas fa-thumbs-up"></i>
-                      <p class="post_like_num"><?php echo $data['post_view'][$i]['LikesAmount']; ?></p>
+                      <p class="post_like_num postLikeNum_<?php echo $data['post_view'][$i]['Post_id']; ?>"><?php echo $data['post_view'][$i]['LikesAmount']; ?></p>
                     </div>
                     <div class="post_comment">
                       <i class="fas fa-comment"></i>
@@ -149,7 +149,7 @@
                       <img src="<?php echo $data['post_new'][$i]['thumb']; ?>" alt="">
                     </div>
                     <div class="post_title">
-                      <a href="<?php echo HEADERLINK.'/post/postDetail/'.$data['post_new'][$i]['Post_id']; ?>" class="post_link"><?php echo $data['post_view'][$i]['Title']; ?></a>
+                      <a href="<?php echo HEADERLINK.'/post/postDetail/'.$data['post_new'][$i]['Post_id']; ?>" class="post_link"><?php echo $data['post_new'][$i]['Title']; ?></a>
                     </div>
                     <div class="post_describe">
                       <div class="post_datetime">
@@ -173,9 +173,9 @@
                       </div>
                     </div>
                     <div class="post_react">
-                      <div class="post_like">
+                      <div class="post_like" id="<?php echo $data['post_new'][$i]['Post_id']; ?>">
                         <i class="fas fa-thumbs-up"></i>
-                        <p class="post_like_num"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
+                        <p class="post_like_num postLikeNum_<?php echo $data['post_new'][$i]['Post_id']; ?>"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
                       </div>
                       <div class="post_comment">
                         <i class="fas fa-comment"></i>

@@ -95,6 +95,18 @@ class Post extends Controller{
         $this->viewClient('pages/post_detail', $data);
         $this->viewClient('inc/footer');
     }
+
+    public function handleLike(){
+        // $this->redirect('/');
+        $id = $_POST['id'];
+        $post= $this->postModel->getPostByID($id);
+        $like= $post[0]['LikesAmount'] + 1;
+        if($this->postModel->like($id, $like)){
+            echo $like;
+        }else{
+            echo 0;
+        }
+    }
 }
 
 ?>

@@ -30,9 +30,9 @@
           <i class="far fa-star"></i> (100)
         </div>
         <div class="post_react">
-          <div class="post_like">
+          <div class="post_like" id="<?php echo $data['post'][0]['Post_id']; ?>">
             <i class="fas fa-thumbs-up"></i>
-            <p class="post_like_num"><?php echo $data['post'][0]['LikesAmount']; ?></p>
+            <p class="post_like_num postLikeNum_<?php echo $data['post'][0]['Post_id']; ?>"><?php echo $data['post'][0]['LikesAmount']; ?></p>
           </div>
           <div class="post_comment">
             <i class="fas fa-comment"></i>
@@ -93,6 +93,19 @@
       </li>
     </ul>
     <!-- Thông tin đánh giá  -->
+    <form action="">
+      <div class="form-group col-md-3">
+        <select name=""class="form-control">
+          <option value="">==Đánh giá==</option>
+          <option value="">1 sao</option>
+          <option value="">2 sao</option>
+          <option value="">3 sao</option>
+          <option value="">4 sao</option>
+          <option value="">5 sao</option>
+        </select>
+      </div>
+      <div class="col-md-9"></div>
+    </form>
     <h3>Đánh giá</h3>
     <div class="row rating">
       <div class="rating_score">

@@ -137,6 +137,9 @@ div#category.col-md-3{
     justify-content: space-between;
     margin: 15px 5px;
 }
+.post_like{
+    cursor: pointer;
+}
 .post_like, .post_comment{
     display: flex;
     width: 45%;

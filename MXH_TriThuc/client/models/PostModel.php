@@ -77,6 +77,15 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+    public function like($id, $value){
+        $sql = "UPDATE `post` SET `LikesAmount`=$value WHERE `Post_id` = $id";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
 }
 
 ?>
