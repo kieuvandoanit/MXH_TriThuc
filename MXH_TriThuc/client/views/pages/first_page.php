@@ -34,6 +34,6 @@
       </a>
     </div>
   <div id="take_part_in">
-    <a href="#"><button class="btn take_part_in">Tham gia ngay</button></a>
+    <a href="<?php echo HEADERLINK.'/' ?>"><button class="btn take_part_in">Tham gia ngay</button></a>
   </div>
 </div>

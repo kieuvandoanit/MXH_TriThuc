@@ -21,7 +21,7 @@ class PostModel extends DB{
     }
 
     public function getPostByID($id){
-        $sql ="SELECT * FROM `post` WHERE `Post_id` = $id";
+        $sql ="SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -31,7 +31,17 @@ class PostModel extends DB{
     }
 
     public function getPostSortView($sort){
-        $sql = "SELECT * FROM `post` ORDER BY `viewed` $sort";
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id ORDER BY `viewed` $sort";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function getPostSortID($sort){
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id ORDER BY `Post_id` $sort";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){

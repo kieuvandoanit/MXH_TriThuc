@@ -8,6 +8,7 @@ class Post extends Controller{
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
         $data['post_view'] = $this->postModel->getPostSortView('ASC');
+        $data['post_new'] = $this->postModel->getPostSortID('DESC');
         $this->ViewClient('inc/header', $data);
         $this->ViewClient('pages/post_page', $data);
         $this->ViewClient('inc/footer');
@@ -85,6 +86,14 @@ class Post extends Controller{
         }else{
             $this->redirect('/user/profile');
         }
+    }
+
+    public function postDetail($id){
+        $data['page_title'] = "Chi tiết bài viết";
+        $data['post'] = $this->postModel->getPostByID($id);
+        $this->viewClient('inc/header', $data);
+        $this->viewClient('pages/post_detail', $data);
+        $this->viewClient('inc/footer');
     }
 }
 
