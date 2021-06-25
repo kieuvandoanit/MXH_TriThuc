@@ -36,22 +36,19 @@
         <div class="sidenav">
             <ul class="sidenav">
                 <li>
-                    <a href="#"><i class="fas fa-chart-bar"></i> Tổng quan</a>
+                    <a href="<?php echo HEADERLINK.'/admin'; ?>"><i class="fas fa-chart-bar"></i> Tổng quan</a>
                 </li>
                 <li>
                     <a href="<?php echo HEADERLINK.'/admin/user/userPage'; ?>"><i class="fas fa-user"></i> Người dùng</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-store"></i> Danh mục</a>
+                    <a href="<?php echo HEADERLINK.'/admin/category/categoryPage';?>"><i class="fas fa-store"></i> Danh mục</a>
                 </li>
                 <li>
                     <a href="#"><i class="far fa-calendar-check"></i> Bài đăng</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-question-circle"></i> Bình luận</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-tags"></i> Nhãn</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-cog"></i> Cài đặt</a>
