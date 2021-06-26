@@ -9,6 +9,8 @@ class Post extends Controller{
         $data['page_title'] = 'Bài viết';
         $data['post_view'] = $this->postModel->getPostSortView('ASC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
+        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+
         $this->ViewClient('inc/header', $data);
         $this->ViewClient('pages/post_page', $data);
         $this->ViewClient('inc/footer');
@@ -135,8 +137,24 @@ class Post extends Controller{
         }else{
             echo $post[0]['LikesAmount'];
         }
-        
-        
+    }
+
+    public function handleDisLike(){
+        $id = $_POST['id'];
+        $post= $this->postModel->getPostByID($id);
+        $history = $this->postModel->getLikeHistory($id, $_SESSION['userID']);
+        if(!empty($history)){
+            $like= $post[0]['LikesAmount'] - 1;
+            if($this->postModel->disLike($id, $like)){
+                if($this->postModel->disLikeHistory($id, $_SESSION['userID'])){
+                    echo $like;
+                }
+            }else{
+                echo 0;
+            }
+        }else{
+            echo $post[0]['LikesAmount'];
+        }
     }
 
     public function rating($id){
