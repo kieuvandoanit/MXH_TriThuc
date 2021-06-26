@@ -17,6 +17,7 @@ class Home extends Controller{
         $data['page_title'] = 'Trang chủ';
         $data['post_view'] = $this->postModel->getPostSortView('DESC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
+        
         $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
 
         $this->ViewClient('inc/header', $data);

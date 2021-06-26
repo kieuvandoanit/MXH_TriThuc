@@ -87,6 +87,24 @@ class PostModel extends DB{
         return $result;
     }
 
+    public function disLike($id, $like){
+        $sql = "UPDATE `post` SET `LikesAmount`=$like WHERE `Post_id` = $id";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function disLikeHistory($postID, $userID){
+        $sql = "DELETE FROM `liked_post` WHERE `User_id`=$userID AND `Post_id`=$postID";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
     public function rating($id,$avgrating, $rateAmount){
         $sql = "UPDATE `post` SET `AvgRating`=$avgrating, `rateAmount`=$rateAmount WHERE `Post_id` = $id";
         $result = false;

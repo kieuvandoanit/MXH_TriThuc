@@ -111,8 +111,24 @@
                     </div>
                   </div>
                   <div class="post_react">
-                    <div class="post_like" id="<?php echo $data['post_view'][$i]['Post_id']; ?>">
-                      <i class="fas fa-thumbs-up"></i>
+                    <div class="post_like <?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post_view'][$i]['Post_id']){
+                                echo "post_liked";
+                              }
+                            }
+                          }
+                        ?>" id="<?php echo $data['post_view'][$i]['Post_id']; ?>">
+                      <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_view'][$i]['Post_id']; ?>" style="<?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post_view'][$i]['Post_id']){
+                                echo "color:black";
+                              }
+                            }
+                          }
+                        ?>"></i>
                       <p class="post_like_num postLikeNum_<?php echo $data['post_view'][$i]['Post_id']; ?>"><?php echo $data['post_view'][$i]['LikesAmount']; ?></p>
                     </div>
                     <div class="post_comment">
@@ -173,8 +189,25 @@
                       </div>
                     </div>
                     <div class="post_react">
-                      <div class="post_like" id="<?php echo $data['post_new'][$i]['Post_id']; ?>">
-                        <i class="fas fa-thumbs-up" ></i>
+                      <div class="post_like <?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post_new'][$i]['Post_id']){
+                                echo "post_liked";
+                              }
+                            }
+                          }
+                        ?>" id="<?php echo $data['post_new'][$i]['Post_id']; ?>">
+                        <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_new'][$i]['Post_id']; ?>" style="<?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post_new'][$i]['Post_id']){
+                                echo "color:black";
+                              }
+                            }
+                          }
+                        
+                        ?>"></i>
                         <p class="post_like_num postLikeNum_<?php echo $data['post_new'][$i]['Post_id']; ?>"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
                       </div>
                       <div class="post_comment">
