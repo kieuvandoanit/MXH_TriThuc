@@ -14,11 +14,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="client/public/font-awesome/css/all.css">
 
-  <!-- <script src="../../public/js/jquery-2.2.4.min.js" type="text/javascript"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- <script src="../../public/js/bootstrap/bootstrap.min.js"></script> -->
-  <!-- <script src="../../public/js/carousel/owl.carousel.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="client/public/js/main.js"></script>
 
 </head>
 
@@ -46,6 +44,9 @@
                   <ul class="dropdown-menu">
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>
+                    </li>
+                    <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/history'; ?>">Lịch sử hoạt động</a>
                     </li>
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/changePassword'; ?>">Đổi mật khẩu</a>

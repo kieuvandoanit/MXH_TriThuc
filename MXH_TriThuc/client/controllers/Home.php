@@ -15,8 +15,10 @@ class Home extends Controller{
     public function trangchu(){
         $data['slider'] = $this->postModel->getSlider();
         $data['page_title'] = 'Trang chủ';
-        $data['post_view'] = $this->postModel->getPostSortView('ASC');
+        $data['post_view'] = $this->postModel->getPostSortView('DESC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
+        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+
         $this->ViewClient('inc/header', $data);
         $this->ViewClient('pages/home_page', $data);
         $this->ViewClient('inc/footer');

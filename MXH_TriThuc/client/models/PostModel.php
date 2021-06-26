@@ -77,6 +77,85 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+    public function like($id, $value){
+        $sql = "UPDATE `post` SET `LikesAmount`=$value WHERE `Post_id` = $id";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function rating($id,$avgrating, $rateAmount){
+        $sql = "UPDATE `post` SET `AvgRating`=$avgrating, `rateAmount`=$rateAmount WHERE `Post_id` = $id";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function ratingHistory($post, $user, $value){
+        $sql = "INSERT INTO `voting` VALUES(null, $post, $user, '$value', NOW())";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function getRatingHistory($postID, $value){
+        $sql = "SELECT COUNT(*) as `count` FROM `voting` WHERE `PostID` = $postID AND `Rate` = '$value'";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function getRatingHistoryByPostIDUserID($postID, $userID){
+        $sql = "SELECT * FROM `voting` WHERE `PostID` = $postID AND `Member_id` = $userID";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function likeHistory($postID, $userID){
+        $sql = "INSERT INTO `liked_post` VALUES(null, $userID, $postID, NOW())";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+
+    }
+
+    public function getLikeHistory($postID, $userID){
+        $sql = "SELECT * FROM `liked_post` WHERE `Post_id` = $postID AND `User_id` = $userID";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function getLiked($userID){
+        $sql = "SELECT * FROM `liked_post` WHERE `User_id` = $userID";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    
 }
 
 ?>

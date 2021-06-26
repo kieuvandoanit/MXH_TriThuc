@@ -1,201 +1,85 @@
 $(document).ready(function () {
-//  SLIDER
-    var slider = $('#slider-wp .section-detail');
-    var url="http://localhost:8080/Backend/project/ismart.com/";
-    slider.owlCarousel({
-        autoPlay: 4500,
-        navigation: false,
-        navigationText: false,
-        paginationNumbers: false,
-        pagination: true,
-        items: 1, //10 items above 1000px browser width
-        itemsDesktop: [1000, 1], //5 items between 1000px and 901px
-        itemsDesktopSmall: [900, 1], // betweem 900px and 601px
-        itemsTablet: [600, 1], //2 items between 600 and 0
-        itemsMobile: true // itemsMobile disabled - inherit from itemsTablet option
-    });
-
-//  ZOOM PRODUCT DETAIL
-    $("#zoom").elevateZoom({gallery: 'list-thumb', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'});
-
-//  LIST THUMB
-    var list_thumb = $('#list-thumb');
-    list_thumb.owlCarousel({
-        navigation: true,
-        navigationText: false,
-        paginationNumbers: false,
-        pagination: false,
-        stopOnHover: true,
-        items: 5, //10 items above 1000px browser width
-        itemsDesktop: [1000, 5], //5 items between 1000px and 901px
-        itemsDesktopSmall: [900, 5], // betweem 900px and 601px
-        itemsTablet: [768, 5], //2 items between 600 and 0
-        itemsMobile: true // itemsMobile disabled - inherit from itemsTablet option
-    });
-
-//  FEATURE PRODUCT
-    var feature_product = $('#feature-product-wp .list-item');
-    feature_product.owlCarousel({
-        autoPlay: true,
-        navigation: true,
-        navigationText: false,
-        paginationNumbers: false,
-        pagination: false,
-        stopOnHover: true,
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1000, 4], //5 items between 1000px and 901px
-        itemsDesktopSmall: [800, 3], // betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0
-        itemsMobile: [375, 1] // itemsMobile disabled - inherit from itemsTablet option
-    });
-
-//  SAME CATEGORY
-    var same_category = $('#same-category-wp .list-item');
-    same_category.owlCarousel({
-        autoPlay: true,
-        navigation: true,
-        navigationText: false,
-        paginationNumbers: false,
-        pagination: false,
-        stopOnHover: true,
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1000, 4], //5 items between 1000px and 901px
-        itemsDesktopSmall: [800, 3], // betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0
-        itemsMobile: [375, 1] // itemsMobile disabled - inherit from itemsTablet option
-    });
-
-//  SCROLL TOP
-    $(window).scroll(function () {
-        if ($(this).scrollTop() != 0) {
-            $('#btn-top').stop().fadeIn(150);
-        } else {
-            $('#btn-top').stop().fadeOut(150);
-        }
-    });
-    $('#btn-top').click(function () {
-        $('body,html').stop().animate({scrollTop: 0}, 800);
-    });
-
-// CHOOSE NUMBER ORDER
-    var value = parseInt($('#num-order').attr('value'));
-    $('#plus').click(function () {
-        value++;
-        $('#num-order').attr('value', value);
-        update_href(value);
-    });
-    $('#minus').click(function () {
-        if (value > 1) {
-            value--;
-            $('#num-order').attr('value', value);
-        }
-        update_href(value);
-    });
-
-//  MAIN MENU
-    $('#category-product-wp .list-item > li').find('.sub-menu').after('<i class="fa fa-angle-right arrow" aria-hidden="true"></i>');
-
-//  TAB
-    tab();
-
-    //  EVEN MENU RESPON
-    $('html').on('click', function (event) {
-        var target = $(event.target);
-        var site = $('#site');
-
-        if (target.is('#btn-respon i')) {
-            if (!site.hasClass('show-respon-menu')) {
-                site.addClass('show-respon-menu');
-            } else {
-                site.removeClass('show-respon-menu');
-            }
-        } else {
-            $('#container').click(function () {
-                if (site.hasClass('show-respon-menu')) {
-                    site.removeClass('show-respon-menu');
-                    return false;
-                }
-            });
-        }
-    });
-
-//  MENU RESPON
-    $('#main-menu-respon li .sub-menu').after('<span class="fa fa-angle-right arrow"></span>');
-    $('#main-menu-respon li .arrow').click(function () {
-        if ($(this).parent('li').hasClass('open')) {
-            $(this).parent('li').removeClass('open');
-        } else {
-
-//            $('.sub-menu').slideUp();
-//            $('#main-menu-respon li').removeClass('open');
-            $(this).parent('li').addClass('open');
-//            $(this).parent('li').find('.sub-menu').slideDown();
-        }
-    });
-    // Event delete cart
-    $('#delete_cart').click(function(){
-        var id = $("#id_cart").val();
+    //Xử lý like
+    $(".post_like").click(function(event){
+        var id = $(event.target).attr('id');
         $.ajax({
-            url: './Cart/Delete',
+            url: "http://localhost:8080/MXH_TriThuc/post/handleLike",
+            method: "POST",
             dataType: 'text',
-            method: 'POST',
-            data: {id: id},
+            data:{id:id},
             success: function(data){
-                if(data == 1){
-                    alert("Xóa sản phẩm thành công!");
-                    window.location = url + "Cart/ShowCart";
+                if(isFinite(data)){
+                    let html = "<p class='post_like_num postLikeNum_"+id+"'>"+data+"</p>";
+                    let temp = ".postLikeNum_"+id;
+                    $(temp).html(html);
                 }else{
-                    alert("Xóa sản phẩm thất bại!");
+                    window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                 }
             }
+
+        })
+    });
+
+    //Xử lý rating
+    var formRatingPost = $("#form_rating_post");
+    formRatingPost.submit(function(e){
+        e.preventDefault();
+
+        $.ajax({
+            type: formRatingPost.attr('method'),
+            url: formRatingPost.attr('action'), 
+            data: formRatingPost.serialize(),
+            success: function(result){
+                var res = result.split("/")
+                let agvrate = parseFloat(res[0]);
+                res[0] = agvrate.toFixed(1);
+                console.log(res);
+                let post_rating_score_start = "";
+            
+                if(res[0] < 0.5){
+                    post_rating_score_start = "<i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
+                }else if(res[0] >= 0.5 && res[0] < 1.5){
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
+                }else if(res[0] >= 1.5 && res[0] < 2.5){
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
+                }else if(res[0] >= 2.5 && res[0] < 3.5){
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
+                }else if(res[0] >= 3.5 && res[0] < 4.5){
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i>";
+                }else{
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>";
+                }
+                let pHtmlText = "<p class='rating_score_info' id='post_rating_score_number'>"+res[0]+"</p>"
+                let post_count_rating = "<div class='number_ranked text-center' id='post_count_rating'>("+res[1]+" đánh giá)</div>";
+                
+                
+                let sao5= parseInt(res[6]);
+                let sao4= parseInt(res[5]);
+                let sao3= parseInt(res[4]);
+                let sao2= parseInt(res[3]);
+                let sao1= parseInt(res[2]);
+
+                let tongsao = sao1+sao2+sao3+sao4+sao5;
+
+                let tylesao5 = (sao5/tongsao)*100;
+                let tylesao4 = (sao4/tongsao)*100;
+                let tylesao3 = (sao3/tongsao)*100;
+                let tylesao2 = (sao2/tongsao)*100;
+                let tylesao1 = (sao1/tongsao)*100;
+                
+                
+                $("#1star").css("width",tylesao1+"%");
+                $("#2star").css("width",tylesao2+"%");
+                $("#3star").css("width",tylesao3+"%");
+                $("#4star").css("width",tylesao4+"%");
+                $("#5star").css("width",tylesao5+"%");
+                $("#post_count_rating").html(post_count_rating);
+                $("#post_rating_score_number").html(pHtmlText);
+                $("#post_rating_score_start").html(post_rating_score_start);
+            }
+
         });
     });
-    // //Event sort
-    // $('#sort').click(function(){
-        
-    //     var sort = $('#sort').val();
-    //     $.ajax({
-    //         url: './Product/SortAZ',
-    //         dataType: 'text',
-    //         method: 'POST',
-    //         data: {sort:sort},
-            
-    //     })
-    // });
-    $('.sort_price').click(function(){
-        
-        var price = $('input[name=r-price]:checked').val();
-        var type = $('input[name=r-type]:checked').val();
-        if(type != null){
-            window.location = url + "Product/Fillter/"+price+"/"+type;
-        }else{
-            window.location = url + "Product/Fillter/"+price+"/0";
-        }
-        
-    });
-    $('.sort-type').click(function(){
-
-        var price = $('input[name=r-price]:checked').val();
-        var type = $('input[name=r-type]:checked').val();
-        if(price != null){
-            window.location = url + "Product/Fillter/"+price+"/"+type;
-        }else{
-            window.location = url + "Product/Fillter/0/"+type;
-        }
-    });
+    
 });
-
-function tab() {
-    var tab_menu = $('#tab-menu li');
-    tab_menu.stop().click(function () {
-        $('#tab-menu li').removeClass('show');
-        $(this).addClass('show');
-        var id = $(this).find('a').attr('href');
-        $('.tabItem').hide();
-        $(id).show();
-        return false;
-    });
-    $('#tab-menu li:first-child').addClass('show');
-    $('.tabItem:first-child').show();
-}
 

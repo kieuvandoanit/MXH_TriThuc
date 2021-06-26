@@ -197,6 +197,16 @@ class User extends Controller{
             }
         } 
     }
+
+    public function history(){
+        $data['title_page'] = 'Lịch sử';
+        $data['rate'] = $this->userModel->getRateHistory($_SESSION['userID']);
+        $data['like'] = $this->userModel->getLikeHistory($_SESSION['userID']);
+
+        $this->viewClient('inc/header',$data);
+        $this->viewClient('pages/history_page', $data);
+        $this->viewClient('inc/footer');
+    }
 }
 
 ?>

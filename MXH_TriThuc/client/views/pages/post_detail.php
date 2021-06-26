@@ -23,16 +23,26 @@
         </div>
         <div class="post_username"><i class="fas fa-user" style="margin-right: 5px;"></i><?php echo $data['post'][0]['Name']; ?></div>
         <div class="post_rank">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i> (100)
+        <?php  
+          $count = 1;
+          for($i = 0; $i <5; $i++){
+            if($count < $data['post'][0]['AvgRating'] + 0.5){
+              ?>
+              <i class="fas fa-star"></i>
+              <?php
+              $count= $count + 1;
+            }else{
+              ?>
+              <i class="far fa-star"></i> 
+              <?php  
+            }
+          }
+          ?>
         </div>
         <div class="post_react">
-          <div class="post_like">
+          <div class="post_like" id="<?php echo $data['post'][0]['Post_id']; ?>">
             <i class="fas fa-thumbs-up"></i>
-            <p class="post_like_num"><?php echo $data['post'][0]['LikesAmount']; ?></p>
+            <p class="post_like_num postLikeNum_<?php echo $data['post'][0]['Post_id']; ?>"><?php echo $data['post'][0]['LikesAmount']; ?></p>
           </div>
           <div class="post_comment">
             <i class="fas fa-comment"></i>
@@ -93,27 +103,51 @@
       </li>
     </ul>
     <!-- Thông tin đánh giá  -->
+    <form action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
+      <div class="form-group col-md-3">
+        <select name="rating" class="form-control">
+          <option value="0">==Đánh giá==</option>
+          <option value="1">1 sao</option>
+          <option value="2">2 sao</option>
+          <option value="3">3 sao</option>
+          <option value="4">4 sao</option>
+          <option value="5">5 sao</option>
+        </select>
+      </div>
+      <div class="col-md-2"><input class="btn btn-primary" type="submit" name="btn_rating_post" id="btn_rating_post" value="Đánh giá"/></div>
+      <div class="col-md-7"></div>
+    </form><br><br><br>
     <h3>Đánh giá</h3>
     <div class="row rating">
       <div class="rating_score">
-        <p class="rating_score_info">5</p>
-        <div class="post_rank text-center">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i> 
+        <p class="rating_score_info" id="post_rating_score_number"><?php echo $data['post'][0]['AvgRating']; ?></p>
+        <div class="post_rank text-center" id="post_rating_score_start">
+          <?php  
+          $count = 1;
+          for($i = 0; $i <5; $i++){
+            if($count < $data['post'][0]['AvgRating'] + 0.5){
+              ?>
+              <i class="fas fa-star"></i>
+              <?php
+              $count= $count + 1;
+            }else{
+              ?>
+              <i class="far fa-star"></i> 
+              <?php  
+            }
+          }
+          ?>
         </div>
-        <div class="number_ranked text-center">
-          (100 đánh giá)
+        <div class="number_ranked text-center" id="post_count_rating">
+          (<?php echo $data['post'][0]['rateAmount']; ?> đánh giá)
         </div>
       </div>
       <div class="rating_score_detail">
         <div class="name_star">
           <p>5 <i class="fas fa-star"></i></p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-              style="width:70%">
+            <div class="progress-bar" id="5star" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+              style="width:<?php echo $data['sao5']; ?>%">
               <!-- <span class="sr-only">70% Complete</span> -->
             </div>
           </div>
@@ -121,8 +155,8 @@
         <div class="name_star">
           <p>4 <i class="fas fa-star"></i></p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-              style="width:70%">
+            <div class="progress-bar" id="4star" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+              style="width:<?php echo $data['sao4']; ?>%">
               <!-- <span class="sr-only">70% Complete</span> -->
             </div>
           </div>
@@ -130,8 +164,8 @@
         <div class="name_star">
           <p>3 <i class="fas fa-star"></i></p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-              style="width:70%">
+            <div class="progress-bar" id="3star" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+              style="width:<?php echo $data['sao3']; ?>%">
               <!-- <span class="sr-only">70% Complete</span> -->
             </div>
           </div>
@@ -139,8 +173,8 @@
         <div class="name_star">
           <p>2 <i class="fas fa-star"></i></p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-              style="width:70%">
+            <div class="progress-bar" id="2star" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+              style="width:<?php echo $data['sao2']; ?>%">
               <!-- <span class="sr-only">70% Complete</span> -->
             </div>
           </div>
@@ -148,8 +182,8 @@
         <div class="name_star">
           <p>1 <i class="fas fa-star"></i></p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-              style="width:70%">
+            <div class="progress-bar" id="1star" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+              style="width:<?php echo $data['sao1']; ?>%">
               <!-- <span class="sr-only">70% Complete</span> -->
             </div>
           </div>
