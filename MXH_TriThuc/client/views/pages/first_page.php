@@ -6,21 +6,23 @@
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
       </ol>
     
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
-        <div class="item active">
-          <img src="client/public/assets/slider.PNG" alt="">
-        </div>
-    
-        <div class="item">
-          <img src="client/public/assets/slider.PNG" alt="">
-        </div>
-    
-        <div class="item">
-          <img src="client/public/assets/slider.PNG" alt="">
-        </div>
+      <?php
+          $key = 0;
+          foreach($data['slider'] as $slide){
+            ?>
+              <div class="item <?php if($key == 0){echo 'active';} ?>" style="height: 370px; width: 560px; overflow: hidden;">
+                <img src="<?php echo $slide['thumb']; ?>" alt="" style="hight: 100%; width: auto;">
+              </div>
+            <?php 
+            $key++; 
+          }
+          ?>
       </div>
     
       <!-- Left and right controls -->
@@ -34,6 +36,6 @@
       </a>
     </div>
   <div id="take_part_in">
-    <a href="#"><button class="btn take_part_in">Tham gia ngay</button></a>
+    <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>"><button class="btn take_part_in">Tham gia ngay</button></a>
   </div>
 </div>

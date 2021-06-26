@@ -74,6 +74,7 @@ div#category.col-md-3{
     height: 190px;
     border-radius: 10px;
     margin-bottom: 5px;
+    overflow: hidden;
 }
 .post_thumb>img{
     width: 100%;
@@ -81,7 +82,7 @@ div#category.col-md-3{
     overflow: hidden;
 }
 .post div.post_title{
-    height: 50px;
+    height: 55px;
     display: block;
 }
 .post_title .post_link{
@@ -98,12 +99,16 @@ div#category.col-md-3{
     display: flex;
     justify-content: space-between;
     font-weight: 500;
-    /* width: 100%; */
+    height: 40px;
+    overflow: hidden;
     box-sizing: content-box;
+}
+.post_datetime{
+    width: 50%;
 }
 .post_author{
     display: flex;
-    /* margin-right: 10px; */
+    width: 50%;
 }
 .author_name{
     margin-right: 5px;
@@ -132,6 +137,9 @@ div#category.col-md-3{
     display: flex;
     justify-content: space-between;
     margin: 15px 5px;
+}
+.post_like{
+    cursor: pointer;
 }
 .post_like, .post_comment{
     display: flex;

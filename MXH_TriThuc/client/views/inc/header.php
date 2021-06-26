@@ -14,11 +14,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="client/public/font-awesome/css/all.css">
 
-  <!-- <script src="../../public/js/jquery-2.2.4.min.js" type="text/javascript"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- <script src="../../public/js/bootstrap/bootstrap.min.js"></script> -->
-  <!-- <script src="../../public/js/carousel/owl.carousel.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="client/public/js/main.js"></script>
 
 </head>
 
@@ -26,12 +24,12 @@
   <div id="site">
     <div class="container">
       <div id="header">
-        <div id="logo"><a href="<?php echo HEADERLINK.'/admin'; ?>">TEAM UDPT#01</a></div>
+        <div id="logo"><a href="<?php echo HEADERLINK.'/'; ?>">TEAM UDPT#01</a></div>
         <div id="sign_in_up">
           <div class="header_menu">
-            <button class="btn">Trang chủ</button>
-            <button class="btn">Bài viết</button>
-            <button class="btn">BXH</button>
+            <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>"><button class="btn">Trang chủ</button></a>
+            <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
+            <a href=""><button class="btn">BXH</button></a>
           </div>
           <?php 
             if(isset($_SESSION['username'])){
@@ -48,7 +46,13 @@
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>
                     </li>
                     <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/history'; ?>">Lịch sử hoạt động</a>
+                    </li>
+                    <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/changePassword'; ?>">Đổi mật khẩu</a>
+                    </li>
+                    <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/post/addPost'; ?>">Thêm bài viết</a>
                     </li>
                     <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/logout'; ?>">Đăng xuất</a>
