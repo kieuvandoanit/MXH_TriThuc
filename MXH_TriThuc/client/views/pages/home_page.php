@@ -174,7 +174,7 @@
                     </div>
                     <div class="post_react">
                       <div class="post_like" id="<?php echo $data['post_new'][$i]['Post_id']; ?>">
-                        <i class="fas fa-thumbs-up"></i>
+                        <i class="fas fa-thumbs-up" ></i>
                         <p class="post_like_num postLikeNum_<?php echo $data['post_new'][$i]['Post_id']; ?>"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
                       </div>
                       <div class="post_comment">
@@ -187,7 +187,6 @@
           <?php  
       }
       ?>
-      
       <div class="clearfix"></div>
     </div>
   </div>

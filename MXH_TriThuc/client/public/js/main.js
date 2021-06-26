@@ -35,18 +35,19 @@ $(document).ready(function () {
                 res[0] = agvrate.toFixed(1);
                 console.log(res);
                 let post_rating_score_start = "";
+            
                 if(res[0] < 0.5){
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i></div>"
+                    post_rating_score_start = "<i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
                 }else if(res[0] >= 0.5 && res[0] < 1.5){
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i></div>"
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
                 }else if(res[0] >= 1.5 && res[0] < 2.5){
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i></div>"
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
                 }else if(res[0] >= 2.5 && res[0] < 3.5){
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i></div>"
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>";
                 }else if(res[0] >= 3.5 && res[0] < 4.5){
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i></div>"
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='far fa-star'></i>";
                 }else{
-                    post_rating_score_start = "<div class='post_rank text-center' id='post_rating_score_start'><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i></div>"
+                    post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>";
                 }
                 let pHtmlText = "<p class='rating_score_info' id='post_rating_score_number'>"+res[0]+"</p>"
                 let post_count_rating = "<div class='number_ranked text-center' id='post_count_rating'>("+res[1]+" đánh giá)</div>";

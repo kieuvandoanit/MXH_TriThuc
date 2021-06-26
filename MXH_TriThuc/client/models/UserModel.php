@@ -95,6 +95,28 @@ class UserModel extends DB{
          }
          return $result;
     }
+
+    public function getRateHistory($userID){
+        $sql = "SELECT * from `voting` WHERE `Member_id` = $userID ORDER BY `votingID` DESC LIMIT 10"; 
+
+        $rows = mysqli_query($this->conn, $sql);
+        $arr=[];
+        while($row=mysqli_fetch_array($rows)){
+            $arr[]=$row;
+        }
+        return $arr;
+    }
+
+    public function getLikeHistory($userID){
+        $sql = "SELECT * from `liked_post` WHERE `User_id` = $userID ORDER BY `LP_id` DESC LIMIT 10"; 
+
+        $rows = mysqli_query($this->conn, $sql);
+        $arr=[];
+        while($row=mysqli_fetch_array($rows)){
+            $arr[]=$row;
+        }
+        return $arr;
+    }
 }
 
 ?>
