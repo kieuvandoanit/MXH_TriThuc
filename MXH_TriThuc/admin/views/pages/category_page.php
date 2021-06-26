@@ -4,9 +4,9 @@
   <div class="user-filter">
       <div >
           <select name="" id="" class="userFilterClass"  autofocus onChange="window.location.href=this.value">
-              <option value="" checked>Order by</option>
-              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/1'; ?>" ><a href="<?php ?>"></a>ASC</option>
-              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/2'; ?>" >DESC</option>
+              <option value="" checked>Sắp xếp</option>
+              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/1'; ?>" >Cũ nhât</option>
+              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/2'; ?>" >Mới nhất</option>
 
 
           </select>

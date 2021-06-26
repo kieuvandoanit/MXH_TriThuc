@@ -7,10 +7,7 @@ class Category extends Controller{
         $this->categoryModel = $this->ModelAdmin('CategoryModel');
     }
     public function SayHi(){
-        $data['page_title'] = 'Đăng nhập';
-        $this->ViewAdmin('inc/header',$data);
-        $this->ViewAdmin('pages/login');
-        $this->ViewAdmin('inc/footer');
+        $this->redirect('/admin/category/categoryPage');
     }
     //Chức năng tạo
     
@@ -35,14 +32,14 @@ class Category extends Controller{
             $Description=$_POST['Description'];
             $results= $this->categoryModel->setNewCategory($categoryName,$Description);
             $message=$results==1?1:'Tên danh mục đã tồn tại';
-            echo $message;
-
+            // echo $message;
+            header('Location: '.HEADERLINK.'/admin/category/categoryPage');
             $this->viewAdmin('inc/header');
             $this->viewAdmin('pages/addCategory_page',$message);
             $this->viewAdmin('inc/footer');
         }
         else{
-            header('Location: '.HEADERLINK.'/admin/category/categoryPage');
+            $this->redirect('/admin/category/categoryPage');
             $this->categoryPage();
         }
 
@@ -88,8 +85,7 @@ class Category extends Controller{
             $this->viewAdmin('inc/footer');
         }
         else{
-            header('Location: '.HEADERLINK.'/admin/category/categoryPage');
-            $this->categoryPage();
+            $this->redirect('/admin/category/categoryPage');
         }
     }
     //Chức năng xóa

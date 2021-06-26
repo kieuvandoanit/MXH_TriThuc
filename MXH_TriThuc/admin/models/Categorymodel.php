@@ -37,9 +37,7 @@ class CategoryModel extends DB{
     {
         # code...
         $sql='UPDATE `CATEGORY` SET   `CategoryName` = "'.$cateName.'", `Description` ="'.$description.'" WHERE `Category_id`='.$id;
-        // ECHO $sql.'<br>';
         $result=mysqli_query($this->conn,$sql);
-        // ECHO $result;
         return $result; 
     }
 }
