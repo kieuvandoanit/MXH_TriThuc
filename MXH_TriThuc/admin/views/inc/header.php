@@ -45,7 +45,7 @@
                     <a href="<?php echo HEADERLINK.'/admin/category/categoryPage';?>"><i class="fas fa-store"></i> Danh mục</a>
                 </li>
                 <li>
-                    <a href="#"><i class="far fa-calendar-check"></i> Bài đăng</a>
+                    <a href="<?php echo HEADERLINK.'/admin/post/postPage';?>"><i class="far fa-calendar-check"></i> Bài đăng</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-question-circle"></i> Bình luận</a>
