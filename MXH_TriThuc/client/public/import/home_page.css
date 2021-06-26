@@ -74,6 +74,7 @@ div#category.col-md-3{
     height: 190px;
     border-radius: 10px;
     margin-bottom: 5px;
+    overflow: hidden;
 }
 .post_thumb>img{
     width: 100%;

@@ -86,6 +86,34 @@ class PostModel extends DB{
         }
         return $result;
     }
+
+    public function rating($id,$avgrating, $rateAmount){
+        $sql = "UPDATE `post` SET `AvgRating`=$avgrating, `rateAmount`=$rateAmount WHERE `Post_id` = $id";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function ratingHistory($post, $user, $value){
+        $sql = "INSERT INTO `voting` VALUES(null, $post, $user, '$value')";
+        $result = false;
+        if(mysqli_query($this->conn, $sql)){
+            $result = true;
+        }
+        return $result;
+    }
+
+    public function getRatingHistory($postID, $value){
+        $sql = "SELECT COUNT(*) as `count` FROM `voting` WHERE `PostID` = $postID AND `Rate` = '$value'";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
 
 ?>

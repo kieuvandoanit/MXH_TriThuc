@@ -46,6 +46,9 @@
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/profile'; ?>">Profile</a>
                     </li>
                     <li class="nav-link dropdown">
+                      <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/history'; ?>">Lịch sử hoạt động</a>
+                    </li>
+                    <li class="nav-link dropdown">
                       <a class="dropdown-item" href="<?php echo HEADERLINK.'/user/changePassword'; ?>">Đổi mật khẩu</a>
                     </li>
                     <li class="nav-link dropdown">

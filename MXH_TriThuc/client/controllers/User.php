@@ -197,6 +197,10 @@ class User extends Controller{
             }
         } 
     }
+
+    public function history(){
+        
+    }
 }
 
 ?>
