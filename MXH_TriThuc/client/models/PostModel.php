@@ -1,8 +1,8 @@
 <?php  
 class PostModel extends DB{
-    public function addPost($title,$thumb, $hashtag, $content, $member_id, $category){
-        $sql ="INSERT INTO `post`(`Title`,`thumb`,`HashTag`,`Content`,`Status`,`CreatedDate`, `Member_id`, `Category_id`) VALUES ('$title','$thumb', '$hashtag','$content','Chờ duyệt',NOW(),$member_id,$category)";
-        // echo $sql;
+    public function addPost($title,$thumb, $hashtag, $content,$status, $member_id, $category){
+        $sql ="INSERT INTO `post`(`Title`,`thumb`,`HashTag`,`Content`,`Status`,`CreatedDate`, `Member_id`, `Category_id`) VALUES ('$title','$thumb', '$hashtag','$content','$status',NOW(),$member_id,$category)";
+        echo $sql;
         $result = false;
         if(mysqli_query($this->conn, $sql)){
             $result = true;

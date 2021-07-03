@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/',(req, res, next)=>{
-    
-});
+const Controller = require('../controller/Browsing.controller');
+
+
+router.post('/',Controller.duyetpostcomment);
+
+module.exports = router;
