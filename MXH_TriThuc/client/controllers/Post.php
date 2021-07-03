@@ -39,12 +39,46 @@ class Post extends Controller{
             //Xu li hashtag 
             require_once('MXH_TriThuc/plugin/helper.php');
             $hashtag = convert_vi_to_en($hashtag);
-            // echo $hashtag;
-            if($this->postModel->addPost($title, $thumb,$hashtag, $content, $member_id, $category)){
-                $this->redirect('/user/profile');
+            
+            global $browsingAuto;
+            // echo $browsingAuto;
+            if($browsingAuto == 1){
+                $data= array(
+                    'title' => $title,
+                    'description' => $content
+                );
+                $data = http_build_query($data);
+                // echo $data;
+                $result = CallAPI("POST", "localhost:3000/browsing", $data);
+                if($result == 'true'){
+                    $status = 'Duyệt tự động';
+                    if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                        
+                        $this->redirect('/user/profile');
+                    }else{
+                        $this->redirect('/post/addPost');
+                    }
+                }else{
+                    $status = 'Không được duyệt';
+                    if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                        
+                        $this->redirect('/user/profile');
+                    }else{
+                        $this->redirect('/post/addPost');
+                    }
+                }
             }else{
-                $this->redirect('/post/addPost');
+                $status = "Chờ duyệt";
+                if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                    $this->redirect('/user/profile');
+                }else{
+                    $this->redirect('/post/addPost');
+                }
+                
             }
+
+            
+            
         }
     }
 
