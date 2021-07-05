@@ -10,6 +10,16 @@ class PostModel extends DB{
         return $result;
     }
 
+    public function getPostAll(){
+        $sql ="SELECT * FROM `post`";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_assoc($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
     public function getPostByUser($userID){
         $sql ="SELECT * FROM `post` WHERE `member_id` = $userID";
         $arr = [];
