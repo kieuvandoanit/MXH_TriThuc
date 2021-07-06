@@ -16,18 +16,6 @@
       </ul>
     </div>
     <div id="seach_slider" class="col-md-9">
-      <div id="search">
-        <form>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Nhập nội dung tìm kiếm">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit">
-                <i class="glyphicon glyphicon-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
