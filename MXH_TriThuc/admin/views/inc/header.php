@@ -56,6 +56,12 @@
                 <li>
                     <a href="<?php echo HEADERLINK.'/admin/user/adminPage';  ?>"><i class="fas fa-user-cog"></i> Admins</a>
                 </li>
+                <li>
+                    <a href="<?php echo HEADERLINK.'/admin/Import';  ?>"><i class="fas fa-file-import"></i> Import</a>
+                </li>
+                <li>
+                    <a href="<?php echo HEADERLINK.'/admin/Export';  ?>"><i class="fas fa-file-download"></i> Export</a>
+                </li>
               </ul>
         </div>
         <div class="content" >
