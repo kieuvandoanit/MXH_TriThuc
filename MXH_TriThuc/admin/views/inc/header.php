@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="admin/public/admin_style.css">
     <title><?php echo (!empty($data['page_title']))?$data['page_title']:'Mạng xã hội trí thức Việt';?></title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="admin/public/js/main.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
     <!-- post management -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.1/css/fileinput.min.css">
@@ -55,6 +56,12 @@
                 </li>
                 <li>
                     <a href="<?php echo HEADERLINK.'/admin/user/adminPage';  ?>"><i class="fas fa-user-cog"></i> Admins</a>
+                </li>
+                <li>
+                    <a href="<?php echo HEADERLINK.'/admin/Import';  ?>"><i class="fas fa-file-import"></i> Import</a>
+                </li>
+                <li>
+                    <a href="<?php echo HEADERLINK.'/admin/Export';  ?>"><i class="fas fa-file-download"></i> Export</a>
                 </li>
               </ul>
         </div>

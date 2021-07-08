@@ -5,7 +5,7 @@ class PostModel extends Db{
         $sql='SELECT * FROM `Post`';
         $rows=mysqli_query($this->conn,$sql);
         $arr = [];
-        while($row = mysqli_fetch_array($rows)){
+        while($row = mysqli_fetch_assoc($rows)){
             $arr[] = $row;
         }
         return $arr;
