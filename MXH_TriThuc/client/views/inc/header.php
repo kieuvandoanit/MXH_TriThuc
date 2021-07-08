@@ -23,14 +23,28 @@
 <body>
   <div id="site">
     <div class="container">
-      <div id="header">
-        <div id="logo"><a href="<?php echo HEADERLINK.'/'; ?>">TEAM UDPT#01</a></div>
-        <div id="sign_in_up">
-          <div class="header_menu">
-            <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>"><button class="btn">Trang chủ</button></a>
-            <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
-            <a href=""><button class="btn">BXH</button></a>
+      <div id="header" >
+        <div style="display: flex; justify-content: space-between; min-width: 450px;">
+          <div id="logo"><a href="<?php echo HEADERLINK.'/'; ?>">TEAM UDPT#01</a></div>
+          <div class="header_menu" style="display: flex;align-items: center;">
+              <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>" style="min-width: 100px;"><button class="btn">Trang chủ</button></a>
+              <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
+              <a href=""><button class="btn">BXH</button></a>
           </div>
+        </div>
+        <div id="search" style="display: flex;align-items: flex-end;">
+            <form action="<?php echo HEADERLINK.'/search';?>" method="POST" >
+              <div class="input-group">
+                <input type="text" class="form-control" name='searchInput' placeholder="Nhập nội dung tìm kiếm" style="min-width: 350px;">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+        </div>
+        <div id="sign_in_up">
           <?php 
             if(isset($_SESSION['username'])){
               ?>

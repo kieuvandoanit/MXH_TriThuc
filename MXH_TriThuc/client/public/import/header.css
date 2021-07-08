@@ -10,11 +10,12 @@ body{
 }
 #header{
     height: 80px;
-    padding: 10px 0px;
+    /* padding: 10px 0px; */
     display: flex;
     justify-content: space-between;  
     border-bottom: 2px solid rgb(156, 143, 147);
     position: relative;
+    align-items: center;
 }
 #logo a{
     position:absolute;
@@ -28,7 +29,7 @@ body{
 }
 #sign_in_up{
     display: flex;
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 #sign_in, #sign_up{
     border: none;
@@ -53,9 +54,10 @@ body{
     background-color: #d7d8dd;
 }
 .header_menu{
-    position: absolute;
-    top: 24px;
-    right: 300px;
+    display: flex;
+    /* position: absolute; */
+    /* top: 24px; */
+    /* right: 300px; */
 }
 
 .header_menu button{
@@ -66,7 +68,7 @@ body{
     width: 90px;
     padding: 5px 0px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .author_login{

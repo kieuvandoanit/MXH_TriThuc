@@ -182,7 +182,37 @@ class PostModel extends DB{
         }
         return $arr;
     }
-
+    //full-text seach
+    public function getPostByContent($content)
+    {
+        $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
+        // echo '<div>'.$sql.'</div>';
+        // echo $sql.'\n';
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+    public function getPostByHashTag($hashTagList)
+    {
+        $countHashTag= count($hashTagList);
+        $sql='';
+        foreach($hashTagList as $key=>$item){
+            $sql=$sql.'SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (hashtag) AGAINST ("'.substr($item, 1).'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
+            if(++$key!=$countHashTag){
+                $sql=$sql.' INTERSECT ';
+            }
+        };
+        // echo '\n'.$sql.'\n';
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
     
 }
 
