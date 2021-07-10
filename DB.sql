@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2021 at 12:29 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jul 10, 2021 at 12:48 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -297,7 +297,18 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 --
 DROP TABLE IF EXISTS `chartcountpost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `chartcountpost`  AS   with recursive my_cte as (select '202007' AS `monthyear` union all select extract(year_month from cast(concat_ws('',`my_cte`.`monthyear`,'01') as date) + interval 1 month) AS `EXTRACT(YEAR_MONTH from DATE_ADD(CONVERT(CONCAT_WS("",monthyear,"01"), DATE), INTERVAL 1 MONTH))` from `my_cte` where cast(`my_cte`.`monthyear` as signed) < cast(extract(year_month from current_timestamp()) as signed))select `f`.`monthyear` AS `monthyear`,coalesce(`countreal`.`soluong`,0) AS `soluong` from (`my_cte` `f` left join (select extract(year_month from `p`.`CreatedDate`) AS `monthyear`,count(0) AS `soluong` from `post` `p` where year(`p`.`CreatedDate`) = year(current_timestamp()) or year(`p`.`CreatedDate`) = year(current_timestamp()) - 1 and month(`p`.`CreatedDate`) > month(current_timestamp()) group by year(`p`.`CreatedDate`),month(`p`.`CreatedDate`)) `countreal` on(`f`.`monthyear` = `countreal`.`monthyear`))  ;
+CREATE OR REPLACE VIEW chartCountPost
+AS
+	WITH RECURSIVE my_cte AS
+(
+  SELECT '202007' AS monthyear
+  UNION ALL
+  SELECT EXTRACT(YEAR_MONTH from DATE_ADD(CONVERT(CONCAT_WS("",monthyear,"01"), DATE), INTERVAL 1 MONTH)) FROM my_cte WHERE CAST(monthyear AS INT)<CAST(EXTRACT(YEAR_MONTH from now()) AS INT)
+)
+SELECT f.monthyear, COALESCE(countReal.soluong, 0) as soluong FROM my_cte f LEFT JOIN (SELECT EXTRACT(YEAR_MONTH from p.CreatedDate) as monthyear, COUNT(*) as soluong 
+FROM post p 
+WHERE YEAR(p.CreatedDate)=YEAR(NOW()) OR (YEAR(p.CreatedDate)=(YEAR(NOW())-1) AND MONTH(p.CreatedDate)>MONTH(NOW())) GROUP BY YEAR(p.CreatedDate),MONTH(p.CreatedDate)) AS countReal on f.monthyear=countReal.monthyear;
+
 
 --
 -- Indexes for dumped tables
