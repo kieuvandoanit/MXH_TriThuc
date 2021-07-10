@@ -6,3 +6,44 @@
     width: 100%;
     height: auto;
 }
+.card-content{
+    margin-left:15px;
+    display: flex;
+    min-height: 250px;
+    justify-content: space-between;
+}
+.card-content .sub-card{
+    display: flex;
+    height: 240px;
+    background-color: #ffffff5c;
+    width: 350px;
+    flex-direction: column;
+    border-radius: 15px;
+    padding: 10px;
+}
+.card-content .sub-card .header{
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+}
+.body-card-row{
+    display: flex; 
+    justify-content: space-between;
+    margin: 5px 0px;
+}
+.body-card-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 35px;
+}
+.cut-text { 
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 160px; 
+    height: 1.2em; 
+    white-space: nowrap;
+    flex-grow: 1;
+    padding: 0px 10px;
+  }
