@@ -117,6 +117,16 @@ class UserModel extends DB{
         }
         return $arr;
     }
+    public function getTop5HighestFromTable($table,$selectOption,$orderby)
+    {
+        $sql='SELECT '.$selectOption.' FROM '.$table.' u ORDER BY '.$orderby.' DESC LIMIT 5';
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
 
 ?>

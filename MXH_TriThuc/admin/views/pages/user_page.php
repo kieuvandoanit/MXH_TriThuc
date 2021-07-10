@@ -1,4 +1,3 @@
-<!-- <?php echo '<pre>'; print_r($data); echo '</pre>';  ?> -->
 <h2>Quản lí người dùng</h2>
 <br>
 <div class="" style="justify-content: space-between; display: flex; flex-direction: row; ">
