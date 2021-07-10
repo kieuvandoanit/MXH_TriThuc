@@ -50,7 +50,7 @@
                     <a href="<?php echo HEADERLINK.'/admin/post/postPage';?>"><i class="far fa-calendar-check"></i> Bài đăng</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-question-circle"></i> Bình luận</a>
+                <a href="<?php echo HEADERLINK.'/admin/comment/commentPage';?>"><i class="fas fa-question-circle"></i> Bình luận</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-cog"></i> Cài đặt</a>
