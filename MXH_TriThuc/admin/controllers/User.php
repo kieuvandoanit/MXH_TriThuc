@@ -7,6 +7,10 @@ class User extends Controller{
     }
 
     public function SayHi(){
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == 'user'){
+            session_destroy();
+            $this->redirect('/admin');
+        }
         $data['page_title'] = 'Đăng nhập';
         $this->ViewAdmin('inc/header',$data);
         $this->ViewAdmin('pages/login');

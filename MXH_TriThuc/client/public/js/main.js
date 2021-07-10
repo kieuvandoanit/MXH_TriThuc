@@ -19,7 +19,7 @@ $(document).ready(function () {
                         $(classLike).css("color","white");
     
                     }else{
-                        // window.location.href = "http://localhost:8080/MXH_TriThuc/user";
+                        window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                     }
                 }
     
@@ -39,7 +39,7 @@ $(document).ready(function () {
                         $(classLike).css("color","black");
     
                     }else{
-                        // window.location.href = "http://localhost:8080/MXH_TriThuc/user";
+                        window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                     }
                 }
     

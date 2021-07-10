@@ -1,14 +1,17 @@
 <?php
 class Post extends Controller{
     protected $postModel;
+    protected $categoryModel;
 
     public function __construct(){
         $this->postModel = $this->ModelClient('PostModel');
+        $this->categoryModel = $this->ModelClient('CategoryModel');
     }
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
         $data['post_view'] = $this->postModel->getPostSortView('ASC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
+        $data['category'] = $this->categoryModel->getAllCategory();
         $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
 
         $this->ViewClient('inc/header', $data);
@@ -18,9 +21,9 @@ class Post extends Controller{
 
     public function addPost(){
         $data['page_title'] = 'Thêm bài viết mới';
-
+        $data['category'] = $this->categoryModel->getAllCategory();
         $this->ViewClient('inc/header', $data);
-        $this->ViewClient('pages/add_post');
+        $this->ViewClient('pages/add_post', $data);
         $this->ViewClient('inc/footer');
     }
 
@@ -33,8 +36,8 @@ class Post extends Controller{
             $thumb = $_POST['postThumb'];
             $content = $_POST['postContent'];
             $member_id = $_SESSION['userID'];
-            // $category = $_POST['postCategory'];
-            $category=1;
+            $category = $_POST['postCategory'];
+            
 
             //Xu li hashtag 
             require_once('MXH_TriThuc/plugin/helper.php');
@@ -106,6 +109,7 @@ class Post extends Controller{
     public function editPost($id){
         $data['page_title'] = 'Chỉnh sửa bài viết';
         $data['post'] = $this->postModel->getPostByID($id);
+        $data['category'] = $this->categoryModel->getAllCategory();
         if(!empty($data['post'])){
             $this->ViewClient('inc/header',$data);
             $this->ViewClient('pages/edit_post', $data);

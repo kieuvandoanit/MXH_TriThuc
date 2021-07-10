@@ -186,8 +186,7 @@ class PostModel extends DB{
     public function getPostByContent($content)
     {
         $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
-        // echo '<div>'.$sql.'</div>';
-        // echo $sql.'\n';
+        echo $sql;
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){

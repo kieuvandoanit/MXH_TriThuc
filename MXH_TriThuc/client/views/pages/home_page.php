@@ -2,17 +2,15 @@
   <div id="top_home_page">
     <div id="category" class="col-md-3">
       <ul class="list_category">
-        <li class="category_item"><a href="">Tự nhiên</a></li>
-        <li class="category_item"><a href="">Xã hội</a></li>
-        <li class="category_item"><a href="">Tâm lý</a></li>
-        <li class="category_item"><a href="">Sức khỏe</a></li>
-        <li class="category_item"><a href="">Tài chính</a></li>
-        <li class="category_item"><a href="">Công nghệ</a></li>
-        <li class="category_item"><a href="">Khoa học</a></li>
-        <li class="category_item"><a href="">Văn học</a></li>
-        <li class="category_item"><a href="">Kỹ thuật</a></li>
-        <li class="category_item"><a href="">Nghệ thuật</a></li>
-        <li class="category_item"><a href="">Luật</a></li>
+      <?php  
+      foreach ($data['category'] as $category){
+        ?>
+        <li class="category_item"><a href=""><?php echo $category['CategoryName'] ?></a></li>
+        <?php  
+      }
+      ?>
+        
+        
       </ul>
     </div>
     <div id="seach_slider" class="col-md-9">
