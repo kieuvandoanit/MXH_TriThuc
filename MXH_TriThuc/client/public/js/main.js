@@ -3,6 +3,7 @@ $(document).ready(function () {
     $(".post_like").click(function(event){
         var id = $(event.target).attr('id');
         let classLike = ".fa-thumbs-up-"+id;
+        console.log(event.target);
         if($(event.target).hasClass("post_liked")){
             $.ajax({
                 url: "http://localhost:8080/MXH_TriThuc/post/handleDisLike",
@@ -11,7 +12,7 @@ $(document).ready(function () {
                 data:{id:id},
                 success: function(data){
                     if(isFinite(data)){
-                        let html = "<p class='post_like_num postLikeNum_"+id+"'>"+data+"</p>";
+                        let html = "<p class='action_like post_like_num postLikeNum_"+id+"'>"+data+"</p>";
                         let temp = ".postLikeNum_"+id;
                         $(temp).html(html);
                         $(event.target).removeClass("post_liked");
@@ -31,7 +32,7 @@ $(document).ready(function () {
                 data:{id:id},
                 success: function(data){
                     if(isFinite(data)){
-                        let html = "<p class='post_like_num postLikeNum_"+id+"'>"+data+"</p>";
+                        let html = "<p class='action_like post_like_num postLikeNum_"+id+"'>"+data+"</p>";
                         let temp = ".postLikeNum_"+id;
                         $(temp).html(html);
                         $(event.target).addClass("post_liked");

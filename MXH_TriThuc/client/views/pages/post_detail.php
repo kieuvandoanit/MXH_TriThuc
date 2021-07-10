@@ -1,6 +1,6 @@
 <div id="post_detail">
     <!-- form search -->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-9">
         <form class="search" action="">
@@ -8,7 +8,7 @@
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>
-    </div>
+    </div> -->
     <!-- header post  -->
     <div class="row header_post">
       <div class="post_thumb" style="width:500px; height: 280px; overflow:hidden;">
@@ -41,8 +41,8 @@
         </div>
         <div class="post_react">
           <div class="post_like" id="<?php echo $data['post'][0]['Post_id']; ?>">
-            <i class="fas fa-thumbs-up"></i>
-            <p class="post_like_num postLikeNum_<?php echo $data['post'][0]['Post_id']; ?>"><?php echo $data['post'][0]['LikesAmount']; ?></p>
+            <i class="fas fa-thumbs-up" id="<?php echo $data['post'][0]['Post_id']; ?>"></i>
+            <p id="<?php echo $data['post'][0]['Post_id']; ?>" class="post_like_num postLikeNum_<?php echo $data['post'][0]['Post_id']; ?>"><?php echo $data['post'][0]['LikesAmount']; ?></p>
           </div>
           <div class="post_comment">
             <i class="fas fa-comment"></i>

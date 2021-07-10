@@ -22,8 +22,15 @@
         <label for="post_category">Danh mục bài viết</label><br>
         <select name="postCategory" id="post_category" class="form-control" required>
           <option value="">==Chọn danh mục bài viết==</option>
-          <option value="Tự nhiên">Tự nhiên</option>
-          <option value="Xã hội">Xã hội</option>
+          <?php  
+          foreach($data['category'] as $category){
+            ?>
+            <option value="<?php echo $category['Category_id'] ?>"><?php echo $category['CategoryName'] ?></option>
+            <?php  
+          }
+          ?>
+          
+          
         </select>
       </div>
       <div class="form-group">

@@ -74,7 +74,6 @@ class User extends Controller{
             $user = $this->userModel->getUser($username, $password);
             $userInfo = $this->userModel->getUserProfile($user[0]['User_id']);
             if(!empty($user)){
-                // echo '<pre>'; print_r($user); echo '</pre>';
                 $_SESSION['fullname']=$userInfo[0]['Name'];
                 $_SESSION['avatar']=$userInfo[0]['Avatar'];
                 $_SESSION['userID'] = $user[0]['User_id'];

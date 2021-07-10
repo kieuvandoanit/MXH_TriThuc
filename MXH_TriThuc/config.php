@@ -11,4 +11,5 @@ define('HOST','http://localhost:8080/MXH_TriThuc');
 
 //Bat/tat duyet post tu dong
 $browsingAuto = false;
+$NotificationAddPostToAdmin = true;
 ?>

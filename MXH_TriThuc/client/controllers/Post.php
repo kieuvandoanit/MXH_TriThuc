@@ -1,14 +1,17 @@
 <?php
 class Post extends Controller{
     protected $postModel;
+    protected $categoryModel;
 
     public function __construct(){
         $this->postModel = $this->ModelClient('PostModel');
+        $this->categoryModel = $this->ModelClient('CategoryModel');
     }
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
         $data['post_view'] = $this->postModel->getPostSortView('ASC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
+        $data['category'] = $this->categoryModel->getAllCategory();
         $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
 
         $this->ViewClient('inc/header', $data);
@@ -18,9 +21,9 @@ class Post extends Controller{
 
     public function addPost(){
         $data['page_title'] = 'Thêm bài viết mới';
-
+        $data['category'] = $this->categoryModel->getAllCategory();
         $this->ViewClient('inc/header', $data);
-        $this->ViewClient('pages/add_post');
+        $this->ViewClient('pages/add_post', $data);
         $this->ViewClient('inc/footer');
     }
 
@@ -33,11 +36,12 @@ class Post extends Controller{
             $thumb = $_POST['postThumb'];
             $content = $_POST['postContent'];
             $member_id = $_SESSION['userID'];
-            // $category = $_POST['postCategory'];
-            $category=1;
+            $category = $_POST['postCategory'];
+            
 
             //Xu li hashtag 
             require_once('MXH_TriThuc/plugin/helper.php');
+            
             $hashtag = convert_vi_to_en($hashtag);
             
             global $browsingAuto;
@@ -53,6 +57,15 @@ class Post extends Controller{
                 if($result == 'true'){
                     $status = 'Duyệt tự động';
                     if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                        global $NotificationAddPostToAdmin;
+                        if($NotificationAddPostToAdmin == 1){
+                            require_once('MXH_TriThuc/plugin/sendMail.php');
+                            $Title = "THÔNG BÁO BÀI VIẾT MỚI";
+                            $Body = "Xin chào Admin! <br> Người dùng ".$_SESSION['fullname']." vừa mới thêm 1 bài viết mới";
+                            $email = "kieuvandoanit@gmail.com";
+                        
+                            sendMail($Title, $Body, $email);
+                        }
                         
                         $this->redirect('/user/profile');
                     }else{
@@ -68,8 +81,19 @@ class Post extends Controller{
                     }
                 }
             }else{
+                echo "vào đây";
                 $status = "Chờ duyệt";
                 if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                    global $NotificationAddPostToAdmin;
+                    if($NotificationAddPostToAdmin == 1){
+                        require_once('MXH_TriThuc/plugin/sendMail.php');
+                        $Title = "THÔNG BÁO BÀI VIẾT MỚI";
+                        $Body = "Xin chào Admin! <br> Người dùng ".$_SESSION['fullname']." vừa mới thêm 1 bài viết mới";
+                        $email = "kieuvandoanit@gmail.com";
+                        sendMail($Title, $Body, $email);
+                        // echo "SEnd mall";
+                    }
+                    
                     $this->redirect('/user/profile');
                 }else{
                     $this->redirect('/post/addPost');
@@ -85,6 +109,7 @@ class Post extends Controller{
     public function editPost($id){
         $data['page_title'] = 'Chỉnh sửa bài viết';
         $data['post'] = $this->postModel->getPostByID($id);
+        $data['category'] = $this->categoryModel->getAllCategory();
         if(!empty($data['post'])){
             $this->ViewClient('inc/header',$data);
             $this->ViewClient('pages/edit_post', $data);

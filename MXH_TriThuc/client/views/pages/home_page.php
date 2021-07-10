@@ -2,17 +2,15 @@
   <div id="top_home_page">
     <div id="category" class="col-md-3">
       <ul class="list_category">
-        <li class="category_item"><a href="">Tự nhiên</a></li>
-        <li class="category_item"><a href="">Xã hội</a></li>
-        <li class="category_item"><a href="">Tâm lý</a></li>
-        <li class="category_item"><a href="">Sức khỏe</a></li>
-        <li class="category_item"><a href="">Tài chính</a></li>
-        <li class="category_item"><a href="">Công nghệ</a></li>
-        <li class="category_item"><a href="">Khoa học</a></li>
-        <li class="category_item"><a href="">Văn học</a></li>
-        <li class="category_item"><a href="">Kỹ thuật</a></li>
-        <li class="category_item"><a href="">Nghệ thuật</a></li>
-        <li class="category_item"><a href="">Luật</a></li>
+      <?php  
+      foreach ($data['category'] as $category){
+        ?>
+        <li class="category_item"><a href=""><?php echo $category['CategoryName'] ?></a></li>
+        <?php  
+      }
+      ?>
+        
+        
       </ul>
     </div>
     <div id="seach_slider" class="col-md-9">
@@ -99,7 +97,7 @@
                     </div>
                   </div>
                   <div class="post_react">
-                    <div class="post_like <?php 
+                    <div class="post_like<?php 
                           if(!empty($data['liked'])){
                             foreach($data['liked'] as $temp){
                               if($temp['Post_id'] == $data['post_view'][$i]['Post_id']){
@@ -108,7 +106,7 @@
                             }
                           }
                         ?>" id="<?php echo $data['post_view'][$i]['Post_id']; ?>">
-                      <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_view'][$i]['Post_id']; ?>" style="<?php 
+                      <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_view'][$i]['Post_id']; ?>" style=" <?php 
                           if(!empty($data['liked'])){
                             foreach($data['liked'] as $temp){
                               if($temp['Post_id'] == $data['post_view'][$i]['Post_id']){
@@ -116,8 +114,8 @@
                               }
                             }
                           }
-                        ?>"></i>
-                      <p class="post_like_num postLikeNum_<?php echo $data['post_view'][$i]['Post_id']; ?>"><?php echo $data['post_view'][$i]['LikesAmount']; ?></p>
+                        ?>" id="<?php echo $data['post_view'][$i]['Post_id']; ?>"></i>
+                      <p class="post_like_num postLikeNum_<?php echo $data['post_view'][$i]['Post_id']; ?>" id="<?php echo $data['post_view'][$i]['Post_id']; ?>" ><?php echo $data['post_view'][$i]['LikesAmount']; ?></p>
                     </div>
                     <div class="post_comment">
                       <i class="fas fa-comment"></i>
@@ -186,7 +184,7 @@
                             }
                           }
                         ?>" id="<?php echo $data['post_new'][$i]['Post_id']; ?>">
-                        <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_new'][$i]['Post_id']; ?>" style="<?php 
+                        <i id="<?php echo $data['post_new'][$i]['Post_id']; ?>" class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post_new'][$i]['Post_id']; ?>" style="<?php 
                           if(!empty($data['liked'])){
                             foreach($data['liked'] as $temp){
                               if($temp['Post_id'] == $data['post_new'][$i]['Post_id']){
@@ -196,7 +194,7 @@
                           }
                         
                         ?>"></i>
-                        <p class="post_like_num postLikeNum_<?php echo $data['post_new'][$i]['Post_id']; ?>"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
+                        <p id="<?php echo $data['post_new'][$i]['Post_id']; ?>" class="post_like_num postLikeNum_<?php echo $data['post_new'][$i]['Post_id']; ?>"><?php echo $data['post_new'][$i]['LikesAmount']; ?></p>
                       </div>
                       <div class="post_comment">
                         <i class="fas fa-comment"></i>
