@@ -27,13 +27,6 @@
           </div> 
         </div>
       </div>
-      <div class="replace">
-        <div class="input-group-btn">
-          <button class="btn btn-default">
-            <a href="<?php echo HEADERLINK.'/user/editProfile/'?>"><i class="glyphicon glyphicon-pencil"></i></a>
-          </button>
-        </div>
-      </div>
     </div>
     <div id="pf_posts" class="background_pf_posts">
       <div class="list_your_post">
@@ -43,7 +36,7 @@
               <div class="left_titles">Bài viết</div>
             </div>
             <div class="col-md-7"></div>
-            <div class="col-md-2" style="margin-top: 30px;"><a href="<?php echo HEADERLINK.'/post/addPost'; ?>" class="btn btn-success">Thêm bài viết</a></div>
+            <div class="col-md-2" style="margin-top: 30px;"></div>
           </div>
           <table class="table">
             <thead class="thead-dark">

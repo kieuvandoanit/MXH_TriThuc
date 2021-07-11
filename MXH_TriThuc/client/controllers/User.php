@@ -206,6 +206,16 @@ class User extends Controller{
         $this->viewClient('pages/history_page', $data);
         $this->viewClient('inc/footer');
     }
+
+    public function ViewProfile($userID){
+        $data['title_page'] = 'Xem profile';
+        $data['user'] = $this-> userModel-> getUserProfile($userID);
+        $data['postList'] = $this->postModel->getPostByUser($userID);
+
+        $this->viewClient('inc/header', $data);
+        $this->viewClient('pages/profile_page_view', $data);
+        $this->viewClient('inc/footer');
+    }
 }
 
 ?>
