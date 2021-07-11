@@ -109,13 +109,39 @@ class UserModel extends DB{
 
     public function getLikeHistory($userID){
         $sql = "SELECT * from `liked_post` WHERE `User_id` = $userID ORDER BY `LP_id` DESC LIMIT 10"; 
-
         $rows = mysqli_query($this->conn, $sql);
         $arr=[];
         while($row=mysqli_fetch_array($rows)){
             $arr[]=$row;
         }
         return $arr;
+    }
+
+    public function updateLevel($userID, $value){
+        $sql = "UPDATE `user_profile` SET `Level_id` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updatePostAmount($userID, $value){
+        $sql = "UPDATE `user_profile` SET `PostAmount` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        } 
+    }
+
+    public function updatePoint($userID, $value){
+        $sql = "UPDATE `user_profile` SET `point` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        } 
     }
 }
 

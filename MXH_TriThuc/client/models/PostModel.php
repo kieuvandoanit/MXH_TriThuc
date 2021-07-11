@@ -212,6 +212,15 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+    public function updateViewed($postID, $value){
+        $sql = "UPDATE `post` SET `viewed`= $value WHERE `Post_id` = $postID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
 

@@ -3,11 +3,13 @@ class Post extends Controller{
     protected $postModel;
     protected $categoryModel;
     protected $settingModel;
+    protected $userModel;
 
     public function __construct(){
         $this->postModel = $this->ModelClient('PostModel');
         $this->categoryModel = $this->ModelClient('CategoryModel');
         $this->settingModel = $this->ModelClient('SettingModel');
+        $this->userModel = $this->ModelClient('UserModel');
     }
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
@@ -60,6 +62,37 @@ class Post extends Controller{
                 if($result == 'true'){
                     $status = 'Duyệt tự động';
                     if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                        
+                        //xử lý level
+                        //Lấy userprofile
+                        $userProfile = $this->userModel->getUserProfile($member_id);
+                        
+                        $this->userModel->updatePostAmount($member_id, $userProfile[0]['PostAmount'] + 1);
+                        $point = $userProfile[0]['point'] +5;
+                        $this->userModel->updatePoint($member_id, $point);
+                        $level_id = $userProfile[0]['Level_id'];
+                        if($level_id == 1){
+                            if($point > 50){
+                                $this->userModel->updateLevel($member_id, 2);
+                            }
+                        }else if($level_id == 2){
+                            if($point > 100){
+                                $this->userModel->updateLevel($member_id, 3);
+                            }
+                        }else if($level_id == 3){
+                            if($point > 200){
+                                $this->userModel->updateLevel($member_id, 4);
+                            }
+                        }else if($level_id == 4){
+                            if($point > 400){
+                                $this->userModel->updateLevel($member_id, 5);
+                            }
+                        }else{
+
+                        }
+
+
+
                         $listEmailNotification = [];
                         foreach($setting as $s){
                             if($s['Notification'] == 1){
@@ -82,6 +115,8 @@ class Post extends Controller{
                 }else{
                     $status = 'Không được duyệt';
                     if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                        $userProfile = $this->userModel->getUserProfile($member_id);
+                        $this->userModel->updatePostAmount($member_id, $userProfile[0]['PostAmount'] + 1);
                         
                         $this->redirect('/user/profile');
                     }else{
@@ -92,6 +127,9 @@ class Post extends Controller{
                 // echo "vào đây";
                 $status = "Chờ duyệt";
                 if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
+                    $userProfile = $this->userModel->getUserProfile($member_id);    
+                    $this->userModel->updatePostAmount($member_id, $userProfile[0]['PostAmount'] + 1);
+                        
                     $listEmailNotification = [];
                     foreach($setting as $s){
                         if($s['Notification'] == 1){
@@ -109,12 +147,8 @@ class Post extends Controller{
                     $this->redirect('/user/profile');
                 }else{
                     $this->redirect('/post/addPost');
-                }
-                
+                }  
             }
-
-            
-            
         }
     }
 
@@ -131,8 +165,7 @@ class Post extends Controller{
         }
     }
 
-    public function handleEditPost($id){
-        // echo '<pre>'; print_r($_POST); echo '</pre>'; 
+    public function handleEditPost($id){ 
         if(isset($_POST['btn_editPost'])){
             $hashtag = $_POST['postHashtag'];
             $title = $_POST['postTitle'];
@@ -165,6 +198,7 @@ class Post extends Controller{
         $data['page_title'] = "Chi tiết bài viết";
         $data['post'] = $this->postModel->getPostByID($id);
 
+        $this->postModel->updateViewed($id, $data['post'][0]['viewed'] + 1);
         $sao1 = $this->postModel->getRatingHistory($id, '1 sao');
         $sao2 = $this->postModel->getRatingHistory($id, '2 sao');
         $sao3 = $this->postModel->getRatingHistory($id, '3 sao');
