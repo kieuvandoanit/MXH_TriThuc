@@ -1,26 +1,25 @@
 <h2>Quản lí bình luận</h2>
 <br>
-<div class="row">
-    <div class="col-2">
-        <select name="" id="" class="cmtFilterClass" >
-            <option value="" checked>Bài viết</option>
-        </select>
-    </div>
-    <div class="col-2">
+<div style="justify-content: space-between; display: flex; flex-direction: row; ">
+    <div class="user-filter">
+      <div >
+          <select name="" id="" class="userFilterClass"  autofocus onChange="window.location.href=this.value">
+              <option value="" checked>Sắp xếp</option>
+              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/1'; ?>" >Cũ nhât</option>
+              <option value="<?php echo HEADERLINK.'/admin/category/categoryPage/2'; ?>" >Mới nhất</option>
 
-        <select name="" id="" class="cmtFilterClass">
-            <option>Người bình luận</option>
-        </select>
-    </div>
-    <div class="col-6"></div>
-    <div class="col-2">
-        <a href="#" class="btn btn-primary" style="border-radius: 45px;">
-            <i class="fas fa-plus"></i>
-            <b>Bình luận mới</b>
-        </a>
-    </div>
+
+          </select>
+      </div>
+    </div> 
+    <div class="">
+      <a href="<?php echo HEADERLINK.'/admin/category/createCategory'; ?>" class="btn btn-primary" style="border-radius: 45px;">
+          <i class="fas fa-plus"></i>
+          <b>Tạo danh mục</b>
+      </a>
+  </div>
 </div>
-<br>
+<br>  
 <table class="content-table table-sorttable">
     <thead>
         <tr>
@@ -36,10 +35,10 @@
     <?php
         foreach($data as $item){
             echo '<tr>
-                    <td>'.(isset($item['Member_id'])?$item['Member_id']:"khong").'</td>
+                    <td>'.(isset($item['UserName'])?$item['UserName']:"khong").'</td>
                     <td>'.(isset($item['CreateDate'])?$item['CreateDate']:"khong").'</td>
                     <td>'.(isset($item['UpdateDate'])?$item['UpdateDate']:"khong").'</td>
-                    <td>'.(isset($item['Post_id'])?$item['Post_id']:"khong").'</td>
+                    <td>'.(isset($item['Title'])?$item['Title']:"khong").'</td>
                     <td>'.(isset($item['Content'])?$item['Content']:"khong").'</td>
                 </tr>';
         };

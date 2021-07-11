@@ -2,7 +2,7 @@
 class CommentModel extends Db{
     public function getAllComment()
     {
-        $sql='SELECT * FROM `comment`';
+        $sql='SELECT u.UserName, c.CreateDate, c.UpdateDate, p.Title, c.Content FROM user AS u INNER JOIN comment AS c ON u.User_id = c.Member_id INNER JOIN post AS p ON c.Post_id = p.Post_id';
         $rows=mysqli_query($this->conn,$sql);
         $arr = [];
         while($row = mysqli_fetch_assoc($rows)){
@@ -10,6 +10,7 @@ class CommentModel extends Db{
         }
         return $arr;
     }
+
     // public function getAllPostByStatus($expression)
     // {
     //     $sql='SELECT * FROM `Post` WHERE status="'.$expression.'"';
