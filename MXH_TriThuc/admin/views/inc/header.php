@@ -52,7 +52,7 @@
                     <a href="#"><i class="fas fa-question-circle"></i> Bình luận</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-cog"></i> Cài đặt</a>
+                    <a href="<?php echo HEADERLINK.'/admin/Setting'; ?>"><i class="fas fa-cog"></i> Cài đặt</a>
                 </li>
                 <li>
                     <a href="<?php echo HEADERLINK.'/admin/user/adminPage';  ?>"><i class="fas fa-user-cog"></i> Admins</a>

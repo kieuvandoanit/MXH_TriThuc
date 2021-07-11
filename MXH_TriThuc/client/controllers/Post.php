@@ -2,10 +2,12 @@
 class Post extends Controller{
     protected $postModel;
     protected $categoryModel;
+    protected $settingModel;
 
     public function __construct(){
         $this->postModel = $this->ModelClient('PostModel');
         $this->categoryModel = $this->ModelClient('CategoryModel');
+        $this->settingModel = $this->ModelClient('SettingModel');
     }
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
@@ -44,9 +46,10 @@ class Post extends Controller{
             
             $hashtag = convert_vi_to_en($hashtag);
             
-            global $browsingAuto;
-            // echo $browsingAuto;
-            if($browsingAuto == 1){
+            
+            $setting = $this->settingModel->getSetting();
+        
+            if($setting[0]['AutoBrowsing'] == 1){
                 $data= array(
                     'title' => $title,
                     'description' => $content
@@ -57,16 +60,21 @@ class Post extends Controller{
                 if($result == 'true'){
                     $status = 'Duyệt tự động';
                     if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
-                        global $NotificationAddPostToAdmin;
-                        if($NotificationAddPostToAdmin == 1){
+                        $listEmailNotification = [];
+                        foreach($setting as $s){
+                            if($s['Notification'] == 1){
+                                $listEmailNotification[] = $s['email'];
+                            }
+                        }
+                        if(!empty($listEmailNotification)){
                             require_once('MXH_TriThuc/plugin/sendMail.php');
                             $Title = "THÔNG BÁO BÀI VIẾT MỚI";
                             $Body = "Xin chào Admin! <br> Người dùng ".$_SESSION['fullname']." vừa mới thêm 1 bài viết mới";
                             $email = "kieuvandoanit@gmail.com";
-                        
-                            sendMail($Title, $Body, $email);
+                            foreach($listEmailNotification as $email){
+                                sendMail($Title, $Body, $email);
+                            }    
                         }
-                        
                         $this->redirect('/user/profile');
                     }else{
                         $this->redirect('/post/addPost');
@@ -81,19 +89,23 @@ class Post extends Controller{
                     }
                 }
             }else{
-                echo "vào đây";
+                // echo "vào đây";
                 $status = "Chờ duyệt";
                 if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){
-                    global $NotificationAddPostToAdmin;
-                    if($NotificationAddPostToAdmin == 1){
+                    $listEmailNotification = [];
+                    foreach($setting as $s){
+                        if($s['Notification'] == 1){
+                            $listEmailNotification[] = $s['email'];
+                        }
+                    }
+                    if(!empty($listEmailNotification)){
                         require_once('MXH_TriThuc/plugin/sendMail.php');
                         $Title = "THÔNG BÁO BÀI VIẾT MỚI";
                         $Body = "Xin chào Admin! <br> Người dùng ".$_SESSION['fullname']." vừa mới thêm 1 bài viết mới";
-                        $email = "kieuvandoanit@gmail.com";
-                        sendMail($Title, $Body, $email);
-                        // echo "SEnd mall";
+                        foreach($listEmailNotification as $email){
+                            sendMail($Title, $Body, $email);
+                        }    
                     }
-                    
                     $this->redirect('/user/profile');
                 }else{
                     $this->redirect('/post/addPost');
