@@ -101,7 +101,7 @@
         //Post
         public function handleCreatePost()
         {
-            global $_FILES;
+            // global $_FILES;
             require_once('MXH_TriThuc/plugin/helper.php');
             if(isset($_POST['btn_create'])){
                 $title=$_POST['title'];
@@ -114,7 +114,7 @@
                 require_once('MXH_TriThuc/plugin/helper.php');
                 $hashTag = convert_vi_to_en($hashTag);
                 $results= $this->PostModel->createPost($title,$thumb,$hashTag,$content,$category,$member_id);
-                echo $results?'ok':'khong dc';
+                $this->redirect('/admin/post/postPage');
             }
         }
         //Xóa
