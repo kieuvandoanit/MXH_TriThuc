@@ -79,7 +79,7 @@ class UserModel extends DB{
     }
 
     public function createUser($UType_id, $username, $password, $email){
-        $sql = "INSERT INTO `user` VALUES(null, '$username', '$email','$password',null,$UType_id)";
+        $sql = "INSERT INTO `user` VALUES(null, '$username', '$email','$password',$UType_id)";
 
         if(mysqli_query($this->conn, $sql)){
             return true;
@@ -89,11 +89,11 @@ class UserModel extends DB{
 
     public function createUserProfile($avatar='',$fullname='',$gender='',$phoneNumber='', $email='', $address='', $userID){
         if($avatar==''){
-            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 0)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 1,0)";
         }else{
-            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 0)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 1,0)";
         }
-        
+        echo $sql;
         if(mysqli_query($this->conn, $sql)){
             return true;
         }
