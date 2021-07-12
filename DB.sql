@@ -316,9 +316,6 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 --
 
 
-
-
-
 --
 -- Indexes for table `category`
 --

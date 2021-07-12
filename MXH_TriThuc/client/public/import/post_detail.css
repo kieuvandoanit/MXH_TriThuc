@@ -88,8 +88,14 @@ form.search input[type=text] {
  }
  .comment_item{
      display: flex;
-     margin: 5px 0px;
+     margin: 5px 0px 30px 0px;
  }
+.comment_detail{
+    background-color: #FFFAFA;
+    width: 90%;
+    padding: 5px;
+   
+}
  .user_comment_thumb{
      width: 50px;
      height: 50px;
