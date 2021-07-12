@@ -12,21 +12,22 @@ class Comment extends Controller{
 
     //Chức năng xem toàn bộ comment
     public function commentPage(){
-        $cmtList= $this->CommentModel->getAllComment();
+        $data['cmtList']= $this->CommentModel->getAllComment();
         $data['page_title'] = 'Quản lý comment';
 
-        $this->viewAdmin('inc/header');
-        $this->viewAdmin('pages/comment_page',$cmtList);
+        $this->viewAdmin('inc/header', $data);
+        $this->viewAdmin('pages/comment_page',$data);
         $this->viewAdmin('inc/footer');
     }
 
     //Chức năng xem toàn bộ comment bị đánh dấu spam
     public function commentSpam(){
-        $cmtList= $this->CommentModel->getAllCommentSpam();
+        $data['cmtList'] = $this->CommentModel->getAllCommentSpam();
         $data['page_title'] = 'Quản lý comment';
+        $data['flag'] = 1;
 
-        $this->viewAdmin('inc/header');
-        $this->viewAdmin('pages/comment_page',$cmtList);
+        $this->viewAdmin('inc/header', $data);
+        $this->viewAdmin('pages/comment_page',$data);
         $this->viewAdmin('inc/footer');
     }
 

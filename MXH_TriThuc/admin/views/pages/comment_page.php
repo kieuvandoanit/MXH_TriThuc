@@ -1,3 +1,4 @@
+
 <h2>Quản lí bình luận</h2>
 <br>
 <div style="justify-content: space-between; display: flex; flex-direction: row; ">
@@ -5,7 +6,7 @@
       <div >
           <select name="" id="" class="userFilterClass"  autofocus onChange="window.location.href=this.value">
               <option value="<?php echo HEADERLINK.'/admin/comment/commentPage'; ?>" >Tất cả</option>
-              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" >Spam</option>
+              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" <?php if(isset($data['flag']) && $data['flag'] == 1){echo 'selected';} ?>>Spam</option>
           </select>
       </div>
     </div>  
@@ -22,9 +23,8 @@
             <th style="min-width: 10px;"></th>
         </tr>
     </thead>
+
     <tbody id="postTable">
-    
-      <!-- <a class="edit-icon" href="'.HEADERLINK.'/admin/category/createCategory" title="edit post"><i class="fas fa-pencil-alt"></i></a> -->
     </tbody>
 </table>
 <script type="text/javascript">

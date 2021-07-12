@@ -18,8 +18,10 @@ class Post extends Controller{
         $data['post_view'] = $this->postModel->getPostSortView('ASC');
         $data['post_new'] = $this->postModel->getPostSortID('DESC');
         $data['category'] = $this->categoryModel->getAllCategory();
-        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
 
+        if(!empty($_SESSION) && $_SESSION['isLogin'] == true){
+            $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+        }
         $this->ViewClient('inc/header', $data);
         $this->ViewClient('pages/post_page', $data);
         $this->ViewClient('inc/footer');
