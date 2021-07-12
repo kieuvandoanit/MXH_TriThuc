@@ -1,7 +1,6 @@
 $(document).ready(function () {
     //Xử lý like
-    console.log('voday')
-    $(".post_like").click(function(event){;
+    $(document).on("click", ".post_like", function(event) { 
         var id = $(event.target).attr('id');
         let classLike = ".fa-thumbs-up-"+id;
         console.log(event.target);
@@ -18,12 +17,12 @@ $(document).ready(function () {
                         $(temp).html(html);
                         $(event.target).removeClass("post_liked");
                         $(classLike).css("color","white");
-                        
+    
                     }else{
                         window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                     }
                 }
-                
+    
             });
         }else{
             $.ajax({
@@ -117,18 +116,18 @@ $(document).ready(function () {
 });
 //Phân trang
 function pagination(data){
-    // console.log('voday');
-    // console.log(data);
+
     var rowsShown=4;
     var rowsTotal=data.length;
     var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
     console.log('number:'+rowsShown)
-    $('#table').after('<div id="pagination"></div>');
+    $('#table').after('<div id="pagination"><i class="fas fa-caret-left"></i></div>');
     for(i = 0;i < numPages;i++) {
         var pageNum = i + 1;
         // console.log(pageNum)
         $('#pagination').append('<a id="numPage'+i+'" class="numPage" href="#" rel="'+i+'">'+pageNum+'</a>');
     }
+    $('#pagination').append('<i class="fas fa-caret-right"></i>');
     $('#pagination a:first').addClass('active');
     var dataShown=data.slice(0,rowsShown);
     showData(dataShown);

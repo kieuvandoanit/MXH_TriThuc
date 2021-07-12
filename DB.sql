@@ -315,9 +315,6 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 -- Structure for view `chartcountpost`
 --
 
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `category`
