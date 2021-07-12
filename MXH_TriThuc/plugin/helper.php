@@ -45,4 +45,55 @@ function callAPI($method, $url, $data = false){
     return $result;
 }
 
+function uploadFile(){
+    global $_FILES;
+    //Thư mục chứa file upload
+    $upload_dir = 'MXH_TriThuc/uploads/';
+    //Đường dẫn của file upload
+    $upload_file = $upload_dir . $_FILES['file']['name'];
+    //Xử lý upload đúng file ảnh
+    $type_allow = array('png', 'jpg', 'gif', 'jpeg');
+    $type = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+    if (!in_array(strtolower($type), $type_allow)) {
+        $error['type'] = "Chỉ được upload file có đuôi png, jpg, gif, jpeg";
+    } else {
+        #upload file có kích thước cho phép
+        $file_size = $_FILES['file']['size'];
+        if ($file_size > 21000000) {
+            $error['file_size'] = "Chỉ được upload ảnh bé hơn 20MB";
+        }
+        #Kiểm tra trùng file trên hệ thống
+        if (file_exists($upload_file)) {
+            
+            #Xử lý đổi tên file tự động
+            
+            //Tạo file mới
+            $file_name = pathinfo($_FILES['file']['name'],PATHINFO_FILENAME);
+            $new_file_name = $file_name.' -Copy.';
+            $new_upload_file = $upload_dir.$new_file_name.$type;
+            $k = 1;
+            while(file_exists($new_upload_file)){
+                $new_file_name = $file_name." -Copy({$k}).";
+                $k++;
+                $new_upload_file = $upload_dir.$new_file_name.$type;
+            }
+            $upload_file = $new_upload_file;
+        }
+    }
+    if (empty($error)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $upload_file)) {
+            echo"upload file thành công";
+            return strstr($upload_file,'uploads');
+        } else {
+            echo "Upload file không thành công";
+            return $error['type'];
+        }
+    } else {
+        // echo show_array($error);
+        return $error['type'];
+    }
+
+}
+
 ?>

@@ -110,8 +110,10 @@ $(document).ready(function () {
 
         });
     });
+    // $("#upload_file").change(function(){
+    //     alert("helelo");
+    // })
 
-    
-    
+
 });
 

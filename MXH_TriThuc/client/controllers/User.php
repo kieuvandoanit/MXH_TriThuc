@@ -115,14 +115,20 @@ class User extends Controller{
     public function handleEditProfile(){
         // echo '<pre>'; print_r($_POST); echo '</pre>';
         if(isset($_POST['btn_update'])){
+            if(!empty($_FILES['file']['name'])){
+                require_once('MXH_TriThuc/plugin/helper.php');
+                $userThumb = uploadFile();
+            }else{
+                $userThumb = $_POST['user_thumb'];
+            }
             $fullname = $_POST['fullname'];
             $phoneNumber = $_POST['phoneNumber'];
             $email = $_POST['email'];
             $address = $_POST['address'];
-            $userThumb = $_POST['user_thumb'];
 
             $result = $this->userModel-> updateProfile($fullname, $phoneNumber, $email, $address, $userThumb);
             if($result){
+                $_SESSION['avatar']=$userThumb;
                 $this->redirect('/user/profile');
             }else{
                 $this->redirect('/user/editProfile');
@@ -204,6 +210,16 @@ class User extends Controller{
 
         $this->viewClient('inc/header',$data);
         $this->viewClient('pages/history_page', $data);
+        $this->viewClient('inc/footer');
+    }
+
+    public function ViewProfile($userID){
+        $data['title_page'] = 'Xem profile';
+        $data['user'] = $this-> userModel-> getUserProfile($userID);
+        $data['postList'] = $this->postModel->getPostByUser($userID);
+
+        $this->viewClient('inc/header', $data);
+        $this->viewClient('pages/profile_page_view', $data);
         $this->viewClient('inc/footer');
     }
 }

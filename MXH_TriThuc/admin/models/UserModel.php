@@ -89,10 +89,19 @@ class UserModel extends DB{
 
     public function createUserProfile($avatar='',$fullname='',$gender='',$phoneNumber='', $email='', $address='', $userID){
         if($avatar==''){
-            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, null, '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 0)";
         }else{
-            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', null, null,$userID, null)";
+            $sql = "INSERT INTO `user_profile` VALUES(null, '$avatar', '$fullname','$gender', '$phoneNumber', '$email', '$address', 0, 0,$userID, 0)";
         }
+        
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }
+        return false;
+    }
+
+    public function createSetting($userID, $email){
+        $sql = "INSERT INTO `setting` VALUES (null, $userID, '$email', 1, 1)";
         if(mysqli_query($this->conn, $sql)){
             return true;
         }
