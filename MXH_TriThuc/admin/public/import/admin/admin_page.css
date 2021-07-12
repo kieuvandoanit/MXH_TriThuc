@@ -95,3 +95,14 @@ form label{
     font-size: 20px;
     border-radius: 20px;
 }
+#pagination{
+    display: flex;
+    justify-content: center;
+}
+#pagination .active{
+    color: blue !important;
+}
+#pagination a{
+    min-width: 20px;
+    color: rgba(18, 18, 19, 0.726)!important;
+}

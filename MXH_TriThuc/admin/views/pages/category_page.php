@@ -20,30 +20,37 @@
   </div>
 </div>
 <br>
-<table class="content-table table-sorttable">
-  <thead>
-      <tr>
-          <th>ID <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;">Danh mục <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;">Mô tả <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;"></th>
-      </tr>
-  </thead>
-  <tbody>
-      <?php
-        foreach($data as $item){
-            echo '<tr>
-                    <td>'.(isset($item['Category_id'])?$item['Category_id']:"khong").'</td>
-                    <td>'.(isset($item['CategoryName'])?$item['CategoryName']:"khong").'</td>
-                    <td>'.(isset($item['Description'])?$item['Description']:"khong").'</td>
-                    <td class="user-btn">
-                        
-                        <a class="delete-icon" href="'.HEADERLINK.'/admin/category/delete/'.(isset($item['Category_id'])?$item['Category_id']:-1).'" title="delete post"><i class="far fa-trash-alt"></i></a>
-                        <a class="info-icon" href="'.HEADERLINK.'/admin/category/detailCategory/'.(isset($item['Category_id'])?$item['Category_id']:-1).'" title="information of post"><i class="fas fa-info-circle"></i></a>
-                    </td>
-                </tr>';
-        };
-      ?>
-      <!-- <a class="edit-icon" href="'.HEADERLINK.'/admin/category/createCategory" title="edit post"><i class="fas fa-pencil-alt"></i></a> -->
+<table id="table" class="content-table table-sorttable">
+    <thead>
+        <tr>
+            <th>ID <i class="fas fa-sort"></i></th>
+            <th style="min-width: 10px;">Danh mục <i class="fas fa-sort"></i></th>
+            <th style="min-width: 10px;">Mô tả <i class="fas fa-sort"></i></th>
+            <th style="min-width: 10px;"></th>
+        </tr>
+    </thead>
+    <tbody id="postTable">
+     
     </tbody>
 </table>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var data=<?php echo json_encode($data) ?>;
+        // var data=<php echo json_encode($data) ?>;
+        pagination(data);
+        
+    });
+    function showData(data){
+        console.log('showdata');
+        contentHtml='';
+        for(const key in data){
+            contentHtml+= '<tr><td>'+((data[key]["Category_id"])?data[key]["Category_id"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["CategoryName"])?data[key]["CategoryName"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["Description"])?data[key]["Description"]:"khong")+'</td>';
+            contentHtml+= '<td class="user-btn">';
+            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/category/delete/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
+            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/category/detailCategory/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+        };
+        $("#postTable").html(contentHtml);
+    };
+</script>

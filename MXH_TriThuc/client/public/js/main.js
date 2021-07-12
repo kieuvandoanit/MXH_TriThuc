@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //Xử lý like
-    $(".post_like").click(function(event){
+    console.log('voday')
+    $(".post_like").click(function(event){;
         var id = $(event.target).attr('id');
         let classLike = ".fa-thumbs-up-"+id;
         console.log(event.target);
@@ -17,12 +18,12 @@ $(document).ready(function () {
                         $(temp).html(html);
                         $(event.target).removeClass("post_liked");
                         $(classLike).css("color","white");
-    
+                        
                     }else{
                         window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                     }
                 }
-    
+                
             });
         }else{
             $.ajax({
@@ -110,10 +111,37 @@ $(document).ready(function () {
 
         });
     });
-    // $("#upload_file").change(function(){
-    //     alert("helelo");
-    // })
 
-
+    
+    
 });
-
+//Phân trang
+function pagination(data){
+    // console.log('voday');
+    // console.log(data);
+    var rowsShown=4;
+    var rowsTotal=data.length;
+    var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
+    console.log('number:'+rowsShown)
+    $('#table').after('<div id="pagination"></div>');
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        // console.log(pageNum)
+        $('#pagination').append('<a id="numPage'+i+'" class="numPage" href="#" rel="'+i+'">'+pageNum+'</a>');
+    }
+    $('#pagination a:first').addClass('active');
+    var dataShown=data.slice(0,rowsShown);
+    showData(dataShown);
+    $('#pagination a').bind('click',function(e){
+        // alert( "Handler for .click() called." );
+        e.preventDefault();
+        var currPage = $(this).attr('rel');
+        $('#pagination a').removeClass('active');
+        $(this).addClass('active');
+        console.log(currPage);
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        dataShown=data.slice(startItem,endItem);
+        showData(dataShown);
+    });
+}

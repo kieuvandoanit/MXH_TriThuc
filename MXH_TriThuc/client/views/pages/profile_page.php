@@ -65,7 +65,7 @@
             <div class="col-md-7"></div>
             <div class="col-md-2" style="margin-top: 30px;"><a href="<?php echo HEADERLINK.'/post/addPost'; ?>" class="btn btn-success">Thêm bài viết</a></div>
           </div>
-          <table class="table">
+          <table id="table" class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col" style="width: 5%; overflow: hidden;">#</th>
@@ -75,29 +75,30 @@
                 <th scope="col" style="width: 22%; overflow: hidden;">Hành động</th>
               </tr>
             </thead>
-            <tbody>
-              <?php
-              $count = 0;  
-                foreach($data['postList'] as $post){
-                  $count++;
-                  ?>
-                    <tr>
-                      <th scope="row"><?php echo $count; ?></th>
-                      <td><a href=""><?php echo $post['Title']; ?></a></td>
-                      <td><?php echo $post['Status']; ?></td>
-                      <td><?php echo $post['AvgRating']; ?></td>
-                      <td>
-                        <a href="<?php echo HEADERLINK.'/post/editPost/'.$post['Post_id']; ?>">Sửa</a>
-                        <a href="<?php echo HEADERLINK.'/post/deletePost/'.$post['Post_id']; ?>">Xóa</a>
-                      </td>
-                    </tr>
-                  <?php  
-                }
-              ?>
-              
+            <tbody id="postTable">
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
+<script>
+  $(document).ready(function(){
+      data=<?php echo json_encode($data['postList']) ?>;
+      pagination(data);
+  });
+  function showData(data){
+      contentHtml='';
+      console.log(data);
+      for(const key in data){
+          contentHtml+='<tr><th scope="row">'+(parseInt(key)+1)+'</th>';
+          contentHtml+='<td>'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
+          contentHtml+='<td>'+((data[key]['Status'])?data[key]['Status']:"Chưa cập nhật")+'</td>';
+          contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
+          contentHtml+='<td>';
+          contentHtml+= '<a href="<?php echo HEADERLINK?>/post/editPost/'+data[key]['Post_id']+'">Sửa</a>';
+          contentHtml+= '<a href="<?php echo HEADERLINK?>/post/deletePost/'+data[key]['Post_id']+'">Xóa</a></td></tr>';
+      };
+      $("#postTable").html(contentHtml);
+  };
+</script>

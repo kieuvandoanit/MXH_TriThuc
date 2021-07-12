@@ -27,8 +27,6 @@
                     $isHashTag = TRUE;
                     $searchInput=$_POST['searchInput'];
                     $searchArray=preg_split("/[\s,]+/",$searchInput,0,PREG_SPLIT_NO_EMPTY);
-                    // print_r($searchArray);
-                    // $isHashTag=TRUE;
                     foreach($searchArray as $item){
                         if($item[0] != '#' or substr_count($item,'#') != 1){
                             $isHashTag= false;
@@ -40,27 +38,20 @@
                         //full-text search theo content=$searchInput
                         $data['resultValue']=$this->postModel->getPostByContent($searchInput);
                         $data['resultType']='Nội dung';
-                        // $data['resultByContent']=$this->postModel->getPostByContent('Content',$searchInput);
-                            /* echo '<pre>';
-                            // print_r($data['resultByTitle']) ;
-                            // echo '<br><br><br>';
-                            // print_r($data['resultByContent']) ;
-                             echo '</pre>';*/
+                        
                         }
                     else{
                         //search theo 1 hashtag $searchArray
                         $data['resultValue']=$this->postModel->getPostByHashTag($searchArray);
                         $data['resultType']='HashTag';
                     };
-                    $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
-                    // echo '<pre>';
-                    // print_r($data) ;
-                    // echo '<br><br><br>';
-                    // echo '</pre>';
-                    // header('Cache-Control: no cache'); //no cache
-                    // session_cache_limiter('private_no_expire'); // works
-                    // //session_cache_limiter('public'); // works too
-                    // session_start();
+                    if(isset($_SESSION['userID'])){
+                        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+
+                    }
+                    else{
+                        $data['liked']=[];
+                    }
                     $this->ViewClient('inc/header');
                     $this->ViewClient('pages/search_page',$data);
                     $this->ViewClient('inc/footer');
@@ -71,12 +62,8 @@
                     $this->ViewClient('pages/search_page');
                     $this->ViewClient('inc/footer');
                 }
-
-            // $string=['#this###','#this###','#this###','#this###'];
-
-            // echo substr($string[0], 1);
         }
-
+        
         public function SearchCategory($category){
             $data['category'] = $this->postModel->SearchCategory($category);
             $this->ViewClient('inc/header');

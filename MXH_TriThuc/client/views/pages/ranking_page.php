@@ -1,8 +1,4 @@
 <div class="rank_page">
-    <!-- Hình ảnh đại diện rank  -->
-    <!-- <div class="rank_thumb">
-      <img src="../../public/assets/rank.png" alt="">
-    </div> -->
     <!-- Xep hang bai viet  -->
     <div class="rank_post">
       <h3><i>Bài viết nổi bật</i></h3>
@@ -15,12 +11,8 @@
                 if(isset($data['likedPost'])){
                     $i=1;
                     foreach($data['likedPost'] as $item){
-                            
-
               ?>
-
                 <div  class="body-card-row">
-                      
                     <div><?php echo '#'.$i ?></div>
                     <div class="cut-text"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></div>
                     <div> <?php echo (isset($item['LikesAmount']))?$item['LikesAmount']:'Đang cập nhật'; ?></div>
@@ -34,7 +26,6 @@
               ?>
           </div>
         </div>
-
         <div class="sub-card">
             <h2 class="header" >Bình luận</h2>    
             <div id="body-card">
@@ -55,31 +46,6 @@
                   echo '<div class="body-card-empty"> Đang cập nhật</div>';
                 }
             ?>
-          <!-- <div  class="body-card-row">
-                  <div>#1</div>
-                  <div class="cut-text"> ákfjhsflksasdfsafasfsdfasfsdfsssssssssssssssssssssssssssssssssssssssssssssssj</div>
-                  <div> 20000000</div>
-              </div>
-              <div  class="body-card-row">
-                  <div>#2</div>
-                  <div class="cut-text"> ákfjhsflksasdfsafasfsdfasfsdfsssssssssssssssssssssssssssssssssssssssssssssssj</div>
-                  <div> 20000000</div>
-              </div>
-              <div  class="body-card-row">
-                  <div>#3</div>
-                  <div class="cut-text"> ákfjhsflksasdfsafasfsdfasfsdfsssssssssssssssssssssssssssssssssssssssssssssssj</div>
-                  <div> 20000000</div>
-              </div>
-              <div  class="body-card-row">
-                  <div>#4</div>
-                  <div class="cut-text"> ákfjhsflksasdfsafasfsdfasfsdfsssssssssssssssssssssssssssssssssssssssssssssssj</div>
-                  <div> 20000000</div>
-              </div>
-              <div  class="body-card-row">
-                  <div>#5</div>
-                  <div class="cut-text"> ákfjhsflksasdfsafasfsdfasfsdfsssssssssssssssssssssssssssssssssssssssssssssssj</div>
-                  <div> 20000000</div>
-              </div> -->
           </div>
         </div>
         <div class="sub-card">
@@ -130,7 +96,6 @@
             ?>
           </div>
         </div>
-
         <div class="sub-card">
           <h2 class="header" >Bình luận</h2>    
           <div id="body-card">
@@ -153,7 +118,6 @@
             ?>
           </div>
         </div>
-        
       </div>
     </div>
 </div>
