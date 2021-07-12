@@ -186,7 +186,7 @@ class PostModel extends DB{
     public function getPostByContent($content)
     {
         $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
-        echo $sql;
+        // echo $sql;
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -212,6 +212,17 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+
+    public function updateViewed($postID, $value){
+        $sql = "UPDATE `post` SET `viewed`= $value WHERE `Post_id` = $postID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getTop5HighestFromTable($table,$selectOption,$orderby)
     {
         $sql='SELECT  '.$selectOption.' FROM '.$table.' p ORDER BY '.$orderby.' DESC LIMIT 5';
@@ -222,6 +233,17 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+    public function SearchCategory($category){
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Category_id` = $category";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
+
 
 ?>
