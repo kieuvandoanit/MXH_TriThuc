@@ -70,35 +70,11 @@
       </div>
     </form>
     <!-- Tất cả bình luận  -->
-      <ul class="list_comment">
-        <?php
-            $count = 0;  
-            foreach($data['comment'] as $cmt){
-              $count++;
-        ?>
-        <li class="comment_item">
-          <div class="user_comment_thumb">
-            <img
-              src="<?php echo isset($cmt['Avatar'])?$cmt['Avatar']:'client/public/assets/avatar.jpg';?>"
-              alt="">
-          </div>
-                          
-          <div class="comment_detail">
-            <div class="user_comment"><?php echo $cmt['Name']?></div>
-            <div class="user_comment_desription"> <?php echo $cmt['Content']?></div>
-          </div>
-          <div>
-            <form action="<?php echo HEADERLINK.'/comment/handleIsSpam'; ?>" method="POST">
-              <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam"><i class="fas fa-info-circle"></i></button>
-              <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
-              <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="<?php echo $cmt['Comment_id']; ?>">
-            </form>
-          </div>
-        </li>
-        <?php  
-          }
-        ?>
+    <div id="table">
+      <ul id="postTable" class="list_comment">
+        
       </ul>
+    </div>
     <!-- Thông tin đánh giá  -->
     <form action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
       <div class="form-group col-md-3">
@@ -188,3 +164,36 @@
       </div>
     </div>
   </div>
+
+<script>
+$(document).ready(function(){
+    data=<?php echo json_encode($data['comment']) ?>;
+    pagination(data);
+});
+function showData(data){
+    contentHtml='';
+    console.log(data);
+    for(const key in data){
+        contentHtml+=`<li class="comment_item">
+          <div class="user_comment_thumb">
+            <img
+              src="${((data[key]['Avatar'])?data[key]['Avatar']:'client/public/assets/avatar.jpg')}"
+              alt="">
+          </div>
+                          
+          <div class="comment_detail">
+            <div class="user_comment">${data[key]['Name']}</div>
+            <div class="user_comment_desription"> ${data[key]['Content']}</div>
+          </div>
+          <div>
+            <form action="<?php echo HEADERLINK.'/comment/handleIsSpam'; ?>" method="POST">
+              <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam"><i class="fas fa-info-circle"></i></button>
+              <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
+              <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="${data[key]['Comment_id']}">
+            </form>
+          </div>
+        </li>`;
+    };
+    $("#postTable").html(contentHtml);
+};
+</script>

@@ -41,9 +41,11 @@ class PostModel extends Db{
         return $result; 
         # code...
     }
-    public function createPost($title,$image,$hashTag,$content)
+    public function createPost($title,$thumb,$hashTag,$content,$category,$member_id)
     {
-        $sql='INSERT INTO `POST`(title,thumb,HashTag,Content,Status) VALUES("'.$title.'","'.$image.'","'.$hashTag.'","'.$content.'","Chờ duyệt")';
+        //$title,$thumb,$hashTag,$content,$category,$member_id
+        $sql='INSERT INTO `POST`(title,thumb,HashTag,Content,Status,member_id,category_id) VALUES("'.$title.'","'.$thumb.'","'.$hashTag.'","'.$content.'","Chờ duyệt","'.$member_id.'","'.$category.'");';
+        // echo $sql;
         $result=mysqli_query($this->conn,$sql);
         return $result; 
     }
