@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //Xử lý like
-    $(".post_like").click(function(event){
+    console.log('voday')
+    $(".post_like").click(function(event){;
         var id = $(event.target).attr('id');
         let classLike = ".fa-thumbs-up-"+id;
         console.log(event.target);
@@ -17,12 +18,12 @@ $(document).ready(function () {
                         $(temp).html(html);
                         $(event.target).removeClass("post_liked");
                         $(classLike).css("color","white");
-    
+                        
                     }else{
                         window.location.href = "http://localhost:8080/MXH_TriThuc/user";
                     }
                 }
-    
+                
             });
         }else{
             $.ajax({
@@ -118,10 +119,10 @@ $(document).ready(function () {
 function pagination(data){
     // console.log('voday');
     // console.log(data);
-    var rowsShown=5;
+    var rowsShown=4;
     var rowsTotal=data.length;
     var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
-    console.log(numPages)
+    console.log('number:'+rowsShown)
     $('#table').after('<div id="pagination"></div>');
     for(i = 0;i < numPages;i++) {
         var pageNum = i + 1;
