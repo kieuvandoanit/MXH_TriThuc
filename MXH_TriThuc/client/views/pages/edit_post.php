@@ -1,14 +1,17 @@
 <div class="add_post">
     <h2>Chỉnh sửa bài viết</h2>
     <br>
-    <form action="<?php echo HEADERLINK.'/post/handleEditPost/'.$data['post'][0]['Post_id']; ?>" class="form_add_post" method="POST">
+    <form enctype="multipart/form-data" action="<?php echo HEADERLINK.'/post/handleEditPost/'.$data['post'][0]['Post_id']; ?>" class="form_add_post" method="POST">
       <div class="form-group">
         <label for="post_title">Tiêu đề bài viết</label><br>
         <input type="text" name="postTitle" id="post_title" value="<?php echo $data['post'][0]['Title']; ?>" class="form-control" required placeholder="Tiêu đề bài viết">
       </div>
       <div class="form-group">
-        <label for="post_thumb">Hình ảnh bài viết</label><br>
-        <input type="text" name="postThumb" id="post_thumb" value="<?php echo $data['post'][0]['thumb']; ?>" class="form-control" required placeholder="Hình ảnh bài viết">
+        <label for="post_thumb">Hình ảnh bài viết (nếu muốn sửa)</label><br>
+        <input type="hidden" name="postThumb" id="post_thumb" value="<?php echo $data['post'][0]['thumb']; ?>" class="form-control" required placeholder="Hình ảnh bài viết">
+        <input type="file" name="file" id="upload_file" class="form-control"/>
+        <br>
+        <img src="<?php echo $data['post'][0]['thumb']; ?>" alt="" width="200">
       </div>
       <div class="form-group">
         <label for="post_hashtag">HashTag</label><br>

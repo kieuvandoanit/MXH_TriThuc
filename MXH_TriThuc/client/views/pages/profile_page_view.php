@@ -11,27 +11,7 @@
           <li class="name">
             <h1><?php echo isset($data['user'][0]['Name'])?$data['user'][0]['Name']:'Họ tên chưa cập nhật'; ?></h1>
           </li>
-          <li class="job"><?php 
-            
-            if(isset($data['user'][0]['Level_id'])){
-              if($data['user'][0]['Level_id'] == 1){
-                echo "Cấp bậc: Học sinh";
-              }else if($data['user'][0]['Level_id'] == 2){
-                echo "Cấp bậc: Sinh viên";
-              }else if($data['user'][0]['Level_id'] == 3){
-                echo "Cấp bậc: Thạc sĩ";
-              }else if($data['user'][0]['Level_id'] == 4){
-                echo "Cấp bậc: Tiến sĩ";
-              }else if($data['user'][0]['Level_id'] == 5){
-                echo "Cấp bậc: Giáo sư";
-              }else{
-                echo "Cấp bậc: Chưa cập nhật";
-              }
-            }
-              else{
-                'Level chưa cập nhật';} 
-            
-            ?></li>
+          <li class="job"><?php echo isset($data['user'][0]['Level_id'])?$data['user'][0]['Level_id']:'Level chưa cập nhật'; ?></li>
           <li class="phone"><?php echo isset($data['user'][0]['Phone'])?$data['user'][0]['Phone']:'Số điện thoại chưa cập nhật';?></li>
           <li class="mail"><?php echo isset($data['user'][0]['Email'])?$data['user'][0]['Email']:'Email chưa cập nhật';?></li>
           <li class="address"><?php echo isset($data['user'][0]['address'])?$data['user'][0]['address']:'Địa chỉ chưa cập nhật';?></li>
@@ -47,13 +27,6 @@
           </div> 
         </div>
       </div>
-      <div class="replace">
-        <div class="input-group-btn">
-          <button class="btn btn-default">
-            <a href="<?php echo HEADERLINK.'/user/editProfile/'?>"><i class="glyphicon glyphicon-pencil"></i></a>
-          </button>
-        </div>
-      </div>
     </div>
     <div id="pf_posts" class="background_pf_posts">
       <div class="list_your_post">
@@ -63,7 +36,7 @@
               <div class="left_titles">Bài viết</div>
             </div>
             <div class="col-md-7"></div>
-            <div class="col-md-2" style="margin-top: 30px;"><a href="<?php echo HEADERLINK.'/post/addPost'; ?>" class="btn btn-success">Thêm bài viết</a></div>
+            <div class="col-md-2" style="margin-top: 30px;"></div>
           </div>
           <table class="table">
             <thead class="thead-dark">
