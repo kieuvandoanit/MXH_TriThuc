@@ -52,7 +52,13 @@
                         $data['resultValue']=$this->postModel->getPostByHashTag($searchArray);
                         $data['resultType']='HashTag';
                     };
-                    $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+                    if(isset($_SESSION['userID'])){
+                        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+
+                    }
+                    else{
+                        $data['liked']=[];
+                    }
                     // echo '<pre>';
                     // print_r($data) ;
                     // echo '<br><br><br>';

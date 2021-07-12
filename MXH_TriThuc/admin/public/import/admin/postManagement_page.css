@@ -12,7 +12,6 @@
 }
 thead th{
     text-transform: uppercase;
-    /* align-items: center; */
 }
 
 .edit-icon,.delete-icon{
@@ -23,7 +22,24 @@ thead th{
 }
 .approve-icon{
     color: green;
+    border: none;
+    background: white;
+    padding: 1px;
 }
+
 .reject-icon{
     color: red;
+    border: none;
+    background: white;
+    padding: 1px;
+}
+
+.cut-text { 
+    overflow: hidden !important; 
+    max-width: 300px;
+    /* max-height: 100px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1;
 }

@@ -3,21 +3,16 @@
 <div class="" style="justify-content: space-between; display: flex; flex-direction: row; ">
     <div class="post-filter">
         <div >
-            <select name="selectBox" id="selectBox" class="cmtFilterClass" autofocus>
-                <option value="Tất cả" checked>Tất cả</option>
-                <option value="Chờ Duyệt" checked>Chờ Duyệt</option>
-                <option value="Tự động duyệt" checked>Tự động duyệt</option>
-                <option value="Đã duyệt" checked>Đã duyệt</option>
-                <option value="Không được duyệt" checked>Không được duyệt</option>
-                <option value="Đã xóa" checked>Đã xóa</option>
-            </select>
-            
-        </div>
-        <div style="padding-left: 15px;">
-            <select name="" id="aprovePost" class="cmtFilterClass">
-                <option value="1">Xem bài viết</option>
-                <option value="2">Duyệt bài viết</option>
-            </select>
+            <form action="<?php echo HEADERLINK.'/admin/post/postPage'; ?>" method="POST" >
+                <select name="selectBox" id="selectBox" class="cmtFilterClass" onchange="this.form.submit()" autofocus>
+                    <option value="Tất cả" checked>Tất cả</option>
+                    <option value="Chờ duyệt" >Chờ Duyệt</option>
+                    <option value="Tự động duyệt" >Tự động duyệt</option>
+                    <option value="Đã duyệt" >Đã duyệt</option>
+                    <option value="Không được duyệt" >Không được duyệt</option>
+                    <option value="Đã xóa" >Đã xóa</option>
+                </select>
+            </form>
         </div>
     </div>
     <div class="">
@@ -29,89 +24,55 @@
     </div>
 </div>
 <br>
-<table id="postTable" class="content-table table-sorttable">
+<table id='table'  class="content-table table-sorttable">
+    <thead>
+        <tr>
+            <th>Tiêu đề<i class="fas fa-sort"></i></th>
+            <th class="viewHeader" style="max-width:90px" >Like <i class="fas fa-sort"></i></th>
+            <th class="viewHeader" style="max-width:90px" >Đánh giá<i class="fas fa-sort"></i></th>
+            <th class="viewHeader" style="max-width:90px" >bình luận</th>
+            <th class="viewHeader" style="max-width:90px" >Lượt Xem</th>
+            <th class="approveHeader" ">Nội dung</th>
+            <th class="" >ngày tạo <i class="fas fa-sort"></i></th>
+            <th class="" >ngày cập nhật <i class="fas fa-sort"></i></th>
+            <th class="approveHeader" >Trạng thái<i class="fas fa-sort"></i></th>
+            
+        </tr>
+    </thead>
+    <tbody id="postTable">
 </table>
 
 <script>
     $(document).ready(function(){
-        showData();
+        data=<?php echo json_encode($data) ?>;
+        pagination(data);
     });
-    $('#aprovePost').change(function(){
-        showData();
-
-        
-    }); 
-    function showData(){
-        if ($('#aprovePost').val()==1) {
-            $("#postTable").html(`
-            <thead>
-            <tr>
-            <th>Tiêu đề<i class="fas fa-sort"></i></th>
-            <th style="min-width: 10px;">Like <i class="fas fa-sort"></i></th>
-            <th style="min-width: 10px;">Đánh giá<i class="fas fa-sort"></i></th>
-            <th style="min-width: 10px;">bình luận</th>
-            <th style="min-width: 10px;">Lượt Xem</th>
-            <th style="min-width: 10px;">ngày tạo <i class="fas fa-sort"></i></th>
-            <th style="min-width: 10px;">ngày cập nhật <i class="fas fa-sort"></i></th>
-            <th style="min-width: 10px;"></th>
-            </tr>
-            </thead>
-            <tbody id="tbody">
-            <?php
-        foreach($data as $item){
-            echo ' <tr>
-            <td>'.(isset($item['Title'])?$item['Title']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['LikesAmount'])?$item['LikesAmount']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['AvgRating'])?$item['AvgRating']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['commentAmount'])?$item['commentAmount']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['viewed'])?$item['viewed']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['CreatedDate'])?$item['CreatedDate']:"Chưa cập nhật").'</td>
-            <td>'.(isset($item['UpdatedDate'])?$item['UpdatedDate']:"Chưa cập nhật").'</td>
-            <td class="cmt-btn" style="display: flex; justify-content: flex-end;">
-            <a class="delete-icon" href="'.HEADERLINK.'/admin/post/deletePost/'.(isset($item['Post_id'])?$item['Post_id']:-1).'" title="delete post"><i class="far fa-trash-alt"></i></a>
-            <a class="info-icon" href="'.HEADERLINK.'/admin/post/postDetail/'.(isset($item['Post_id'])?$item['Post_id']:-1).'" title="information of post"><i class="fas fa-info-circle"></i></a>
-            </td>
-            </tr>';
-        }
-        ?>
-        </tbody>';`);
-        } else {
-            $("#postTable").html(`
-            <thead>
-                <tr>
-                <th>Tiêu đề<i class="fas fa-sort"></i></th>
-                <th style="min-width: 10px;"">Nội dung</th>
-                <th style="min-width: 10px;">ngày tạo <i class="fas fa-sort"></i></th>
-                <th style="min-width: 10px;">ngày cập nhật <i class="fas fa-sort"></i></th>
-                <th style="min-width: 10px;">Trạng thái<i class="fas fa-sort"></i></th>
-                <th style="min-width: 10px;"></th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-            foreach($data as $item){
-                echo '<tr>
-                <td>'.(isset($item['Title'])?$item['Title']:"Chưa cập nhật").'</td>
-                <td>'.(isset($item['HashTag'])?$item['HashTag']:"Chưa cập nhật").'</td>
-                <td>'.(isset($item['CreatedDate'])?$item['CreatedDate']:"Chưa cập nhật").'</td>
-                <td>'.(isset($item['UpdatedDate'])?$item['UpdatedDate']:"Chưa cập nhật").'</td>
-                <td class="cmt-btn" style="display: flex; justify-content: flex-end;">';
-                if ($item["Status"]=="Chờ duyệt") {
-                    echo '<a class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></a>
-                    <a class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></a>';
-                } elseif ($item["Status"]=="Không được duyệt"){
-                    echo '<a class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></a>';
-                }
-                else{
-                    echo '<a class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></a>';
-                }
-                echo '<a class="info-icon" href="'.HEADERLINK.'/admin/post/postDetail/'.(isset($item['Post_id'])?$item['Post_id']:-1).'" title="information of post"><i class="fas fa-info-circle"></i></a>
-                </td>
-                </tr>';
+    function showData(data){
+        contentHtml='';
+        for(const key in data){
+            contentHtml+='<tr><td>'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['LikesAmount'])?data[key]['LikesAmount']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['viewed'])?data[key]['viewed']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td class="cut-text">'+((data[key]['Content'])?data[key]['Content']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['CreatedDate'])?data[key]['CreatedDate']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['UpdatedDate'])?data[key]['UpdatedDate']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td class="cmt-btn" style="display: flex; justify-content: flex-end;">';
+            if (data[key]["Status"]=="Chờ duyệt") {
+                contentHtml+= '<form action="<?php echo HEADERLINK;?>/admin/post/handleAprovePost/'+((data[key]['Post_id'])?data[key]['Post_id']:0)+'" method="POST" style="display:flex">';
+                contentHtml+= `<button type="submit" name="btn_aprove" class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></button>
+                <button type="submit" name="btn_inject" class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></button></form>`;
+            } else if (data[key]["Status"]=="Không được duyệt"){
+                contentHtml+= '<div class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></div>';
             }
-            ?>
-            </tbody>';`
-            );
-        }
-    }
+            else{
+                contentHtml+= '<div class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></div>';
+            };
+            contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/post/deletePost/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
+            contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/post/postDetail/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+        };
+        $("#postTable").html(contentHtml);
+    };
 </script>
+

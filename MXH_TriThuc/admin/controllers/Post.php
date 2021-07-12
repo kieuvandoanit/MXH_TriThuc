@@ -18,7 +18,16 @@
              * Kiểm tra dữ liệu lấy ra
              * hiển thị view.
              */
-            $results=$this->PostModel->getAllPost();
+            $expression='1';
+            if(isset($_POST['selectBox'])){
+                $expression=$_POST['selectBox'];
+                if($expression=='Đã xóa'){
+                    $expression='isDelete=1';
+                }else{
+                    $expression='Status="'.$expression.'"';
+                }
+            }
+            $results=$this->PostModel->getAllPost($expression);
             $this->viewAdmin('inc/header');
             $this->viewAdmin('pages/post_page',$results);
             $this->viewAdmin('inc/footer');
@@ -45,24 +54,31 @@
         {
             
             if(isset($_POST['btn_aprove'])){
-                $idPost=$_POST['id'];
-                $title=$_POST['title'];
-                $content=$_POST['txtDescription'];
-                $results= $this->PostModel->updatePost($idPost,$title,$content,'Đã Duyệt');
-                header('Location: '.HEADERLINK.'/admin/post/postDetail/'.$id);
-                $this->viewAdmin('inc/header');
-                $this->viewAdmin('pages/addCategory_page');
-                $this->viewAdmin('inc/footer');
+                if(isset($_POST['id'])){
+                    $idPost=$_POST['id'];
+                    $title=$_POST['title'];
+                    $content=$_POST['txtDescription'];
+                    $results= $this->PostModel->updatePost($idPost,$title,$content,'Đã duyệt');
+                    $this->redirect('/admin/post/postDetail/'.$idPost);
+                }
+                else{
+                    $results= $this->PostModel->updatePost($id,'','','Đã duyệt');
+                    $this->redirect('/admin/post/postPage/');
+
+                }
             }
             elseif (isset($_POST['btn_inject'])){
-                $idPost=$_POST['id'];
-                $title=$_POST['title'];
-                $content=$_POST['txtDescription'];
-                $results= $this->PostModel->updatePost($idPost,$title,$content,'Không được duyệt');
-                header('Location: '.HEADERLINK.'/admin/post/postDetail/'.$id);
-                $this->viewAdmin('inc/header');
-                $this->viewAdmin('pages/addCategory_page');
-                $this->viewAdmin('inc/footer');
+                if(isset($_POST['id'])){
+                    $idPost=$_POST['id'];
+                    $title=$_POST['title'];
+                    $content=$_POST['txtDescription'];
+                    $results= $this->PostModel->updatePost($idPost,$title,$content,'Không được duyệt');
+                    $this->redirect('/admin/post/postDetail/'.$idPost);
+                }
+                else{
+                    $results= $this->PostModel->updatePost($id,'','','Không được duyệt');
+                    $this->redirect('/admin/post/postPage/');
+                }
             }
             else
             {

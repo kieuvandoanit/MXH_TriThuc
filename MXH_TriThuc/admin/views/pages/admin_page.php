@@ -20,7 +20,7 @@
   </div>
 </div>
  <br>
-<table class="content-table table-sorttable">
+<table id="table" class="content-table table-sorttable">
   <thead>
       <tr>
           <th>STT <i class="fas fa-sort"></i></th>
@@ -29,23 +29,26 @@
           <th style="min-width: 10px;"></th>
       </tr>
   </thead>
-  <tbody>
-    <?php 
-    foreach($data['userAdmin'] as $key => $user){
-        ?>
-        <tr>
-            <td><?php echo $key + 1; ?></td>
-            <td><?php echo $user['UserName']; ?></td>
-            <td><?php echo $user['email']; ?></td>
-            <td class="category-btn">
-              <a class="edit-icon" href="<?php echo HEADERLINK.'/admin/user/editUser/'.$user['User_id']; ?>" title="edit post"><i class="fas fa-pencil-alt"></i></a>
-              <a class="delete-icon" href="<?php echo HEADERLINK.'/admin/user/deleteUser/'.$user['User_id']; ?>" title="delete post"><i class="far fa-trash-alt"></i></a>
-              <a class="info-icon" href="<?php echo HEADERLINK.'/admin/user/profile/'.$user['User_id']; ?>" title="information of post"><i class="fas fa-info-circle"></i></a>
-            </td>
-        </tr>
-        <?php
-    }
-    ?>
-      
+  <tbody id="postTable">
     </tbody>
 </div>
+<script>
+    $(document).ready(function(){
+        data=<?php echo json_encode($data) ?>;
+        pagination(data['userAdmin']);
+    });
+    function showData(data){
+        contentHtml='';
+        for(const key in data){
+            contentHtml+='<tr><td>'+(parseInt(key) +1)+'</td>';
+            contentHtml+='<td>'+((data[key]['UserName'])?data[key]['UserName']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['email'])?data[key]['email']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td class="category-btn">';
+            contentHtml+= '<a class="edit-icon" href="<?php echo HEADERLINK; ?>/admin/user/editUser/'+data[key]['User_id']+'" title="edit post"><i class="fas fa-pencil-alt"></i></a>';
+            contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK; ?>/admin/user/deleteUser/'+data[key]['User_id']+'" title="delete post"><i class="fas fa-trash-alt"></i></a>';
+            contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+                
+        };
+        $("#postTable").html(contentHtml);
+    };
+</script>

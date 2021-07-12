@@ -295,9 +295,7 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 --
 -- Structure for view `chartcountpost`
 --
-DROP TABLE IF EXISTS `chartcountpost`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `chartcountpost`  AS   with recursive my_cte as (select '202007' AS `monthyear` union all select extract(year_month from cast(concat_ws('',`my_cte`.`monthyear`,'01') as date) + interval 1 month) AS `EXTRACT(YEAR_MONTH from DATE_ADD(CONVERT(CONCAT_WS("",monthyear,"01"), DATE), INTERVAL 1 MONTH))` from `my_cte` where cast(`my_cte`.`monthyear` as signed) < cast(extract(year_month from current_timestamp()) as signed))select `f`.`monthyear` AS `monthyear`,coalesce(`countreal`.`soluong`,0) AS `soluong` from (`my_cte` `f` left join (select extract(year_month from `p`.`CreatedDate`) AS `monthyear`,count(0) AS `soluong` from `post` `p` where year(`p`.`CreatedDate`) = year(current_timestamp()) or year(`p`.`CreatedDate`) = year(current_timestamp()) - 1 and month(`p`.`CreatedDate`) > month(current_timestamp()) group by year(`p`.`CreatedDate`),month(`p`.`CreatedDate`)) `countreal` on(`f`.`monthyear` = `countreal`.`monthyear`))  ;
 
 --
 -- Indexes for dumped tables
