@@ -39,13 +39,6 @@ class CommentModel extends Db{
         return $result;
     }
 
-    // public function createPost($title,$image,$hashTag,$content)
-    // {
-    //     $sql='INSERT INTO `POST`(title,thumb,HashTag,Content,Status) VALUES("'.$title.'","'.$image.'","'.$hashTag.'","'.$content.'","Chờ duyệt")';
-    //     $result=mysqli_query($this->conn,$sql);
-    //     return $result; 
-    // }
-
     public function deleteComment($id)
     {
         $sql='UPDATE `comment` SET `isDelete` = 1 WHERE `Comment_id`='.$id;
