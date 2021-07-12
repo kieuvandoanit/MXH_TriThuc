@@ -1,10 +1,12 @@
 <?php
     class Post extends Controller{
         protected $PostModel;
+        protected $categoryModel;
 
         public function __construct()
         {
             $this->PostModel= $this->ModelAdmin('PostModel');
+            $this->categoryModel= $this->ModelAdmin('CategoryModel');
         }
         public function SayHi(){
             $this->redirect('/admin/Post/postPage');
@@ -90,22 +92,29 @@
         public function createPost()
         {
             # code...
+            $data['category'] = $this->categoryModel->getAllCategory('ASC');
             $this->viewAdmin('inc/header');
-            $this->viewAdmin('pages/addPost_page');
+            $this->viewAdmin('pages/addPost_page',$data);
             $this->viewAdmin('inc/footer');
             
         }
         //Post
         public function handleCreatePost()
         {
+            // global $_FILES;
+            require_once('MXH_TriThuc/plugin/helper.php');
             if(isset($_POST['btn_create'])){
                 $title=$_POST['title'];
-                $image=$_POST['image'];
+                $thumb = uploadFile();
                 $hashTag=$_POST['hashTag']; 
+                $member_id = $_SESSION['userID'];
+                $category = $_POST['postCategory'];
                 $content=$_POST['txtDescription'];
-                // echo $title.'||'.$image.'||'.$hashTag.'||'.$content;
-                $results= $this->PostModel->createPost($title,$image,$hashTag,$content);
-                echo $results?'ok':'khong dc';
+                //Xu li hashtag 
+                require_once('MXH_TriThuc/plugin/helper.php');
+                $hashTag = convert_vi_to_en($hashTag);
+                $results= $this->PostModel->createPost($title,$thumb,$hashTag,$content,$category,$member_id);
+                $this->redirect('/admin/post/postPage');
             }
         }
         //Xóa

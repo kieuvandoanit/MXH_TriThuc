@@ -10,15 +10,9 @@
           </select>
       </div>
     </div>  
-    <!-- <div class="">
-      <a href="<?php echo HEADERLINK.'/admin/category/createCategory'; ?>" class="btn btn-primary" style="border-radius: 45px;">
-          <i class="fas fa-plus"></i>
-          <b>Tạo bình luận</b>
-      </a>
-  </div> -->
 </div>
 <br>
-<table class="content-table table-sorttable">
+<table id="table" class="content-table table-sorttable">
     <thead>
         <tr>
             <th>Người bình luận <i class="fas fa-sort"></i></th>
@@ -29,22 +23,30 @@
             <th style="min-width: 10px;"></th>
         </tr>
     </thead>
-    <tbody>
-    <?php
-        foreach($data['cmtList'] as $item){
-            echo '<tr>
-                    <td>'.(isset($item['Name'])?$item['Name']:"khong").'</td>
-                    <td>'.(isset($item['CreateDate'])?$item['CreateDate']:"khong").'</td>
-                    <td>'.(isset($item['UpdateDate'])?$item['UpdateDate']:"khong").'</td>
-                    <td>'.(isset($item['Title'])?$item['Title']:"khong").'</td>
-                    <td>'.(isset($item['Content'])?$item['Content']:"khong").'</td>
-                    <td class="user-btn">
-                        <a class="delete-icon" href="'.HEADERLINK.'/admin/comment/deleteComment/'.(isset($item['Comment_id'])?$item['Comment_id']:-1).'" title="delete comment"><i class="far fa-trash-alt"></i></a>
-                        <a class="info-icon" href="'.HEADERLINK.'/admin/comment/detailComment/'.(isset($item['Comment_id'])?$item['Comment_id']:-1).'" title="information of comment"><i class="fas fa-info-circle"></i></a>
-                    </td>
-                </tr>';
-        };
-      ?>
-      <!-- <a class="edit-icon" href="'.HEADERLINK.'/admin/category/createCategory" title="edit post"><i class="fas fa-pencil-alt"></i></a> -->
+
+    <tbody id="postTable">
     </tbody>
 </table>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var data=<?php echo json_encode($data) ?>;
+        // var data=<php echo json_encode($data) ?>;
+        pagination(data);
+        
+    });
+    function showData(data){
+        console.log('showdata');
+        contentHtml='';
+        for(const key in data){
+            contentHtml+= '<tr><td>'+((data[key]["Name"])?data[key]["Name"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["CreateDate"])?data[key]["CreateDate"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["UpdateDate"])?data[key]["UpdateDate"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["Title"])?data[key]["Title"]:"khong")+'</td>';
+            contentHtml+= '<td>'+((data[key]["Content"])?data[key]["Content"]:"khong")+'</td>';
+            contentHtml+= '<td class="user-btn">';
+            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/comment/deleteComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
+            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/comment/detailComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+        };
+        $("#postTable").html(contentHtml);
+    };
+</script>
