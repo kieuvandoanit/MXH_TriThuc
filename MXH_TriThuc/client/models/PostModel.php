@@ -234,5 +234,16 @@ class PostModel extends DB{
         return $arr;
     }
 
+    public function SearchCategory($category){
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Category_id` = $category";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
+
+
 ?>

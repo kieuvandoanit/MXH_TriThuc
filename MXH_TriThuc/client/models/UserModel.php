@@ -153,7 +153,6 @@ class UserModel extends DB{
         }
         return $arr;
     }
-
 }
 
 ?>

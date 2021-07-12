@@ -111,13 +111,14 @@ class User extends Controller{
                     $phoneNumber = $_POST['phoneNumber'];
                     $email = $_POST['email'];
                     $gender = 'Nam';
-
                     $result = $this->userModel->createUser(1, $username, $password, $email);
+                    echo $result;
                     if($result){
                         $newAdmin = $this->userModel->getUser($username, $password, 1);
                         if(!empty($newAdmin)){
                             $resultCreateProfile = $this->userModel->createUserProfile('',$fullname,$gender, $phoneNumber, $email, '', $newAdmin[0]['User_id']);
                             $resultCreateSetting = $this->userModel->createSetting($newAdmin[0]['User_id'],$email);
+                            
                             if($resultCreateProfile && $resultCreateSetting){
                                 $this->redirect('/admin/user/adminPage');
                             }else{

@@ -5,7 +5,7 @@
         <?php  
       foreach ($data['category'] as $category){
         ?>
-        <li class="category_item"><a href=""><?php echo $category['CategoryName'] ?></a></li>
+        <li class="category_item"><a href="<?php echo HEADERLINK.'/Search/SearchCategory/'.$category['Category_id']; ?>"><?php echo $category['CategoryName'] ?></a></li>
         <?php  
       }
       ?>
@@ -17,7 +17,7 @@
           <div class="most_view_header">
             <div class="title">
               <div class="left_title">Xem nhiều nhất</div>
-              <div class="right_title"><a href="">Xem tất cả</a></div>
+              <div class="right_title"><a href="<?php echo HEADERLINK.'/Search/SearchViewMost'; ?>">Xem tất cả</a></div>
             </div>
           </div>
           <div class="list_post" >
@@ -97,7 +97,7 @@
       <div class="new_post_header">
         <div class="title">
           <div class="left_title">Bài viết mới nhất</div>
-          <div class="right_title"><a href="">Xem tất cả</a></div>
+          <div class="right_title"><a href="<?php echo HEADERLINK.'/Search/SearchNewMost'; ?>">Xem tất cả</a></div>
         </div>
       </div>
       <div class="list_post">

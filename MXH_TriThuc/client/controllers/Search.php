@@ -82,5 +82,26 @@
 
             // echo substr($string[0], 1);
         }
+
+        public function SearchCategory($category){
+            $data['category'] = $this->postModel->SearchCategory($category);
+            $this->ViewClient('inc/header');
+            $this->ViewClient('pages/search_page_1',$data);
+            $this->ViewClient('inc/footer');
+        }
+
+        public function SearchViewMost(){
+            $data['category'] = $this->postModel->getPostSortView('DESC');
+            $this->ViewClient('inc/header');
+            $this->ViewClient('pages/search_page_1',$data);
+            $this->ViewClient('inc/footer');
+        }
+
+        public function SearchNewMost(){
+            $data['category'] = $this->postModel->getPostSortID('DESC');
+            $this->ViewClient('inc/header');
+            $this->ViewClient('pages/search_page_1',$data);
+            $this->ViewClient('inc/footer');
+        }
     }
 ?>
