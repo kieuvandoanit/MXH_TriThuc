@@ -106,3 +106,10 @@ form label{
     min-width: 20px;
     color: rgba(18, 18, 19, 0.726)!important;
 }
+#pagination i{
+    display: inline-flex ;
+    align-items: center;
+    margin: 0px 10px;
+    font-size: 20px;
+    color: darkblue;
+}
