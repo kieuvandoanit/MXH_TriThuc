@@ -4,12 +4,14 @@ class Post extends Controller{
     protected $categoryModel;
     protected $settingModel;
     protected $userModel;
+    protected $commentModel;
 
     public function __construct(){
         $this->postModel = $this->ModelClient('PostModel');
         $this->categoryModel = $this->ModelClient('CategoryModel');
         $this->settingModel = $this->ModelClient('SettingModel');
         $this->userModel = $this->ModelClient('UserModel');
+        $this->commentModel = $this ->ModelClient('CommentModel');
     }
     public function SayHi(){
         $data['page_title'] = 'Bài viết';
@@ -204,6 +206,8 @@ class Post extends Controller{
     public function postDetail($id){
         $data['page_title'] = "Chi tiết bài viết";
         $data['post'] = $this->postModel->getPostByID($id);
+
+        $data['comment']=$this->commentModel->getCommentSortID($id, 'ASC');
 
         $this->postModel->updateViewed($id, $data['post'][0]['viewed'] + 1);
         $sao1 = $this->postModel->getRatingHistory($id, '1 sao');

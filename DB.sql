@@ -314,21 +314,10 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 --
 -- Structure for view `chartcountpost`
 --
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin
-
-
-
-
-<<<<<<< HEAD
 --
 -- Indexes for dumped tables
 --
-=======
->>>>>>> origin
 
 --
 -- Indexes for table `category`

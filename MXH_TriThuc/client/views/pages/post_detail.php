@@ -59,49 +59,46 @@
     <!-- Bình luận  -->
     <h3>Bình luận</h3>
     <!-- form bình luận  -->
-    <form action="" class="comment">
+    <form action="<?php echo HEADERLINK.'/comment/handleAddComment'; ?>" class="comment" method="POST">
       <div class="form-group">
         <label for="comment">Nội dung bình luận:</label>
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+        <textarea class="form-control" name="content" rows="5" id="content"></textarea><br>
+        <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
       </div>
-      <input type="submit" value="Bình luận" class="btn btn-primary">
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" name="btn_addComment" value="Bình luận" >
+      </div>
     </form>
     <!-- Tất cả bình luận  -->
-    <ul class="list_comment">
-      <li class="comment_item">
-        <div class="user_comment_thumb">
-          <img
-            src="https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-m%E1%BA%B7c-%C4%91%E1%BB%8Bnh-n%E1%BB%AF.jpg"
-            alt="">
-        </div>
-        <div class="comment_detail">
-          <div class="user_comment">Thương Hoài</div>
-          <div class="user_comment_desription"> Bài viết hay, hấp dẫn lắm.</div>
-        </div>
-      </li>
-      <li class="comment_item">
-        <div class="user_comment_thumb">
-          <img
-            src="https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-m%E1%BA%B7c-%C4%91%E1%BB%8Bnh-n%E1%BB%AF.jpg"
-            alt="">
-        </div>
-        <div class="comment_detail">
-          <div class="user_comment">Thương Hoài</div>
-          <div class="user_comment_desription"> Bài viết hay, hấp dẫn lắm.</div>
-        </div>
-      </li>
-      <li class="comment_item">
-        <div class="user_comment_thumb">
-          <img
-            src="https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-m%E1%BA%B7c-%C4%91%E1%BB%8Bnh-n%E1%BB%AF.jpg"
-            alt="">
-        </div>
-        <div class="comment_detail">
-          <div class="user_comment">Thương Hoài</div>
-          <div class="user_comment_desription"> Bài viết hay, hấp dẫn lắm.</div>
-        </div>
-      </li>
-    </ul>
+      <ul class="list_comment">
+        <?php
+            $count = 0;  
+            foreach($data['comment'] as $cmt){
+              $count++;
+        ?>
+        <li class="comment_item">
+          <div class="user_comment_thumb">
+            <img
+              src="<?php echo isset($cmt['Avatar'])?$cmt['Avatar']:'client/public/assets/avatar.jpg';?>"
+              alt="">
+          </div>
+                          
+          <div class="comment_detail">
+            <div class="user_comment"><?php echo $cmt['Name']?></div>
+            <div class="user_comment_desription"> <?php echo $cmt['Content']?></div>
+          </div>
+          <div>
+            <form action="<?php echo HEADERLINK.'/comment/handleIsSpam'; ?>" method="POST">
+              <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam"><i class="fas fa-info-circle"></i></button>
+              <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
+              <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="<?php echo $cmt['Comment_id']; ?>">
+            </form>
+          </div>
+        </li>
+        <?php  
+          }
+        ?>
+      </ul>
     <!-- Thông tin đánh giá  -->
     <form action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
       <div class="form-group col-md-3">
