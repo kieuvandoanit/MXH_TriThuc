@@ -289,8 +289,8 @@ INSERT INTO `voting` (`votingID`, `PostID`, `Member_id`, `Rate`, `time`) VALUES
 -- Structure for view `chartcountpost`
 --
 
-<<<<<<< HEAD
-=======
+
+
 CREATE OR REPLACE VIEW chartCountPost
 AS
 	WITH RECURSIVE my_cte AS
@@ -303,7 +303,7 @@ SELECT f.monthyear, COALESCE(countReal.soluong, 0) as soluong FROM my_cte f LEFT
 FROM post p 
 WHERE YEAR(p.CreatedDate)=YEAR(NOW()) OR (YEAR(p.CreatedDate)=(YEAR(NOW())-1) AND MONTH(p.CreatedDate)>MONTH(NOW())) GROUP BY YEAR(p.CreatedDate),MONTH(p.CreatedDate)) AS countReal on f.monthyear=countReal.monthyear;
 
->>>>>>> origin/main
+
 
 --
 -- Indexes for dumped tables

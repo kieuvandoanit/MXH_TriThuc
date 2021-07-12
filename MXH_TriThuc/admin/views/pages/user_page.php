@@ -1,7 +1,7 @@
 <h2>Quản lí người dùng</h2>
 <br>
 <div class="" style="justify-content: space-between; display: flex; flex-direction: row; ">
-  <div class="user-filter">
+  <!-- <div class="user-filter">
       <div >
           <select name="" id="" class="userFilterClass" >
               <option value="" checked>Thêm bộ lọc</option>
@@ -11,7 +11,7 @@
               <option value="" checked>Hạng thành viên</option>
           </select>
       </div>
-  </div>
+  </div> -->
   <div class="">
       <a href="<?php echo HEADERLINK.'/admin/user/createUser'; ?>" class="btn btn-primary" style="border-radius: 45px;">
           <i class="fas fa-plus"></i>
@@ -20,7 +20,7 @@
   </div>
 </div>
  <br>
-<table class="content-table table-sorttable">
+<table id="table" class="content-table table-sorttable">
   <thead>
       <tr>
           <th>Họ tên <i class="fas fa-sort"></i></th>
@@ -30,43 +30,30 @@
           <th style="min-width: 10px;"></th>
       </tr>
   </thead>
-  <tbody>
-        <?php 
-        foreach($data['listUser'] as $user){
-            ?>
-            <tr>
-            <td><?php echo $user['Name']; ?></td>
-            <td><?php echo $user['Phone']; ?></td>
-            <td><?php echo $user['email']; ?></td>
-            <td><?php echo $user['Level_id'] ?></td>
-              <td class="user-btn">
-                  <!-- <a class="edit-icon" href="" title="edit post"><i class="fas fa-pencil-alt"></i></a> -->
-                  <a class="delete-icon" href="<?php echo HEADERLINK.'/admin/user/deleteUser/'.$user['User_id'].'/2'; ?>" title="Xóa user"><i class="far fa-trash-alt"></i></a>
-                  <a class="info-icon" href="<?php echo HEADERLINK.'/admin/user/profile/'.$user['User_id']; ?>" title="Thông tin"><i class="fas fa-info-circle"></i></a>
-              </td>
-            </tr>
-            <?php  
-        }
-        ?>
+  <tbody id="postTable">
+        
     </tbody>
 </div>
 <script>
     $(document).ready(function(){
-        data=<?php echo json_encode($data) ?>;
-        pagination(data['userAdmin']);
+        data=<?php echo json_encode($data['listUser']) ?>;
+        pagination(data);
     });
     function showData(data){
+        console.log(data);
         contentHtml='';
         for(const key in data){
             contentHtml+='<tr><td>'+(parseInt(key) +1)+'</td>';
-            contentHtml+='<td>'+((data[key]['UserName'])?data[key]['UserName']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['email'])?data[key]['email']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td class="category-btn">';
+            contentHtml+='<td>'+((data[key]['Name'])?data[key]['Name']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+((data[key]['Email'])?data[key]['Email']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td>'+data[key]['Level_id']+'</td>';
+            contentHtml+='<td class="user-btn">';
             contentHtml+= '<a class="edit-icon" href="<?php echo HEADERLINK; ?>/admin/user/editUser/'+data[key]['User_id']+'" title="edit post"><i class="fas fa-pencil-alt"></i></a>';
             contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK; ?>/admin/user/deleteUser/'+data[key]['User_id']+'" title="delete post"><i class="fas fa-trash-alt"></i></a>';
             contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
-                
+            
         };
+        console.log(contentHtml);
         $("#postTable").html(contentHtml);
     };
 </script>

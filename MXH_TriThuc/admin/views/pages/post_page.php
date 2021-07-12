@@ -49,6 +49,7 @@
     });
     function showData(data){
         contentHtml='';
+        console.log(data);
         for(const key in data){
             contentHtml+='<tr><td>'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['LikesAmount'])?data[key]['LikesAmount']:"Chưa cập nhật")+'</td>';
