@@ -1,14 +1,16 @@
 <div class="add_post">
     <h2>Thêm bài viết mới</h2>
     <br>
-    <form action="<?php echo HEADERLINK.'/post/handleAddPost'; ?>" class="form_add_post" method="POST">
+    
+    <form enctype="multipart/form-data" action="<?php echo HEADERLINK.'/post/handleAddPost'; ?>" class="form_add_post" method="POST">
       <div class="form-group">
         <label for="post_title">Tiêu đề bài viết</label><br>
         <input type="text" name="postTitle" id="post_title" class="form-control" required placeholder="Tiêu đề bài viết">
       </div>
       <div class="form-group">
         <label for="post_thumb">Hình ảnh bài viết</label><br>
-        <input type="text" name="postThumb" id="post_thumb" class="form-control" required placeholder="Hình ảnh bài viết">
+        <!-- <input type="text" name="postThumb" id="post_thumb" class="form-control" required placeholder="Hình ảnh bài viết"> -->
+        <input type="file" name="file" id="upload_file" class="form-control"/>
       </div>
       <div class="form-group">
         <label for="post_hashtag">HashTag</label><br>

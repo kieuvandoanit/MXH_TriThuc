@@ -97,7 +97,7 @@
                     </div>
                   </div>
                   <div class="post_react">
-                    <div class="post_like<?php 
+                    <div class="post_like <?php 
                           if(!empty($data['liked'])){
                             foreach($data['liked'] as $temp){
                               if($temp['Post_id'] == $data['post_view'][$i]['Post_id']){

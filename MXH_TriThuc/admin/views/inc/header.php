@@ -27,10 +27,10 @@
                 <a class="btn far fa-bell button_class" href="#"></a>
                 <?php if(!empty($_SESSION['isLogin'])){
                     ?>
-                    <a class="btn fas fa-sign-out-alt" style="margin-top: 9px;"href="<?php echo HEADERLINK.'/admin/user/logout'; ?>"></a>
+                    <a class="btn fas fa-sign-out-alt" style="margin-top: 23px;"href="<?php echo HEADERLINK.'/admin/user/logout'; ?>"></a>
                     <?php
                 } ?>
-                <a id="sign_in button_class" class="btn" href="#" style="font-size: 3vh;"><?php echo !empty($_SESSION['fullname'])?'Hi, '.$_SESSION['fullname']:'Hi, Admin' ?></a>
+                <p id="sign_in button_class" style="color: white; margin-top: 18px;" class="btn" style="font-size: 3vh;"><?php echo !empty($_SESSION['fullname'])?'Hi, '.$_SESSION['fullname']:'Hi, Admin' ?></p>
             </div>
     </nav>
     <div class="body" style="min-height:90vh;display:flex">

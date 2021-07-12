@@ -32,12 +32,12 @@ class Post extends Controller{
     }
 
     public function handleAddPost(){
-        // echo '<pre>'; print_r($_POST); echo '</pre>'; 
-
+        require_once('MXH_TriThuc/plugin/helper.php');
         if(isset($_POST['btn_addPost'])){
             $hashtag = $_POST['postHashtag'];
             $title = $_POST['postTitle'];
-            $thumb = $_POST['postThumb'];
+            // $thumb = $_POST['postThumb'];
+            $thumb = uploadFile();
             $content = $_POST['postContent'];
             $member_id = $_SESSION['userID'];
             $category = $_POST['postCategory'];
@@ -166,13 +166,20 @@ class Post extends Controller{
     }
 
     public function handleEditPost($id){ 
+        // echo '<pre>'; print_r($_FILES); echo '</pre>'; 
+
         if(isset($_POST['btn_editPost'])){
+            if(!empty($_FILES['file']['name'])){
+                require_once('MXH_TriThuc/plugin/helper.php');
+                $thumb = uploadFile();
+            }else{
+                $thumb = $_POST['postThumb'];
+            }
             $hashtag = $_POST['postHashtag'];
             $title = $_POST['postTitle'];
-            $thumb = $_POST['postThumb'];
             $content = $_POST['postContent'];
-            // $category = $_POST['postCategory'];
-            $category=1;
+            $category = $_POST['postCategory'];
+            
 
             //Xu li hashtag 
             require_once('MXH_TriThuc/plugin/helper.php');

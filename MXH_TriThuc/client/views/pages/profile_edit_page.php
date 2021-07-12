@@ -29,7 +29,7 @@
               <div class="title">
                 <div class="left_titles">Thông tin cá nhân</div>
               </div>
-              <form id="info" method="POST" action="<?php echo HEADERLINK.'/user/handleEditProfile' ?>">
+              <form enctype="multipart/form-data" id="info" method="POST" action="<?php echo HEADERLINK.'/user/handleEditProfile' ?>">
                 <div class="info">
                   <!-- <form> -->
                     <h5><b>Ảnh đại diện</b></h5>
@@ -39,7 +39,10 @@
                           <i class="fas fa-camera"></i>
                         </button>
                       </div>
-                      <input type="text" class="form-control" name="user_thumb" value="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>">
+                      <input type="hidden" class="form-control" name="user_thumb" value="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>">
+                      <input type="file" name="file" id="upload_file" class="form-control"/>
+                      <br><br>
+                      <img src="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>" alt="" width="200">
                     </div>
                  <!-- </form> -->
                 </div>
