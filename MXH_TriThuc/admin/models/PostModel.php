@@ -1,8 +1,9 @@
 <?php
 class PostModel extends Db{
-    public function getAllPost()
+    public function getAllPost($expression)
     {
-        $sql='SELECT * FROM `Post`';
+        $sql='SELECT * FROM `Post` where '.$expression;
+        // echo $sql;
         $rows=mysqli_query($this->conn,$sql);
         $arr = [];
         while($row = mysqli_fetch_assoc($rows)){
@@ -31,7 +32,11 @@ class PostModel extends Db{
     }
     public function updatePost($id,$title,$content,$status)
     {
-        $sql='UPDATE `Post` SET   `Title` = "'.$title.'", `Content` ="'.$content.'",status="'.$status.'" WHERE `Post_id`='.$id;
+        if($title!='' and $content!=''){
+            $sql='UPDATE `Post` SET   `Title` = "'.$title.'", `Content` ="'.$content.'",status="'.$status.'" WHERE `Post_id`='.$id;
+        }else{
+            $sql='UPDATE `Post` SET   status="'.$status.'" WHERE `Post_id`='.$id;
+        }
         $result=mysqli_query($this->conn,$sql);
         return $result; 
         # code...
