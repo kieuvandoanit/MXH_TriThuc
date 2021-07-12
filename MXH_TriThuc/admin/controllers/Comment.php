@@ -30,90 +30,74 @@ class Comment extends Controller{
         $this->viewAdmin('inc/footer');
     }
 
-    //Chức năng tạo comment
+    // //Chức năng tạo comment
     
-    //Get
-    public function createCategory(){
-        $this->viewAdmin('inc/header');
-        $this->viewAdmin('pages/addComment_page');
-        $this->viewAdmin('inc/footer');
-    }
-    //Post
-    public function handleCreateComment()
-    {
-        # code...
-        /**
-         * lấy thông tin từ cmt
-         * kiểm tra thông tin
-         * insert vào db
-         * kiểm tra kết quả trả về
-         */
-        if(isset($_POST['btn_create'])){
-            $categoryName=$_POST['categoryName'];
-            $Description=$_POST['Description'];
-            $results= $this->categoryModel->setNewCategory($categoryName,$Description);
-            $message=$results==1?1:'Tên danh mục đã tồn tại';
-            // echo $message;
-            header('Location: '.HEADERLINK.'/admin/category/categoryPage');
-            $this->viewAdmin('inc/header');
-            $this->viewAdmin('pages/addCategory_page',$message);
-            $this->viewAdmin('inc/footer');
-        }
-        else{
-            $this->redirect('/admin/category/categoryPage');
-            $this->commentPage();
-        }
-
-    }
-    
-    // // Chức năng xem một danh mục
     // //Get
-    // public function detailCategory($id=-1)
-    // {
-    //     if($id!=-1){
-    //         $data= $this->categoryModel->getCategoryById($id);
-    //         $this->viewAdmin('inc/header');
-    //         $this->viewAdmin('pages/detailCategory_page',$data);
-    //         $this->viewAdmin('inc/footer');
-    //     }
-    //     # code...
+    // public function createCategory(){
+    //     $this->viewAdmin('inc/header');
+    //     $this->viewAdmin('pages/addComment_page');
+    //     $this->viewAdmin('inc/footer');
     // }
     // //Post
-    // public function handleUpdateCategory()
+    // public function handleCreateComment()
     // {
     //     # code...
-        
-    //     if(isset($_POST['btn_update'])){
-    //         // echo 'co<br>';
-    //         $id=$_POST['idCategory'];
-    //         $categoryName=$_POST['categoryName'];
-    //         $Description=$_POST['Description'];
-    //         $results= $this->categoryModel->updateCategory($id,$categoryName,$Description);
-    //         // $message=$results==1?1:'Tên danh mục đã tồn tại';
-    //         // echo $message;
-    //         // echo 'pages/detailCategory/'.$id;
-    //         header('Location: '.HEADERLINK.'/admin/category/detailCategory/'.$id);
-    //         $this->viewAdmin('inc/header');
-    //         $this->viewAdmin('pages/detailCategory_page');
-    //         $this->viewAdmin('inc/footer');
-    //     }
-    //     else{
-    //         $this->redirect('/admin/category/categoryPage');
-    //     }
+    //     /**
+    //      * lấy thông tin từ cmt
+    //      * kiểm tra thông tin
+    //      * insert vào db
+    //      * kiểm tra kết quả trả về
+    //      */
+    //     if(isset($_POST['btn_create_cmt'])){
+    //     $id=$_POST['Comment_id'];
+    //     $content=$_POST['content'];
+    //     $results= $this->CommentModel->updateComment($id,$content);
+    //     $this->redirect('/admin/comment/detailComment/'.$id);
     // }
-    // //Chức năng xóa
-    // public function delete($id=-1)
-    // {
-    //     # code...
-    //     if($id==-1){
+    // else{
+    //     $this->redirect('/admin/comment/commentPage');
+    // }
 
-    //     }
-    //     else{
-    //         $results= $this->categoryModel->deleteCategory($id);
-    //     }
-    //     header('Location: '.HEADERLINK.'/admin/category/categoryPage');
-    //     $this->categoryPage();
     // }
+    
+    // Chức năng xem chi tiết bình luận
+    //Get
+    public function detailComment($id=-1)
+    {
+        if($id!=-1){
+            $data= $this->CommentModel->getCommentDetail($id);
+            $this->viewAdmin('inc/header');
+            $this->viewAdmin('pages/detailComment_page',$data);
+            $this->viewAdmin('inc/footer');
+        }
+    }
+
+    // Chức năng chỉnh sửa bình luận
+    public function updateComment()
+    {
+        if(isset($_POST['btn_update_cmt'])){
+            $id=$_POST['Comment_id'];
+            $content=$_POST['content'];
+            $results= $this->CommentModel->updateComment($id,$content);
+            $this->redirect('/admin/comment/detailComment/'.$id);
+        }
+        else{
+            $this->redirect('/admin/comment/commentPage');
+        }
+    }
+
+    //Chức năng xóa
+    public function deleteComment($id=-1)
+    {
+        if($id==-1){
+
+        }
+        else{
+            $results= $this->CommentModel->deleteComment($id);
+        }
+        header('Location: '.HEADERLINK.'/admin/comment/commentPage');
+        $this->commentPage();
+    }
     //Chức năng sửa
 
 }

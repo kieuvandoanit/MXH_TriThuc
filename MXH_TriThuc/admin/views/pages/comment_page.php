@@ -4,18 +4,17 @@
     <div class="user-filter">
       <div >
           <select name="" id="" class="userFilterClass"  autofocus onChange="window.location.href=this.value">
-              <option value="" checked>Tất cả</option>
               <option value="<?php echo HEADERLINK.'/admin/comment/commentPage'; ?>" >Tất cả</option>
-              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" >Bình luận Spam</option>
+              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" >Spam</option>
           </select>
       </div>
-    </div> 
-    <div class="">
+    </div>  
+    <!-- <div class="">
       <a href="<?php echo HEADERLINK.'/admin/category/createCategory'; ?>" class="btn btn-primary" style="border-radius: 45px;">
           <i class="fas fa-plus"></i>
           <b>Tạo bình luận</b>
       </a>
-  </div>
+  </div> -->
 </div>
 <br>
 <table class="content-table table-sorttable">
@@ -38,6 +37,10 @@
                     <td>'.(isset($item['UpdateDate'])?$item['UpdateDate']:"khong").'</td>
                     <td>'.(isset($item['Title'])?$item['Title']:"khong").'</td>
                     <td>'.(isset($item['Content'])?$item['Content']:"khong").'</td>
+                    <td class="user-btn">
+                        <a class="delete-icon" href="'.HEADERLINK.'/admin/comment/deleteComment/'.(isset($item['Comment_id'])?$item['Comment_id']:-1).'" title="delete comment"><i class="far fa-trash-alt"></i></a>
+                        <a class="info-icon" href="'.HEADERLINK.'/admin/comment/detailComment/'.(isset($item['Comment_id'])?$item['Comment_id']:-1).'" title="information of comment"><i class="fas fa-info-circle"></i></a>
+                    </td>
                 </tr>';
         };
       ?>
