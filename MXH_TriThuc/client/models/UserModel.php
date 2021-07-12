@@ -153,6 +153,7 @@ class UserModel extends DB{
             $arr[] = $row;
         }
         return $arr;
+    }
 }
 
 ?>
