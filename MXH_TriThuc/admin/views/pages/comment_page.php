@@ -1,3 +1,4 @@
+
 <h2>Quản lí bình luận</h2>
 <br>
 <div style="justify-content: space-between; display: flex; flex-direction: row; ">
@@ -5,7 +6,7 @@
       <div >
           <select name="" id="" class="userFilterClass"  autofocus onChange="window.location.href=this.value">
               <option value="<?php echo HEADERLINK.'/admin/comment/commentPage'; ?>" >Tất cả</option>
-              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" >Spam</option>
+              <option value="<?php echo HEADERLINK.'/admin/comment/commentSpam'; ?>" <?php if(isset($data['flag']) && $data['flag'] == 1){echo 'selected';} ?>>Spam</option>
           </select>
       </div>
     </div>  
@@ -30,7 +31,7 @@
     </thead>
     <tbody>
     <?php
-        foreach($data as $item){
+        foreach($data['cmtList'] as $item){
             echo '<tr>
                     <td>'.(isset($item['Name'])?$item['Name']:"khong").'</td>
                     <td>'.(isset($item['CreateDate'])?$item['CreateDate']:"khong").'</td>
