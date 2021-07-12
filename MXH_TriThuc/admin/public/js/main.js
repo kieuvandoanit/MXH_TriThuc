@@ -66,12 +66,13 @@ function pagination(data){
     var rowsTotal=data.length;
     var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
     // console.log(numPages)
-    $('#table').after('<div id="pagination"></div>');
+    $('#table').after('<div id="pagination"><i class="fas fa-caret-left"></i></div>');
     for(i = 0;i < numPages;i++) {
         var pageNum = i + 1;
         // console.log(pageNum)
         $('#pagination').append('<a id="numPage'+i+'" class="numPage" href="#" rel="'+i+'">'+pageNum+'</a>');
     }
+    $('#pagination').append('<i class="fas fa-caret-right"></i>');
     $('#pagination a:first').addClass('active');
     var dataShown=data.slice(0,rowsShown);
     showData(dataShown);

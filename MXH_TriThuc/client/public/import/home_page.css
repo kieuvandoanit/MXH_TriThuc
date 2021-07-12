@@ -166,14 +166,3 @@ div#category.col-md-3{
     display: flex;
     justify-content: space-between;
 }
-#pagination{
-    display: flex !important;
-    justify-content: center!important;
-}
-#pagination .active{
-    color: blue !important;
-}
-#pagination a{
-    min-width: 20px;
-    color: rgba(18, 18, 19, 0.726)!important;
-}

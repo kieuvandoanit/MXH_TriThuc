@@ -1,20 +1,21 @@
-<div id="post_page" style="min-height: calc(100vh - 235px);">
-    <div id="top_home_page">
-      <div id="">
-          <div  id="table" class="list_post" style="display:flex">
-            <div id="postTable"></div>
+<div id="post_page" style="min-height: calc(100vh - 235px); display: flex;justify-content:center">
+    <div id="top_home_page" style="flex-direction: column; ">
+          <div  id="table" class="list_post">
+            <div id="postTable">
+            
+            </div>
           </div>
-      </div>
     </div>
 </div>
-<script>
+
+<script >
 $(document).ready(function(){
     data=<?php echo json_encode(isset($data['resultValue'])?$data['resultValue']:[]) ?>;
     // data=data?data:[];
     if(data.length>0){
       pagination(data);
     }else{
-      contentHtml='<div id="table"><b>Không tìm thấy kết quả</b></div><div class="clearfix"></div>';
+      contentHtml='<h3 id="table"><b>Không tìm thấy kết quả</b></h3><div class="clearfix"></div>';
       $("#postTable").html(contentHtml);
     }
 });
@@ -68,9 +69,12 @@ function showData(data){
             </div><div class="post_comment">
               <i class="fas fa-comment"></i>
               <p class="post_comment_num">${data[key]['commentAmount']}</p>
-              <div class="clearfix"></div>
-            </div></div></div></div>`;
+              </div>
+            </div></div></div>`;
     };
+    contentHtml+='<div class="clearfix"></div>';
     $("#postTable").html(contentHtml);
+    
 };
 </script>
+
