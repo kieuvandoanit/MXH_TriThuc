@@ -2,7 +2,18 @@
 class CommentModel extends Db{
     public function getAllComment()
     {
-        $sql='SELECT u.UserName, c.CreateDate, c.UpdateDate, p.Title, c.Content FROM user AS u INNER JOIN comment AS c ON u.User_id = c.Member_id INNER JOIN post AS p ON c.Post_id = p.Post_id';
+        $sql='SELECT up.Name, c.CreateDate, c.UpdateDate, p.Title, c.Content FROM user AS u INNER JOIN comment AS c ON u.User_id = c.Member_id INNER JOIN post AS p ON c.Post_id = p.Post_id INNER JOIN user_profile AS up ON u.User_id = up.User_id';
+        $rows=mysqli_query($this->conn,$sql);
+        $arr = [];
+        while($row = mysqli_fetch_assoc($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function getAllCommentSpam()
+    {
+        $sql='SELECT up.Name, c.CreateDate, c.UpdateDate, p.Title, c.Content FROM user AS u INNER JOIN comment AS c ON u.User_id = c.Member_id INNER JOIN post AS p ON c.Post_id = p.Post_id INNER JOIN user_profile AS up ON u.User_id = up.User_id WHERE c.isSpam = 1';
         $rows=mysqli_query($this->conn,$sql);
         $arr = [];
         while($row = mysqli_fetch_assoc($rows)){

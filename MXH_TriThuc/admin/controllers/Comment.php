@@ -14,9 +14,16 @@ class Comment extends Controller{
     public function commentPage(){
         $cmtList= $this->CommentModel->getAllComment();
         $data['page_title'] = 'Quản lý comment';
-        //$titlePost = $this->CommentModel->getPostByID($cmtList['Post_id']);
-        //echo $cmtList;
-        //$cmtList['post_id'] = $titlePost;
+
+        $this->viewAdmin('inc/header');
+        $this->viewAdmin('pages/comment_page',$cmtList);
+        $this->viewAdmin('inc/footer');
+    }
+
+    //Chức năng xem toàn bộ comment bị đánh dấu spam
+    public function commentSpam(){
+        $cmtList= $this->CommentModel->getAllCommentSpam();
+        $data['page_title'] = 'Quản lý comment';
 
         $this->viewAdmin('inc/header');
         $this->viewAdmin('pages/comment_page',$cmtList);
