@@ -17,7 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.1/js/fileinput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.1/themes/fa/theme.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/wafynfll6yk0et81pwlvcwdx6r76d4pl4gy3397p9126dmzm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    
+    <!-- HOMEPAGE -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <nav class=" navbar navbar-dark bg-dark">
@@ -49,7 +50,7 @@
                     <a href="<?php echo HEADERLINK.'/admin/post/postPage';?>"><i class="far fa-calendar-check"></i> Bài đăng</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-question-circle"></i> Bình luận</a>
+                <a href="<?php echo HEADERLINK.'/admin/comment/commentPage';?>"><i class="fas fa-question-circle"></i> Bình luận</a>
                 </li>
                 <li>
                     <a href="<?php echo HEADERLINK.'/admin/Setting'; ?>"><i class="fas fa-cog"></i> Cài đặt</a>

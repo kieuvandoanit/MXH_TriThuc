@@ -116,7 +116,6 @@ class UserModel extends DB{
         }
         return $arr;
     }
-
     public function updateLevel($userID, $value){
         $sql = "UPDATE `user_profile` SET `Level_id` = $value WHERE `User_id` = $userID";
         if(mysqli_query($this->conn, $sql)){

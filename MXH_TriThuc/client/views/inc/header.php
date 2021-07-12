@@ -29,7 +29,7 @@
           <div class="header_menu" style="display: flex;align-items: center;">
               <a href="<?php echo HEADERLINK.'/home/trangchu'; ?>" style="min-width: 100px;"><button class="btn">Trang chủ</button></a>
               <a href="<?php echo HEADERLINK.'/post'; ?>"><button class="btn">Bài viết</button></a>
-              <a href=""><button class="btn">BXH</button></a>
+              <a href="<?php echo HEADERLINK.'/rank'; ?>"><button class="btn">BXH</button></a>
           </div>
         </div>
         <div id="search" style="display: flex;align-items: flex-end;">
