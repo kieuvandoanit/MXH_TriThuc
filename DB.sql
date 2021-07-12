@@ -471,3 +471,4 @@ AS
 SELECT f.monthyear, COALESCE(countReal.soluong, 0) as soluong FROM my_cte f LEFT JOIN (SELECT EXTRACT(YEAR_MONTH from p.CreatedDate) as monthyear, COUNT(*) as soluong 
 FROM post p 
 WHERE YEAR(p.CreatedDate)=YEAR(NOW()) OR (YEAR(p.CreatedDate)=(YEAR(NOW())-1) AND MONTH(p.CreatedDate)>MONTH(NOW())) GROUP BY YEAR(p.CreatedDate),MONTH(p.CreatedDate)) AS countReal on f.monthyear=countReal.monthyear;
+
