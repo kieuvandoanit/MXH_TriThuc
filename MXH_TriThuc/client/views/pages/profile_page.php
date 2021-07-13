@@ -89,7 +89,6 @@
   });
   function showData(data){
       contentHtml='';
-      console.log(data);
       for(const key in data){
           contentHtml+='<tr><th scope="row">'+(parseInt(key)+1)+'</th>';
           contentHtml+='<td>'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';

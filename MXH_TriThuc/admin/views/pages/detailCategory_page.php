@@ -25,11 +25,9 @@
 </form>
 <script>
     $('#categoryName').change(function(){
-        // console.log($('#categoryName').val());
         $('#categoryName').attr('value',$('#categoryName').val());
-        // console.log($('#categoryName').attr('value'));
     })
-    $('#Description').change(function(){
-        console.log($('#Description').val());
-    })
+    // $('#Description').change(function(){
+    //     console.log($('#Description').val());
+    // })
 </script>

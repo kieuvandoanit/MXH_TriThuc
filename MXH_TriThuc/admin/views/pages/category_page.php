@@ -41,7 +41,6 @@
         
     });
     function showData(data){
-        console.log('showdata');
         contentHtml='';
         for(const key in data){
             contentHtml+= '<tr><td>'+((data[key]["Category_id"])?data[key]["Category_id"]:"khong")+'</td>';

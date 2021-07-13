@@ -18,7 +18,7 @@
       </div>
       <div class="form-group">
         <label for="post_content">Nội dung bài viết</label><br>
-        <textarea class="form-control" rows="15" name="postContent" id="post_content" required placeholder="Nội dung bài viết"></textarea>
+        <textarea class="form-control" rows="15" name="postContent" id="post_content"  placeholder="Nội dung bài viết" ></textarea>
       </div>
       <div class="form-group">
         <label for="post_category">Danh mục bài viết</label><br>
@@ -37,8 +37,23 @@
       </div>
       <div class="form-group">
         <a href=""><button class="btn btn-warning">Quay lại</button></a>
-        <input type="submit" class="btn btn-primary" name ="btn_addPost" value="Thêm bài viết">
+        <!-- <input type="submit" class="btn btn-primary" name ="btn_addPost" value="Thêm bài viết"> -->
+        <button name="btn_addPost" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm bài viết</button>
       </div>
       
     </form>
   </div>
+  <script>
+    tinymce.init({
+    selector: 'textarea',
+    height: 300,
+    plugins:'paste image link autolink lists table media',
+    menubar: false,
+    toolbar: [
+    'undo redo | fontselect fontsizeselect | bold italic underline strikethrough | numlist bullist alignleft aligncenter alignright | forecolor  backcolor | table link image media'
+    ],
+    fontsize_formats: '10pt 12pt 14pt 16pt 18pt 24pt 36pt',
+    // elementpath: false,
+    placeholder: 'writing description here...',
+    });
+</script>

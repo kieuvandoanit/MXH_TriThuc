@@ -9,22 +9,28 @@
 .card-content{
     margin-left:15px;
     display: flex;
-    min-height: 250px;
+    min-height: 200px;
     justify-content: space-between;
+}
+.card-content h3{
+    margin:10px !important;
 }
 .card-content .sub-card{
     display: flex;
-    height: 240px;
-    background-color: #ffffff5c;
+    min-height: 100px;
+    max-height: 200px;
+    background-color: #ffffffa8;
     width: 350px;
     flex-direction: column;
     border-radius: 15px;
     padding: 10px;
+    box-shadow: 0px 0px 1px;
 }
 .card-content .sub-card .header{
     justify-content: center;
     display: flex;
     font-weight: bold;
+    margin: 4px;
 }
 .body-card-row{
     display: flex; 
@@ -47,3 +53,35 @@
     flex-grow: 1;
     padding: 0px 10px;
   }
+.body-card-row i{
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div .first{
+    color: #ffc000b8;
+    font-size: 26px;
+}
+div .second{
+    color: silver;
+    font-size: 24px;
+    /* padding-left: 1px; */
+}
+div .third{
+    color: #c97e2c;
+    font-size: 22px;
+    /* padding-left: 2px; */
+}
+div .afterthird{
+    color: gray;
+    font-size: 20px;
+    /* padding-left: 3px; */
+}
+/* background-color: silver;
+border-radius: 15px;
+display: flex;
+min-width: 30px;
+align-items: center;
+justify-content: center;
+color: white; */
