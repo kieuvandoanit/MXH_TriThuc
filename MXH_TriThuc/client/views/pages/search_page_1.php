@@ -1,5 +1,5 @@
 <div id="post_page" style="min-height: calc(100vh - 235px);">
-    <div id="top_home_page">
+    <div id="top_home_page" style="width: 1140px;">
       <div id="" style="width: 100%;">
           <div id="table"class="list_post" >
           <div id="postTable">
