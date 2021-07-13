@@ -73,6 +73,7 @@ class App{
         if($arr[0] == 'admin'){
             if(isset($_SESSION['isLogin']) && $_SESSION['auth'] == 'user'){
                 session_destroy();
+                header('Location: '.HOST.'/'.$url);
             }
             if(isset($arr[2])){
                 $temp[0] = $arr[1];
@@ -100,6 +101,7 @@ class App{
         }else{
             if(isset($_SESSION['isLogin']) && $_SESSION['auth'] == 'admin'){
                 session_destroy();
+                header('Location: '.HOST.'/'.$url);
             }
             if(isset($arr[1])){
                 $temp[0] = $arr[0];
