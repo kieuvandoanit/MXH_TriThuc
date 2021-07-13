@@ -44,7 +44,7 @@ class UserModel extends DB{
     
 
     public function createUser($username, $password, $email){
-        $sql = "INSERT INTO `user` VALUES (null,'$username', '$email','$password',null, 2)";
+        $sql = "INSERT INTO `user` VALUES (null,'$username', '$email','$password', 2)";
          $result = false;
          if(mysqli_query($this->conn, $sql)){
              $result = true;
@@ -64,9 +64,9 @@ class UserModel extends DB{
         return $arr;
     }
 
-    public function createUserProfile($userID){
-        $sql = "INSERT INTO `user_profile` VALUES (null, null, null,null, null, null, null, null, null, $userID, null)";
-
+    public function createUserProfile($userID, $email){
+        $sql = "INSERT INTO `user_profile` VALUES (null, null, null,null, null, '$email', null, 0, 0, $userID, 1,0)";
+        echo $sql;
         $result = false;
          if(mysqli_query($this->conn, $sql)){
              $result = true;

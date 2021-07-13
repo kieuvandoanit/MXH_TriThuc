@@ -51,15 +51,16 @@ class User extends Controller{
                 }
             }
         }
-        
+        // echo '<pre>'; print_r($error); echo '</pre>'; 
         if(empty($error)){
+            
             if($this->userModel->createUser($username, $password, $email)){
                 $user = $this->userModel->getUser($username, $password);
                 $userID = $user[0]['User_id'];
-                if($this -> userModel->createUserProfile($userID)){
-                    $this->redirect('/user');
+                if($this -> userModel->createUserProfile($userID, $email)){
+                    // $this->redirect('/user');
                 }else{
-                    $this->redirect('/user/register');
+                    // $this->redirect('/user/register');
                 }
             };
         }else{
