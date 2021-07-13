@@ -1,5 +1,5 @@
 <div id="post_page" style="min-height: calc(100vh - 235px); display: flex;justify-content:center">
-    <div id="top_home_page" style="flex-direction: column; ">
+    <div id="top_home_page" style="flex-direction: column; width: 1140px;">
           <div  id="table" class="list_post">
             <div id="postTable">
             

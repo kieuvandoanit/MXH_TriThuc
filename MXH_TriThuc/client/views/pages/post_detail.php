@@ -194,7 +194,7 @@ function showData(data){
           </div>
           <div>
             <form action="<?php echo HEADERLINK.'/comment/handleIsSpam'; ?>" method="POST">
-              <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam"><i class="fas fa-info-circle"></i></button>
+              <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam" <button type="submit" class="btn btn-light" name="btn_isSpam" title="Spam" style="color:red;height: 50px;display: flex;justify-content: center;align-items: center;/* border: 1px solid transparent; */background-color: #6db8bb2b;"><i class="fas fa-exclamation-triangle" style="color:red; height:30px"></i></button>
               <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
               <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="${data[key]['Comment_id']}">
             </form>
