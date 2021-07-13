@@ -51,7 +51,7 @@
         contentHtml='';
         console.log(data);
         for(const key in data){
-            contentHtml+='<tr><td>'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<tr><td style="max-width: 300px;">'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['LikesAmount'])?data[key]['LikesAmount']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';

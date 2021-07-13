@@ -15,11 +15,11 @@ class Rank extends Controller{
          * Lấy danh sách thành viên có số bài viết,số bình luận nhiều nhât top5
          * lấy danh sách thành viên có hạng cao nhất
          */
-        $data['likedPost']=$this->postModel->getTop5HighestFromTable('Post','p.Title,p.LikesAmount','p.LikesAmount');
-        $data['cmtdPost']=$this->postModel->getTop5HighestFromTable('Post','p.Title,p.commentAmount','p.commentAmount');
-        $data['ratedPost']=$this->postModel->getTop5HighestFromTable('Post','p.Title,p.AvgRating','p.AvgRating');
-        $data['PostMostUser']=$this->userModel->getTop5HighestFromTable('user_profile','u.Name,u.PostAmount',' u.PostAmount');
-        $data['cmtdUser']=$this->userModel->getTop5HighestFromTable('user_profile','u.Name,u.CommentAmount',' u.CommentAmount');
+        $data['likedPost']=$this->postModel->getTop5HighestFromTable('Post','p.Post_id,p.Title,p.LikesAmount','p.LikesAmount');
+        $data['cmtdPost']=$this->postModel->getTop5HighestFromTable('Post','p.Post_id,p.Title,p.commentAmount','p.commentAmount');
+        $data['ratedPost']=$this->postModel->getTop5HighestFromTable('Post','p.Post_id,p.Title,p.AvgRating','p.AvgRating');
+        $data['PostMostUser']=$this->userModel->getTop5HighestFromTable('user_profile','u.User_id,u.Name,u.PostAmount',' u.PostAmount');
+        $data['cmtdUser']=$this->userModel->getTop5HighestFromTable('user_profile','u.User_id,u.Name,u.CommentAmount',' u.CommentAmount');
         // $data['rankingUser']=$this->userModel->getTop5HighestFromTable('user_profile','p.Title,p.AvgRating','p.AvgRating');
         $this->ViewClient('inc/header');
         $this->ViewClient('pages/ranking_page',$data);

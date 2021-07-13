@@ -21,7 +21,7 @@
         <div class="post_time">
         <?php echo $data['post'][0]['CreatedDate']; ?>
         </div>
-        <div class="post_username"><i class="fas fa-user" style="margin-right: 5px;"></i><?php echo $data['post'][0]['Name']; ?></div>
+        <div class="post_username"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$data['post'][0]["User_id"];?>" style="text-decoration: none;color:white"><i class="fas fa-user" style="margin-right: 5px;"></i><?php echo $data['post'][0]['Name']; ?></a></div>
         <div class="post_rank">
         <?php  
           $count = 1;

@@ -54,3 +54,13 @@
     display: flex;
     justify-content: center;
   }
+  .post_description ol li{
+    list-style: auto !important;
+}
+.post_description ul li{
+    list-style: disc !important;
+}
+.post_description table,td,tr{
+    border-width: 1px ;
+    border-style: solid ;
+}

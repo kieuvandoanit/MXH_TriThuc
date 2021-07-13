@@ -32,7 +32,8 @@ create database questionLibrary;
 use questionLibrary;
 CREATE TABLE `category` (
   `Category_id` int(10) UNSIGNED NOT NULL,
-  `CategoryName` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `CategoryName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` varchar(300) default '' COLLATE utf8_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

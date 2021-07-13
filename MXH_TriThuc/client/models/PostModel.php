@@ -31,7 +31,7 @@ class PostModel extends DB{
     }
 
     public function getPostByID($id){
-        $sql ="SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id";
+        $sql ="SELECT p.*,u.User_id, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){

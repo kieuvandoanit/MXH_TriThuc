@@ -24,7 +24,7 @@
                         echo '<i class="fas fa-medal afterthird"></i>';
                       }
                      ?></div>
-                    <div class="cut-text"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></div>
+                    <div class="cut-text"><a href="<?php echo HEADERLINK.'/post/postDetail/'.$item["Post_id"];?>"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></a></div>
                     <div> <?php echo (isset($item['LikesAmount']))?$item['LikesAmount']:'Đang cập nhật'; ?></div>
                 </div>
               <?php
@@ -56,7 +56,7 @@
                         echo '<i class="fas fa-medal afterthird"></i>';
                       }
                      ?></div>
-                    <div class="cut-text"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></div>
+                    <div class="cut-text"><a href="<?php echo HEADERLINK.'/post/postDetail/'.$item["Post_id"];?>"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></a></div>
                     <div> <?php echo (isset($item['commentAmount']))?$item['commentAmount']:'Đang cập nhật'; ?></div>
                 </div>
             <?php
@@ -88,7 +88,7 @@
                         echo '<i class="fas fa-medal afterthird"></i>';
                       }
                      ?></div>
-                    <div class="cut-text"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></div>
+                    <div class="cut-text"><a href="<?php echo HEADERLINK.'/post/postDetail/'.$item["Post_id"];?>"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></a></div>
                     <div> <?php echo (isset($item['AvgRating']))?$item['AvgRating']:'Đang cập nhật'; ?></div>
                 </div>
             <?php
@@ -125,7 +125,7 @@
                         echo '<i class="fas fa-medal afterthird"></i>';
                       }
                      ?></div>
-                    <div class="cut-text"><?php echo (isset($item['Name']))?$item['Name']:'Đang cập nhật'; ?></div>
+                    <div class="cut-text"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$item["User_id"];?>"><?php echo (isset($item['Name']))?$item['Name']:'Đang cập nhật'; ?></a></div> 
                     <div> <?php echo (isset($item['PostAmount']))?$item['PostAmount']:'Đang cập nhật'; ?></div>
                 </div>
             <?php
@@ -157,7 +157,7 @@
                         echo '<i class="fas fa-medal afterthird"></i>';
                       }
                      ?></div>
-                    <div class="cut-text"><?php echo (isset($item['Name']))?$item['Name']:'Đang cập nhật'; ?></div>
+                    <div class="cut-text"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$item["User_id"];?>"><?php echo (isset($item['Name']))?$item['Name']:'Đang cập nhật'; ?></a></div> 
                     <div> <?php echo (isset($item['CommentAmount']))?$item['CommentAmount']:'Đang cập nhật'; ?></div>
                 </div>
             <?php
