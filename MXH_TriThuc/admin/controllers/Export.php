@@ -17,7 +17,7 @@ class Export extends Controller{
     }
 
     public function ExportFileCSVPost(){
-        $post = $this->postModel->getAllPost();
+        $post = $this->postModel->getAllPost('1=1');
         
         header('Content-Type: text/csv; charset=utf-8');
         header("Content-Transfer-Encoding: ASCII");
@@ -34,7 +34,7 @@ class Export extends Controller{
     }
 
     public function ExportFileCSVCategory(){
-        $category = $this->categoryModel->getAllCategory('DESC');
+        $category = $this->exportModel->getAllCategory('DESC');
 
         header('Content-Type: text/csv; charset=utf-8');
         header("Content-Transfer-Encoding: ASCII");
@@ -108,7 +108,7 @@ class Export extends Controller{
         header("Content-Transfer-Encoding: ASCII");
         header('Content-Disposition: attachment; filename=user.csv');
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('User_id', 'UserName','email','Password','token','UType_id'));
+        fputcsv($output, array('User_id', 'UserName','email','Password','UType_id'));
 
         if (count($user) > 0) {
             foreach ($user as $row) {
@@ -125,7 +125,7 @@ class Export extends Controller{
         header("Content-Transfer-Encoding: ASCII");
         header('Content-Disposition: attachment; filename=user_profile.csv');
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('Profile_id', 'Avatar','Name','gender','Phone','Email','address','PostAmount','CommentAmount','User_id','Level_id'));
+        fputcsv($output, array('Profile_id', 'Avatar','Name','gender','Phone','Email','address','PostAmount','CommentAmount','User_id','Level_id', 'point'));
 
         if (count($user_profile) > 0) {
             foreach ($user_profile as $row) {

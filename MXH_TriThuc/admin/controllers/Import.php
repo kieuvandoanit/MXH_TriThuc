@@ -111,9 +111,12 @@ class Import extends Controller{
                     if(isset($column[1])){
                         $CategoryName = $column[1];
                     }
+                    if(isset($column[2])){
+                        $decription = $column[2];
+                    }
                     
                     if(is_numeric($Category_id)){
-                        $result = $this->importModel->ImportCategory($Category_id,$CategoryName);
+                        $result = $this->importModel->ImportCategory($Category_id,$CategoryName, $decription);
                         if($result){
                             $this->redirect('/admin/Import');
                         }
@@ -268,14 +271,11 @@ class Import extends Controller{
                         $Password = $column[3];
                     }
                     if(isset($column[4])){
-                        $token = $column[4];
-                    }
-                    if(isset($column[5])){
-                        $UType_id = $column[5];
+                        $UType_id = $column[4];
                     }
                     
                     if(is_numeric($User_id)){
-                        $result = $this->importModel->ImportUser($User_id, $UserName, $email, $Password, $token, $UType_id);
+                        $result = $this->importModel->ImportUser($User_id, $UserName, $email, $Password, $UType_id);
                         if($result){
                             $this->redirect('/admin/Import');
                         }
@@ -331,10 +331,13 @@ class Import extends Controller{
                     if(isset($column[10])){
                         $Level_id = $column[10];
                     }
+                    if(isset($column[11])){
+                        $point = $column[11];
+                    }
                     
                     
                     if(is_numeric($Profile_id)){
-                        $result = $this->importModel->ImportUser_profile($Profile_id, $Avatar, $Name, $gender, $Phone, $Email, $address, $PostAmount, $CommentAmount, $User_id, $Level_id);
+                        $result = $this->importModel->ImportUser_profile($Profile_id, $Avatar, $Name, $gender, $Phone, $Email, $address, $PostAmount, $CommentAmount, $User_id, $Level_id, $point);
                         if($result){
                             $this->redirect('/admin/Import');
                         }

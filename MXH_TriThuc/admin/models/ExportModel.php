@@ -69,6 +69,16 @@ class ExportModel extends DB{
         }
         return $arr;
     }
+
+    public function getAllCategory(){
+        $sql = "SELECT * FROM `category`";
+        $rows=mysqli_query($this->conn,$sql);
+        $arr = [];
+        while($row = mysqli_fetch_assoc($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
 
 ?>

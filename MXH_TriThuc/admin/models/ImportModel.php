@@ -1,7 +1,7 @@
 <?php  
 class ImportModel extends DB{
-    public function ImportCategory($Category_id,$CategoryName){
-        $sql = "INSERT INTO `category` VALUES ($Category_id, '$CategoryName')";
+    public function ImportCategory($Category_id,$CategoryName, $description){
+        $sql = "INSERT INTO `category` VALUES ($Category_id, '$CategoryName', '$description')";
         $result=mysqli_query($this->conn,$sql);
         return $result; 
     }
@@ -30,14 +30,14 @@ class ImportModel extends DB{
         return $result;
     }
 
-    public function ImportUser($User_id, $UserName, $email, $Password, $token, $UType_id){
-        $sql = "INSERT INTO `user` VALUES($User_id,'$UserName', '$email', '$Password', '$token', $UType_id)";
+    public function ImportUser($User_id, $UserName, $email, $Password, $UType_id){
+        $sql = "INSERT INTO `user` VALUES($User_id,'$UserName', '$email', '$Password', $UType_id)";
         $result=mysqli_query($this->conn,$sql);
         return $result;
     }
 
-    public function ImportUser_profile($Profile_id, $Avatar, $Name, $gender, $Phone, $Email, $address, $PostAmount, $CommentAmount, $User_id, $Level_id){
-        $sql = "INSERT INTO `user_profile` VALUES($Profile_id, '$Avatar', '$Name', '$gender', '$Phone', '$Email', '$address', $PostAmount, $CommentAmount, $User_id, $Level_id)";
+    public function ImportUser_profile($Profile_id, $Avatar, $Name, $gender, $Phone, $Email, $address, $PostAmount, $CommentAmount, $User_id, $Level_id, $point){
+        $sql = "INSERT INTO `user_profile` VALUES($Profile_id, '$Avatar', '$Name', '$gender', '$Phone', '$Email', '$address', $PostAmount, $CommentAmount, $User_id, $Level_id, $point)";
         
         $result=mysqli_query($this->conn,$sql);
         return $result;
