@@ -52,7 +52,11 @@
     white-space: nowrap;
     flex-grow: 1;
     padding: 0px 10px;
-  }
+    text-decoration: none;
+}
+.cut-text a:hover{ 
+    text-decoration: none;
+}
 .body-card-row i{
     width: 15px;
     display: flex;

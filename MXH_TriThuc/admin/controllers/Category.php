@@ -31,16 +31,11 @@ class Category extends Controller{
             $categoryName=$_POST['categoryName'];
             $Description=$_POST['Description'];
             $results= $this->categoryModel->setNewCategory($categoryName,$Description);
-            $message=$results==1?1:'Tên danh mục đã tồn tại';
-            // echo $message;
-            header('Location: '.HEADERLINK.'/admin/category/categoryPage');
-            $this->viewAdmin('inc/header');
-            $this->viewAdmin('pages/addCategory_page',$message);
-            $this->viewAdmin('inc/footer');
+            $message=$results==1?"danh mục mới đã được tạo":'Tên danh mục đã tồn tại';
+            $this->redirect('/admin/category/categoryPage');
         }
         else{
             $this->redirect('/admin/category/categoryPage');
-            $this->categoryPage();
         }
 
     }

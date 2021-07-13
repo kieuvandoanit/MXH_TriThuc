@@ -47,7 +47,7 @@
     tinymce.init({
     selector: 'textarea',
     height: 300,
-    plugins:'paste image link autolink lists table media',
+    plugins:'paste lists table',
     menubar: false,
     toolbar: [
     'undo redo | fontselect fontsizeselect | bold italic underline strikethrough | numlist bullist alignleft aligncenter alignright | forecolor  backcolor | table link image media'

@@ -1,11 +1,3 @@
-<?php 
-
-if(!is_array($data)){
-    if($data!=1){
-        echo $data;
-    }
-}
-?>
 <h2>Tạo danh mục mới</h2>
 <br><br>
 <h4 style="margin: 0 100px 0 15px;">Thông tin danh mục</h4>
