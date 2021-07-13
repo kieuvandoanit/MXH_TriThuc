@@ -2,11 +2,13 @@
     class Post extends Controller{
         protected $PostModel;
         protected $categoryModel;
+        protected $UserModel;
 
         public function __construct()
         {
             $this->PostModel= $this->ModelAdmin('PostModel');
             $this->categoryModel= $this->ModelAdmin('CategoryModel');
+            $this->UserModel= $this->ModelAdmin('UserModel');
         }
         public function SayHi(){
             $this->redirect('/admin/Post/postPage');
@@ -61,10 +63,21 @@
                     $title=$_POST['title'];
                     $content=$_POST['txtDescription'];
                     $results= $this->PostModel->updatePost($idPost,$title,$content,'Đã duyệt');
-                    $this->redirect('/admin/post/postDetail/'.$idPost);
+                    if($results){
+                        $post = $this->PostModel->getPostDetail($idPost);
+                        $user=$this->UserModel->getProfile($post[0]['Member_id']);
+                        $this->UserModel->updatePoint($post[0]['Member_id'],$user[0]['point'] +5);
+                    }
+                    // $this->redirect('/admin/post/postDetail/'.$idPost);
                 }
                 else{
                     $results= $this->PostModel->updatePost($id,'','','Đã duyệt');
+                    if($results){
+                        $post = $this->PostModel->getPostDetail($id);
+                        $user=$this->UserModel->getProfile($post[0]['Member_id']);
+                        // echo '<pre>'; print_r($post); echo '</pre>'; 
+                        $this->UserModel->updatePoint($post[0]['Member_id'],$user[0]['point'] +5);
+                    }
                     $this->redirect('/admin/post/postPage/');
 
                 }

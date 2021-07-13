@@ -1,14 +1,5 @@
+
 <div id="post_detail">
-    <!-- form search -->
-    <!-- <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <form class="search" action="">
-          <input type="text" placeholder="Tìm kiếm" name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-    </div> -->
     <!-- header post  -->
     <div class="row header_post">
       <div class="post_thumb" style="width:500px; height: 280px; overflow:hidden;">
@@ -22,7 +13,7 @@
         <?php echo $data['post'][0]['CreatedDate']; ?>
         </div>
         <div class="post_username"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$data['post'][0]["User_id"];?>" style="text-decoration: none;color:white"><i class="fas fa-user" style="margin-right: 5px;"></i><?php echo $data['post'][0]['Name']; ?></a></div>
-        <div class="post_rank">
+        <div class="post_rank" id="post_rating_score_start">
         <?php  
           $count = 1;
           for($i = 0; $i <5; $i++){
@@ -40,8 +31,25 @@
           ?>
         </div>
         <div class="post_react">
-          <div class="post_like" id="<?php echo $data['post'][0]['Post_id']; ?>">
-            <i class="fas fa-thumbs-up" id="<?php echo $data['post'][0]['Post_id']; ?>"></i>
+          <div class="post_like <?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post'][0]['Post_id']){
+                                echo "post_liked";
+                              }
+                            }
+                          }
+                        ?>
+          " id="<?php echo $data['post'][0]['Post_id']; ?>">
+            <i class="fas fa-thumbs-up fa-thumbs-up-<?php echo $data['post'][0]['Post_id']; ?>" id="<?php echo $data['post'][0]['Post_id']; ?>" style="<?php 
+                          if(!empty($data['liked'])){
+                            foreach($data['liked'] as $temp){
+                              if($temp['Post_id'] == $data['post'][0]['Post_id']){
+                                echo "color:black";
+                              }
+                            }
+                          }
+                        ?>"></i>
             <p id="<?php echo $data['post'][0]['Post_id']; ?>" class="post_like_num postLikeNum_<?php echo $data['post'][0]['Post_id']; ?>"><?php echo $data['post'][0]['LikesAmount']; ?></p>
           </div>
           <div class="post_comment">
@@ -76,7 +84,7 @@
       </ul>
     </div>
     <!-- Thông tin đánh giá  -->
-    <form action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
+    <form data-action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
       <div class="form-group col-md-3">
         <select name="rating" class="form-control">
           <option value="0">==Đánh giá==</option>

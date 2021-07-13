@@ -208,7 +208,9 @@ class Post extends Controller{
     public function postDetail($id){
         $data['page_title'] = "Chi tiết bài viết";
         $data['post'] = $this->postModel->getPostByID($id);
-
+        if(!empty($_SESSION) && $_SESSION['isLogin'] == true){
+            $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
+        }
         $data['comment']=$this->commentModel->getCommentSortID($id, 'ASC');
 
         $this->postModel->updateViewed($id, $data['post'][0]['viewed'] + 1);

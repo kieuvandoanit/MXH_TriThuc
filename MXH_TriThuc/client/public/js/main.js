@@ -48,7 +48,6 @@ $(document).ready(function () {
         
         
     });
-    //Xử lý dislike
 
     //Xử lý rating
     var formRatingPost = $("#form_rating_post");
@@ -57,13 +56,13 @@ $(document).ready(function () {
 
         $.ajax({
             type: formRatingPost.attr('method'),
-            url: formRatingPost.attr('action'), 
+            url: formRatingPost.attr('data-action'), 
             data: formRatingPost.serialize(),
             success: function(result){
                 var res = result.split("/")
                 let agvrate = parseFloat(res[0]);
                 res[0] = agvrate.toFixed(1);
-                // console.log(res);
+                console.log(res);
                 let post_rating_score_start = "";
             
                 if(res[0] < 0.5){

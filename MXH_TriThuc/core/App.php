@@ -68,7 +68,8 @@ class App{
             'post/edit',
             'post/handleAddPost',
             'post/handleLike',
-            'user/history'
+            'user/history',
+            'post/rating'
         ];
         if($arr[0] == 'admin'){
             if(isset($_SESSION['isLogin']) && $_SESSION['auth'] == 'user'){

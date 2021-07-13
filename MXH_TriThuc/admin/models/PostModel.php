@@ -11,6 +11,7 @@ class PostModel extends Db{
         }
         return $arr;
     }
+
     public function getAllPostByStatus($expression)
     {
         $sql='SELECT * FROM `Post` WHERE status="'.$expression.'"';
@@ -22,7 +23,7 @@ class PostModel extends Db{
         return $arr;
     }
     public function getPostDetail($expression){
-        $sql='SELECT * FROM `Post` WHERE Post_id='.$expression;
+        $sql='SELECT * FROM `Post` WHERE `Post_id`='.$expression;
         $rows=mysqli_query($this->conn,$sql);
         $arr = [];
         while($row = mysqli_fetch_array($rows)){
@@ -33,7 +34,7 @@ class PostModel extends Db{
     public function updatePost($id,$title,$content,$status)
     {
         if($title!='' and $content!=''){
-            $sql='UPDATE `Post` SET   `Title` = "'.$title.'", `Content` ="'.$content.'",status="'.$status.'" WHERE `Post_id`='.$id;
+            $sql='UPDATE `Post` SET   `Title` = "'.$title.'", `Content` ="'.$content.'",status="'.$status.'",UpdatedDate = NOW() WHERE `Post_id`='.$id;
         }else{
             $sql='UPDATE `Post` SET   status="'.$status.'" WHERE `Post_id`='.$id;
         }

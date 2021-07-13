@@ -107,6 +107,14 @@ class UserModel extends DB{
         }
         return false;
     }
+    public function updatePoint($userID, $value){
+        $sql = "UPDATE `user_profile` SET `point` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        } 
+    }
 
     public function deleteUser($id){
         $sql = "DELETE FROM `user_profile` WHERE `User_id` = $id";

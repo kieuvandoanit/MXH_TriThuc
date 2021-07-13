@@ -30,7 +30,7 @@ class CommentModel extends DB{
     }
 
     public function spamComment($comment_id){
-        $sql = "UPDATE `comment` SET `isSpam`=1 WHERE `Comment_id`=$comment_id";
+        $sql = "UPDATE `comment` SET `isSpam`=1, `UpdateDate`=NOW() WHERE `Comment_id`=$comment_id";
         $result = false;
         if(mysqli_query($this->conn, $sql)){
             $result = true;
