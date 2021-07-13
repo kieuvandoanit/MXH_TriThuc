@@ -40,7 +40,6 @@
         pagination(data);
     });
     function showData(data){
-        console.log(data);
         contentHtml='';
         for(const key in data){
             contentHtml+='<tr><td>'+(parseInt(key) +1)+'</td>';
@@ -53,7 +52,6 @@
             contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
             
         };
-        console.log(contentHtml);
         $("#postTable").html(contentHtml);
     };
 </script>

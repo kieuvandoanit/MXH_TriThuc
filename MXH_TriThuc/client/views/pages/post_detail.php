@@ -172,7 +172,6 @@ $(document).ready(function(){
 });
 function showData(data){
     contentHtml='';
-    console.log(data);
     for(const key in data){
         contentHtml+=`<li class="comment_item">
           <div class="user_comment_thumb">

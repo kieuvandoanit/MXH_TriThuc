@@ -23,7 +23,6 @@ $(document).ready(function(){
 function showData(data){
     const likedUser=<?php echo json_encode(isset($data['liked'])?$data['liked']:[]) ?>;
     var isLike=false;
-    console.log(data);
     contentHtml='';
     for(const key in data){
       contentHtml+=`<div class="col-md-3">

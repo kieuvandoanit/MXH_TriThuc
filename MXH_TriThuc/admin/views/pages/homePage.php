@@ -25,7 +25,6 @@
     google.charts.setOnLoadCallback(drawChart);
     var data1=<?php echo json_encode($data['postPerMonth']) ?>;
     
-    console.log(data1);
     function drawChart() {
         var data = google.visualization.arrayToDataTable(data1);
         var options = {

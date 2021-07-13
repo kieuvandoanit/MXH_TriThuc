@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(document).on("click", ".post_like", function(event) { 
         var id = $(event.target).attr('id');
         let classLike = ".fa-thumbs-up-"+id;
-        console.log(event.target);
+        // console.log(event.target);
         if($(event.target).hasClass("post_liked")){
             $.ajax({
                 url: "http://localhost:8080/MXH_TriThuc/post/handleDisLike",
@@ -63,7 +63,7 @@ $(document).ready(function () {
                 var res = result.split("/")
                 let agvrate = parseFloat(res[0]);
                 res[0] = agvrate.toFixed(1);
-                console.log(res);
+                // console.log(res);
                 let post_rating_score_start = "";
             
                 if(res[0] < 0.5){
@@ -120,27 +120,27 @@ function pagination(data){
     var rowsShown=4;
     var rowsTotal=data.length;
     var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
-    console.log('number:'+rowsShown)
-    $('#table').after('<div id="pagination"><i class="fas fa-caret-left"></i></div>');
-    for(i = 0;i < numPages;i++) {
-        var pageNum = i + 1;
-        // console.log(pageNum)
-        $('#pagination').append('<a id="numPage'+i+'" class="numPage" href="#" rel="'+i+'">'+pageNum+'</a>');
-    }
-    $('#pagination').append('<i class="fas fa-caret-right"></i>');
-    $('#pagination a:first').addClass('active');
-    var dataShown=data.slice(0,rowsShown);
-    showData(dataShown);
-    $('#pagination a').bind('click',function(e){
-        // alert( "Handler for .click() called." );
-        e.preventDefault();
-        var currPage = $(this).attr('rel');
-        $('#pagination a').removeClass('active');
-        $(this).addClass('active');
-        console.log(currPage);
-        var startItem = currPage * rowsShown;
-        var endItem = startItem + rowsShown;
-        dataShown=data.slice(startItem,endItem);
+    if(rowsTotal>0){
+        $('#table').after('<div id="pagination"><i class="fas fa-caret-left"></i></div>');
+        for(i = 0;i < numPages;i++) {
+            var pageNum = i + 1;
+            // console.log(pageNum)
+            $('#pagination').append('<a id="numPage'+i+'" class="numPage" href="#" rel="'+i+'">'+pageNum+'</a>');
+        }
+        $('#pagination').append('<i class="fas fa-caret-right"></i>');
+        $('#pagination a:first').addClass('active');
+        var dataShown=data.slice(0,rowsShown);
         showData(dataShown);
-    });
+        $('#pagination a').bind('click',function(e){
+            // alert( "Handler for .click() called." );
+            e.preventDefault();
+            var currPage = $(this).attr('rel');
+            $('#pagination a').removeClass('active');
+            $(this).addClass('active');
+            var startItem = currPage * rowsShown;
+            var endItem = startItem + rowsShown;
+            dataShown=data.slice(startItem,endItem);
+            showData(dataShown);
+        });
+    }  
 }

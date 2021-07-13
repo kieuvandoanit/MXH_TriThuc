@@ -45,16 +45,15 @@
 </form>
 <script>
     tinymce.init({
-    selector: '#txtDescription',
-    height: 300,
-    plugins:'paste image link autolink lists table media',
-    menubar: false,
-    toolbar: [
-    'undo redo | fontselect fontsizeselect | bold italic underline strikethrough | numlist bullist alignleft aligncenter alignright | forecolor  backcolor | table link image media'
-    ],
-    fontsize_formats: '10pt 12pt 14pt 16pt 18pt 24pt 36pt',
-    elementpath: false,
-    icons: 'material',
-    placeholder: 'writing description here...',
+        selector: 'textarea',
+        height: 300,
+        plugins:'paste image link autolink lists table media',
+        menubar: false,
+        toolbar: [
+        'undo redo | fontselect fontsizeselect | bold italic underline strikethrough | numlist bullist alignleft aligncenter alignright | forecolor  backcolor | table link image media'
+        ],
+        fontsize_formats: '10pt 12pt 14pt 16pt 18pt 24pt 36pt',
+        elementpath: false,
+        placeholder: 'writing description here...',
     });
 </script>
