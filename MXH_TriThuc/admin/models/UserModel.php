@@ -56,6 +56,18 @@ class UserModel extends DB{
         return $arr;
     }
 
+    public function getUserInfo($userID){
+        
+        $sql = "SELECT * FROM `user` as u, `user_profile` as p WHERE u.User_id=p.User_id AND u.User_id=$userID"; 
+
+        $rows = mysqli_query($this->conn, $sql);
+        $arr=[];
+        while($row=mysqli_fetch_array($rows)){
+            $arr[]=$row;
+        }
+        return $arr;
+    }
+
     public function getUserByEmail($email){
         $sql = "SELECT * FROM `user` WHERE `email`='$email' AND `UType_id` = 1";
             $rows = mysqli_query($this->conn, $sql);
@@ -146,6 +158,28 @@ class UserModel extends DB{
         }else{
             return false;
         } 
+    }
+
+    public function updateProfile($userID, $fullname, $phoneNumber, $email, $address, $userThumb){
+        // $userID = $_SESSION['userID'];
+
+        $sql = "UPDATE `user_profile` SET `avatar`='$userThumb',`name`='$fullname',`phone`='$phoneNumber',`email`='$email',`address` = '$address' WHERE `user_id` = $userID";
+        $result = false;
+        // echo $sql;
+         if(mysqli_query($this->conn, $sql)){
+             $result = true;
+         }
+         return $result;
+    }
+
+    public function updateUser($userID,$username,$email,$password){
+        $sql = "UPDATE `user` SET `UserName`='$username',`email`='$email',`Password`='$password' WHERE `user_id` = $userID";
+        $result = false;
+        // echo $sql;
+         if(mysqli_query($this->conn, $sql)){
+             $result = true;
+         }
+         return $result;
     }
 
     

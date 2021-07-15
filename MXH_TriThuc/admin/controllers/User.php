@@ -141,8 +141,46 @@ class User extends Controller{
         } 
     }
 
-    public function editUser(){
+    public function editUser($idUser){
+        $data['page_title'] = 'Chỉnh sửa thông tin người dùng';
+        $data['userInfo'] = $this->userModel->getUserInfo($idUser);
+        $this->viewAdmin('inc/header',$data);
+        $this->viewAdmin('pages/editUser_page', $data);
+        $this->viewAdmin('inc/footer');
+    }
 
+    public function handleEditUser($userID){
+        if(isset($_POST['btn_updateUser'])){
+            if(!empty($_FILES['file']['name'])){
+                require_once('MXH_TriThuc/plugin/helper.php');
+                $avatar = uploadFile();
+            }else{
+                $avatar = $_POST['avatar'];
+            }
+            $fullname = $_POST['fullname'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $gender = $_POST['gender'];
+            // $avatar = $_POST['avatar'];
+            $address = $_POST['address'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $postNumber = $_POST['postNumber'];
+            $email = $_POST['email'];
+
+            if($_POST['password'] == $_POST['rePassword']){
+                $updateProfile = $this->userModel->updateProfile($userID,$fullname, $phoneNumber, $email,$address,$avatar);
+                if($updateProfile){
+                    $updateUser = $this->userModel->updateUser($userID,$username,$email,$password);
+                    if($updateUser){
+                        $this->redirect('/admin/user/userPage');
+                    }
+                }else{
+                    $this->redirect('/admin/user/editUser/'.$userID);
+                }
+            }else{
+                $this->redirect('/admin/user/editUser/'.$userID);
+            }
+        }
     }
     public function profile($id){
         $data['page_title'] = 'Thông tin user';
@@ -188,10 +226,16 @@ class User extends Controller{
         // echo '<pre>'; print_r($_POST); echo '</pre>'; 
 
         if(isset($_POST['btn_createUser'])){
+            if(!empty($_FILES['file']['name'])){
+                require_once('MXH_TriThuc/plugin/helper.php');
+                $avatar = uploadFile();
+            }else{
+                $avatar = $_POST['avatar'];
+            }
             $fullname = $_POST['fullname'];
             $phoneNumber = $_POST['phoneNumber'];
             $gender = $_POST['gender'];
-            $avatar = $_POST['avatar'];
+            // $avatar = $_POST['avatar'];
             $address = $_POST['address'];
             $username = $_POST['username'];
             $password = $_POST['password'];
