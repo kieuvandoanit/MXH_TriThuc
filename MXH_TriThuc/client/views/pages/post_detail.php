@@ -198,6 +198,7 @@ function showData(data){
               <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
               <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="${data[key]['Comment_id']}">
             </form>
+
               <input type="hidden" name="idpost" id="post_id" class="form-control" value="<?php echo $data['post'][0]['Post_id']; ?>">
               <input type="hidden" name="commentID" id="cmt_id" class="form-control" value="${data[key]['Comment_id']}">
             </form>

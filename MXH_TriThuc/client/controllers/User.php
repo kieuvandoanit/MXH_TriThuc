@@ -51,7 +51,6 @@ class User extends Controller{
                 }
             }
         }
-        // echo '<pre>'; print_r($error); echo '</pre>'; 
         if(empty($error)){
             
             if($this->userModel->createUser($username, $password, $email)){
@@ -73,7 +72,6 @@ class User extends Controller{
             $username = $_POST['username'];
             $password = $_POST['password'];
             $user = $this->userModel->getUser($username, $password);
-            
             if(!empty($user)){
                 $userInfo = $this->userModel->getUserProfile($user[0]['User_id']);
                 $_SESSION['fullname']=$userInfo[0]['Name'];
@@ -94,7 +92,6 @@ class User extends Controller{
         
         session_destroy();
         $this->redirect('/user');
-        // echo "Davao";
     }
 
     public function profile(){
