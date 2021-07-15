@@ -83,14 +83,23 @@
                 }
             }
             elseif (isset($_POST['btn_inject'])){
+                $post = $this->PostModel->getPostDetail($id);
                 if(isset($_POST['id'])){
                     $idPost=$_POST['id'];
                     $title=$_POST['title'];
                     $content=$_POST['txtDescription'];
+                    if(!empty($post) && $post[0]['Status'] == "Duyệt tự động" || $post[0]['Status'] == "Đã duyệt"){
+                        $user=$this->UserModel->getProfile($post[0]['Member_id']);
+                        $this->UserModel->updatePoint($post[0]['Member_id'],$user[0]['point'] -5);
+                    }
                     $results= $this->PostModel->updatePost($idPost,$title,$content,'Không được duyệt');
                     $this->redirect('/admin/post/postDetail/'.$idPost);
                 }
                 else{
+                    if(!empty($post) && $post[0]['Status'] == "Duyệt tự động" || $post[0]['Status'] == "Đã duyệt"){
+                        $user=$this->UserModel->getProfile($post[0]['Member_id']);
+                        $this->UserModel->updatePoint($post[0]['Member_id'],$user[0]['point'] -5);
+                    }
                     $results= $this->PostModel->updatePost($id,'','','Không được duyệt');
                     $this->redirect('/admin/post/postPage/');
                 }

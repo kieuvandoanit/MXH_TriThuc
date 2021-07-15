@@ -185,7 +185,7 @@ class PostModel extends DB{
     //full-text seach
     public function getPostByContent($content)
     {
-        $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
+        $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động") UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động")';
         // echo $sql;
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
@@ -199,7 +199,7 @@ class PostModel extends DB{
         $countHashTag= count($hashTagList);
         $sql='';
         foreach($hashTagList as $key=>$item){
-            $sql=$sql.'SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (hashtag) AGAINST ("'.substr($item, 1).'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id';
+            $sql=$sql.'SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (hashtag) AGAINST ("'.substr($item, 1).'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động")';
             if(++$key!=$countHashTag){
                 $sql=$sql.' INTERSECT ';
             }
@@ -235,7 +235,8 @@ class PostModel extends DB{
     }
 
     public function SearchCategory($category){
-        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Category_id` = $category";
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Category_id` = $category AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động')";
+        // echo $sql;
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
