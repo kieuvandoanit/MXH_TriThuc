@@ -139,6 +139,15 @@ class UserModel extends DB{
          return $result;
     }
 
+    public function updateCommentAmount($userID, $value){
+        $sql = "UPDATE `user_profile` SET `CommentAmount` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        } 
+    }
+
     
 }
 

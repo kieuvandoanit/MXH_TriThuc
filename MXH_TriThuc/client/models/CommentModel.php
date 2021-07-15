@@ -20,7 +20,7 @@ class CommentModel extends DB{
     }
 
     public function getCommentSortID($id, $sort){
-        $sql = "SELECT c.Comment_id, c.Content, u.Avatar, u.Name FROM `comment` c, `user_profile` u WHERE `Post_id` = $id AND c.Member_id=u.User_id ORDER BY `Comment_id` $sort";
+        $sql = "SELECT c.Comment_id, c.Content, u.Avatar, u.Name FROM `comment` c, `user_profile` u WHERE `Post_id` = $id AND c.Member_id=u.User_id AND c.isDelete = 0 ORDER BY `Comment_id` $sort";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){

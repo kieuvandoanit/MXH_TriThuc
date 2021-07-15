@@ -45,5 +45,15 @@ class CommentModel extends Db{
         $result=mysqli_query($this->conn,$sql);
         return $result;
     }
+
+    public function getCommentByID($id){
+        $sql = "SELECT * FROM `comment` WHERE `Comment_id` = $id";
+        $rows=mysqli_query($this->conn,$sql);
+        $arr = [];
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
 }
 ?>
