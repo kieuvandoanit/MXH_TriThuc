@@ -56,5 +56,24 @@ class PostModel extends Db{
         $result=mysqli_query($this->conn,$sql);
         return $result;
     }
+
+    public function getPostByID($id){
+        $sql ="SELECT p.*,u.User_id, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
+    public function updateCommentAmount($postID, $value){
+        $sql = "UPDATE `post` SET `commentAmount` = $value WHERE `Post_id` = $postID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

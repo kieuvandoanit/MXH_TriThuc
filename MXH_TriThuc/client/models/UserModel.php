@@ -143,6 +143,15 @@ class UserModel extends DB{
         } 
     }
 
+    public function updateCommentAmount($userID, $value){
+        $sql = "UPDATE `user_profile` SET `CommentAmount` = $value WHERE `User_id` = $userID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        } 
+    }
+
     public function getTop5HighestFromTable($table,$selectOption,$orderby)
     {
         $sql='SELECT '.$selectOption.' FROM '.$table.' u ORDER BY '.$orderby.' DESC LIMIT 5';

@@ -216,9 +216,9 @@ INSERT INTO `user` (`User_id`, `UserName`, `email`, `Password`, `UType_id`) VALU
 CREATE TABLE `user_profile` (
   `Profile_id` int(10) UNSIGNED NOT NULL,
   `Avatar` text COLLATE utf8_unicode_ci DEFAULT '',
-  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Name` varchar(50) COLLATE utf8_unicode_ci,
   `gender` enum('Nam','Nữ') COLLATE utf8_unicode_ci DEFAULT 'Nam',
-  `Phone` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Phone` varchar(12) COLLATE utf8_unicode_ci,
   `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(200) COLLATE utf8_unicode_ci DEFAULT '',
   `PostAmount` int(10) UNSIGNED DEFAULT 0,

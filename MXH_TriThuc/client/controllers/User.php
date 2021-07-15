@@ -58,9 +58,9 @@ class User extends Controller{
                 $user = $this->userModel->getUser($username, $password);
                 $userID = $user[0]['User_id'];
                 if($this -> userModel->createUserProfile($userID, $email)){
-                    // $this->redirect('/user');
+                    $this->redirect('/user');
                 }else{
-                    // $this->redirect('/user/register');
+                    $this->redirect('/user/register');
                 }
             };
         }else{
@@ -73,8 +73,9 @@ class User extends Controller{
             $username = $_POST['username'];
             $password = $_POST['password'];
             $user = $this->userModel->getUser($username, $password);
-            $userInfo = $this->userModel->getUserProfile($user[0]['User_id']);
+            
             if(!empty($user)){
+                $userInfo = $this->userModel->getUserProfile($user[0]['User_id']);
                 $_SESSION['fullname']=$userInfo[0]['Name'];
                 $_SESSION['avatar']=$userInfo[0]['Avatar'];
                 $_SESSION['userID'] = $user[0]['User_id'];

@@ -29,7 +29,7 @@
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        var data=<?php echo json_encode($data) ?>;
+        var data=<?php echo json_encode($data['cmtList']) ?>;
         // var data=<php echo json_encode($data) ?>;
         pagination(data);
         

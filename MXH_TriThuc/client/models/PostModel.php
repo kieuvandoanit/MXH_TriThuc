@@ -243,6 +243,15 @@ class PostModel extends DB{
         }
         return $arr;
     }
+
+    public function updateCommentAmount($postID, $value){
+        $sql = "UPDATE `post` SET `commentAmount` = $value WHERE `Post_id` = $postID";
+        if(mysqli_query($this->conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 
