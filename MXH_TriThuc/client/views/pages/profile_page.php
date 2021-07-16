@@ -11,6 +11,9 @@
           <li class="name">
             <h1><?php echo isset($data['user'][0]['Name'])?$data['user'][0]['Name']:'Họ tên chưa cập nhật'; ?></h1>
           </li>
+          <li class="gender">
+            <p><?php echo isset($data['user'][0]['gender'])?$data['user'][0]['gender']:'Giới tính chưa cập nhật'; ?></p>
+          </li>
           <li class="job"><?php 
             
             if(isset($data['user'][0]['Level_id'])){

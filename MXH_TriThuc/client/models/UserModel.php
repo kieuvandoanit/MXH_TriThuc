@@ -76,10 +76,10 @@ class UserModel extends DB{
 
     }
 
-    public function updateProfile($fullname, $phoneNumber, $email, $address, $userThumb){
+    public function updateProfile($fullname,$gender, $phoneNumber, $email, $address, $userThumb){
         $userID = $_SESSION['userID'];
 
-        $sql = "UPDATE `user_profile` SET `avatar`='$userThumb',`name`='$fullname',`phone`='$phoneNumber',`email`='$email',`address` = '$address' WHERE `user_id` = $userID";
+        $sql = "UPDATE `user_profile` SET `avatar`='$userThumb',`gender`='$gender',`name`='$fullname',`phone`='$phoneNumber',`email`='$email',`address` = '$address' WHERE `user_id` = $userID";
         $result = false;
          if(mysqli_query($this->conn, $sql)){
              $result = true;

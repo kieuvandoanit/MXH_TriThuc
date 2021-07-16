@@ -11,6 +11,9 @@
           <li class="name">
             <h1><?php echo isset($data['user'][0]['Name'])?$data['user'][0]['Name']:'Họ tên chưa cập nhật'; ?></h1>
           </li>
+          <li class="name">
+            <p><?php echo isset($data['user'][0]['gender'])?$data['user'][0]['gender']:'Giới tính chưa cập nhật'; ?></p>
+          </li>
           <li class="job"><?php echo isset($data['user'][0]['Level_id'])?$data['user'][0]['Level_id']:'Level chưa cập nhật'; ?></li>
           <li class="phone"><?php echo isset($data['user'][0]['Phone'])?$data['user'][0]['Phone']:'Số điện thoại chưa cập nhật';?></li>
           <li class="mail"><?php echo isset($data['user'][0]['Email'])?$data['user'][0]['Email']:'Email chưa cập nhật';?></li>

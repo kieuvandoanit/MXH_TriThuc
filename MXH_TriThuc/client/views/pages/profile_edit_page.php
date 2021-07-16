@@ -61,6 +61,24 @@
                 </div>
                 <div class="info">
                   <!-- <form> -->
+                    <h5><b>Giới tính</b></h5>
+                    <div class="input-group">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" disabled>
+                          <i class="glyphicon glyphicon-user"></i>
+                        </button>
+                      </div>
+                      <!-- <input type="text" class="form-control" value="<?php if(isset($data['user'][0]['gender'])){echo $data['user'][0]['gender'];};?>" name="gender"> -->
+                      <select name="gender" id="" class="form-control">
+                        <option value="">===Giới tính===</option>
+                        <option value="Nam" <?php echo (isset($data['user'][0]['gender']) && $data['user'][0]['gender'] == 'Nam')?'selected':''; ?>>Nam</option>
+                        <option value="Nữ" <?php echo (isset($data['user'][0]['gender']) && $data['user'][0]['gender'] == 'Nữ')?'selected':''; ?>>Nữ</option>
+                      </select>
+                    </div>
+                 <!-- </form> -->
+                </div>
+                <div class="info">
+                  <!-- <form> -->
                     <h5><b>Số điện thoại</b></h5>
                     <div class="input-group">
                       <div class="input-group-btn">

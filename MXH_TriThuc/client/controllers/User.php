@@ -124,8 +124,8 @@ class User extends Controller{
             $phoneNumber = $_POST['phoneNumber'];
             $email = $_POST['email'];
             $address = $_POST['address'];
-
-            $result = $this->userModel-> updateProfile($fullname, $phoneNumber, $email, $address, $userThumb);
+            $gender = $_POST['gender'];
+            $result = $this->userModel-> updateProfile($fullname, $gender, $phoneNumber, $email, $address, $userThumb);
             if($result){
                 $_SESSION['avatar']=$userThumb;
                 $this->redirect('/user/profile');
