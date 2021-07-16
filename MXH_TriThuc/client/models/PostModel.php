@@ -153,6 +153,8 @@ class PostModel extends DB{
         return $arr;
     }
 
+    
+
     public function likeHistory($postID, $userID){
         $sql = "INSERT INTO `liked_post` VALUES(null, $userID, $postID, NOW())";
         $result = false;

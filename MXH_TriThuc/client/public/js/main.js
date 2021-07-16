@@ -59,10 +59,11 @@ $(document).ready(function () {
             url: formRatingPost.attr('data-action'), 
             data: formRatingPost.serialize(),
             success: function(result){
+                // console.log(result);
                 var res = result.split("/")
                 let agvrate = parseFloat(res[0]);
                 res[0] = agvrate.toFixed(1);
-                console.log(res);
+                
                 let post_rating_score_start = "";
             
                 if(res[0] < 0.5){
@@ -78,6 +79,7 @@ $(document).ready(function () {
                 }else{
                     post_rating_score_start = "<i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i><i class='fas fa-star'></i>";
                 }
+                // console.log(post_rating_score_start);
                 let pHtmlText = "<p class='rating_score_info' id='post_rating_score_number'>"+res[0]+"</p>"
                 let post_count_rating = "<div class='number_ranked text-center' id='post_count_rating'>("+res[1]+" đánh giá)</div>";
                 
@@ -104,7 +106,7 @@ $(document).ready(function () {
                 $("#5star").css("width",tylesao5+"%");
                 $("#post_count_rating").html(post_count_rating);
                 $("#post_rating_score_number").html(pHtmlText);
-                $("#post_rating_score_start").html(post_rating_score_start);
+                $(".post_rating_score_start").html(post_rating_score_start);
             }
 
         });

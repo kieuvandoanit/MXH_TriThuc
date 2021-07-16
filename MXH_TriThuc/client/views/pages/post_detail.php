@@ -13,7 +13,7 @@
         <?php echo $data['post'][0]['CreatedDate']; ?>
         </div>
         <div class="post_username"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$data['post'][0]["User_id"];?>" style="text-decoration: none;color:white"><i class="fas fa-user" style="margin-right: 5px;"></i><?php echo $data['post'][0]['Name']; ?></a></div>
-        <div class="post_rank" id="post_rating_score_start">
+        <div class="post_rank post_rating_score_start">
         <?php  
           $count = 1;
           for($i = 0; $i <5; $i++){
@@ -88,21 +88,21 @@
       <div class="form-group col-md-3">
         <select name="rating" class="form-control">
           <option value="0">==Đánh giá==</option>
-          <option value="1">1 sao</option>
-          <option value="2">2 sao</option>
-          <option value="3">3 sao</option>
-          <option value="4">4 sao</option>
-          <option value="5">5 sao</option>
+          <option value="1" <?php echo (!empty($data['historyRating'][0]) && $data['historyRating'][0]['Rate'] == '1 sao')?'selected':''; ?>>1 sao</option>
+          <option value="2" <?php echo (!empty($data['historyRating'][0]) && $data['historyRating'][0]['Rate'] == '2 sao')?'selected':''; ?>>2 sao</option>
+          <option value="3" <?php echo (!empty($data['historyRating'][0]) && $data['historyRating'][0]['Rate'] == '3 sao')?'selected':''; ?>>3 sao</option>
+          <option value="4" <?php echo (!empty($data['historyRating'][0]) && $data['historyRating'][0]['Rate'] == '4 sao')?'selected':''; ?>>4 sao</option>
+          <option value="5" <?php echo (!empty($data['historyRating'][0]) && $data['historyRating'][0]['Rate'] == '5 sao')?'selected':''; ?>>5 sao</option>
         </select>
       </div>
-      <div class="col-md-2"><input class="btn btn-primary" type="submit" name="btn_rating_post" id="btn_rating_post" value="Đánh giá"/></div>
+      <div class="col-md-2"><input class="btn btn-primary" type="submit" name="btn_rating_post" id="btn_rating_post" value="Đánh giá" <?php echo !isset($_SESSION['userID'])?'disabled':''; ?>/></div>
       <div class="col-md-7"></div>
     </form><br><br><br>
     <h3>Đánh giá</h3>
     <div class="row rating">
       <div class="rating_score">
         <p class="rating_score_info" id="post_rating_score_number"><?php echo $data['post'][0]['AvgRating']; ?></p>
-        <div class="post_rank text-center" id="post_rating_score_start">
+        <div class="post_rank text-center post_rating_score_start">
           <?php  
           $count = 1;
           for($i = 0; $i <5; $i++){

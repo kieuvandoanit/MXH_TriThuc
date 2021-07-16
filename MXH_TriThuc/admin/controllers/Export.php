@@ -91,7 +91,7 @@ class Export extends Controller{
         header("Content-Transfer-Encoding: ASCII");
         header('Content-Disposition: attachment; filename=liked_post.csv');
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('LP_id', 'User_id','Post_id','time'));
+        fputcsv($output, array('LP_id', 'User_id','Post_id','CreatedDate'));
 
         if (count($liked_post) > 0) {
             foreach ($liked_post as $row) {
@@ -159,7 +159,7 @@ class Export extends Controller{
         header("Content-Transfer-Encoding: ASCII");
         header('Content-Disposition: attachment; filename=voting.csv');
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('votingID', 'PostID','Member_id','Rate','time'));
+        fputcsv($output, array('votingID', 'PostID','Member_id','Rate','CreatedDate'));
 
         if (count($voting) > 0) {
             foreach ($voting as $row) {

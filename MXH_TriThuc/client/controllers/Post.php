@@ -208,6 +208,9 @@ class Post extends Controller{
     public function postDetail($id){
         $data['page_title'] = "Chi tiết bài viết";
         $data['post'] = $this->postModel->getPostByID($id);
+        if(isset($_SESSION['userID'])){
+            $data['historyRating'] = $this->postModel->getRatingHistoryByPostIDUserID($id, $_SESSION['userID']);
+        }
         if(!empty($_SESSION) && $_SESSION['isLogin'] == true){
             $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
         }
@@ -280,7 +283,6 @@ class Post extends Controller{
     public function rating($id){
         $rate = $_POST['rating'];
         $history = $this->postModel->getRatingHistoryByPostIDUserID($id, $_SESSION['userID']);
-        
         $post= $this->postModel->getPostByID($id);
         
         
@@ -289,7 +291,7 @@ class Post extends Controller{
             $rateAmount = $post[0]['rateAmount'] + 1;
             $updatePost = $this->postModel->rating($id,$avgrating, $rateAmount);
             if($updatePost){
-                $this->postModel->ratingHistory($post[0]['Post_id'], $_SESSION['userID'], $rate);
+                $this->postModel->ratingHistory($id, $_SESSION['userID'], $rate);
             }
         }else{
             $avgrating = ($post[0]['AvgRating']*$post[0]['rateAmount']) / ($post[0]['rateAmount']);

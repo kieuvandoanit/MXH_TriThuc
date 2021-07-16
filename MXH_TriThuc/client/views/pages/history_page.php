@@ -19,7 +19,7 @@
                         <td><?php echo $count; ?></td>
                         <td><a href="<?php echo HEADERLINK.'/post/postDetail/'.$rate['PostID']; ?>"><?php echo $rate['PostID']; ?></a></td>
                         <td><?php echo $rate['Rate']; ?></td>
-                        <td><?php echo $rate['time']; ?></td>
+                        <td><?php echo $rate['CreatedDate']; ?></td>
                     </tr>
                     <?php
                     $count=$count+1;   
@@ -50,7 +50,7 @@
                     <td><?php echo $count2; ?></td>
                     <td><a href="<?php echo HEADERLINK.'/post/postDetail/'.$like['Post_id']; ?>"><?php echo $like['Post_id']; ?></a></td>
                     <td>Like</td>
-                    <td><?php echo $like['time']; ?></td>
+                    <td><?php echo $like['CreatedDate']; ?></td>
                     </tr>
                     <?php 
                     $count2 = $count2 +1; 
