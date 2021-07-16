@@ -79,8 +79,8 @@
                     <div class="post_datetime">
                     <?php echo $data['post_view'][$i]['CreatedDate']; ?>
                     </div>
-                    <div class="post_author">
-                      <div class="author_name"><a href="" class="author_link"><?php echo $data['post_view'][$i]['Name']; ?></a></div>
+                    <div class="post_author" >
+                      <div class="author_name"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$data['post_view'][$i]['Member_id'];?>" class="author_link"><?php echo $data['post_view'][$i]['Name']; ?></a></div>
                       <div class="author_icon"><i class="far fa-user-circle"></i></div>
                     </div>
                   </div>
@@ -158,7 +158,7 @@
                       <?php echo $data['post_new'][$i]['CreatedDate']; ?>
                       </div>
                       <div class="post_author">
-                        <div class="author_name"><a href="" class="author_link"><?php echo $data['post_new'][$i]['Name']; ?></a></div>
+                        <div class="author_name"><a href="<?php echo HEADERLINK.'/user/ViewProfile/'.$data['post_new'][$i]['Member_id'];?>" class="author_link"><?php echo $data['post_new'][$i]['Name']; ?></a></div>
                         <div class="author_icon"><i class="far fa-user-circle"></i></div>
                       </div>
                     </div>

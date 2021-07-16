@@ -45,7 +45,7 @@
                 <th scope="col" style="width: 55%; overflow: hidden;">Tiều đề</th>
                 <th scope="col" style="width: 15%; overflow: hidden;">Trạng thái</th>
                 <th scope="col" style="width: 10%; overflow: hidden;">Đánh giá</th>
-                <th scope="col" style="width: 22%; overflow: hidden;">Hành động</th>
+                <!-- <th scope="col" style="width: 22%; overflow: hidden;">Hành động</th> -->
               </tr>
             </thead>
             <tbody id="postTable">
@@ -69,8 +69,8 @@ function showData(data){
         contentHtml+='<td>'+((data[key]['Status'])?data[key]['Status']:"Chưa cập nhật")+'</td>';
         contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
         contentHtml+='<td>';
-        contentHtml+= '<a href="<?php echo HEADERLINK?>/post/editPost/'+data[key]['Post_id']+'">Sửa</a>';
-        contentHtml+= '<a href="<?php echo HEADERLINK?>/post/deletePost/'+data[key]['Post_id']+'">Xóa</a></td></tr>';
+        // contentHtml+= '<a href="<?php echo HEADERLINK?>/post/editPost/'+data[key]['Post_id']+'">Sửa</a>';
+        // contentHtml+= '<a href="<?php echo HEADERLINK?>/post/deletePost/'+data[key]['Post_id']+'">Xóa</a></td></tr>';
     };
     $("#postTable").html(contentHtml);
 };

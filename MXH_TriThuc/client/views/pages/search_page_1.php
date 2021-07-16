@@ -38,7 +38,7 @@ function showData(data){
             ${data[key]['CreatedDate']}
             </div>
             <div class="post_author">
-              <div class="author_name"><a href="" class="author_link">${data[key]['Name']}</a></div>
+              <div class="author_name"><a href="<?php echo HEADERLINK;?>/user/ViewProfile/${data[key]["Member_id"]}" class="author_link">${data[key]['Name']}</a></div>
               <div class="author_icon"><i class="far fa-user-circle"></i></div>
             </div>
           </div>
