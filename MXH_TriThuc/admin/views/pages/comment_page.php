@@ -44,8 +44,8 @@
             contentHtml+= '<td>'+((data[key]["Title"])?data[key]["Title"]:"khong")+'</td>';
             contentHtml+= '<td>'+((data[key]["Content"])?data[key]["Content"]:"khong")+'</td>';
             contentHtml+= '<td class="user-btn">';
-            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/comment/deleteComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
-            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/comment/detailComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/comment/deleteComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="delete comment"><i class="far fa-trash-alt"></i></a>';
+            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/comment/detailComment/'+((data[key]['Comment_id'])?data[key]['Comment_id']:-1)+'" title="information of comment"><i class="fas fa-info-circle"></i></a></td></tr>';
         };
         $("#postTable").html(contentHtml);
     };

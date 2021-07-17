@@ -180,6 +180,8 @@ class User extends Controller{
             }else{
                 $this->redirect('/admin/user/editUser/'.$userID);
             }
+        }else{
+            $this->redirect('/admin/user/userPage');
         }
     }
     public function profile($id){
