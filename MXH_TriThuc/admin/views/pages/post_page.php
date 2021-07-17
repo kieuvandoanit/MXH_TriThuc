@@ -60,7 +60,9 @@
             contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['viewed'])?data[key]['viewed']:"Chưa cập nhật")+'</td>';
-            contentHtml+=`<td class="cut-text">'${((data[key]["Content"])?data[key]["Content"]:"Chưa cập nhật")}'</td>`;
+            contentHtml+='<td class="cut-text">';
+            contentHtml+=convertToPlain(data[key]["Content"]);
+            contentHtml+='</td>';
             contentHtml+='<td>'+((data[key]['CreatedDate'])?data[key]['CreatedDate']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['UpdatedDate'])?data[key]['UpdatedDate']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td class="cmt-btn" style="display: flex; justify-content: flex-end;">';
@@ -76,8 +78,14 @@
             };
             contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/post/deletePost/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
             contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/post/postDetail/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+            console.log(contentHtml);
         };
         $("#postTable").html(contentHtml);
     };
+    function convertToPlain(html){
+    var tempDivElement = document.createElement("div");
+    tempDivElement.innerHTML = html;
+    return tempDivElement.textContent || tempDivElement.innerText || "";
+}
 </script>
 
