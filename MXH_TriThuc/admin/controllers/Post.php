@@ -23,15 +23,21 @@
              * hiển thị view.
              */
             $expression='1';
+            $results=[];
             if(isset($_POST['selectBox'])){
+                $results['selectoption']=$_POST['selectBox'];
                 $expression=$_POST['selectBox'];
                 if($expression=='Đã xóa'){
                     $expression='isDelete=1';
-                }else{
+                }elseif($expression=='Tất cả' ){
+                    $expression='1';
+                }
+                else{
                     $expression='Status="'.$expression.'"';
                 }
             }
-            $results=$this->PostModel->getAllPost($expression);
+            $results['post']=$this->PostModel->getAllPost($expression);
+
             $this->viewAdmin('inc/header');
             $this->viewAdmin('pages/post_page',$results);
             $this->viewAdmin('inc/footer');
