@@ -128,6 +128,7 @@ class User extends Controller{
             $result = $this->userModel-> updateProfile($fullname, $gender, $phoneNumber, $email, $address, $userThumb);
             if($result){
                 $_SESSION['avatar']=$userThumb;
+                $_SESSION['fullname']=$fullname;
                 $this->redirect('/user/profile');
             }else{
                 $this->redirect('/user/editProfile');

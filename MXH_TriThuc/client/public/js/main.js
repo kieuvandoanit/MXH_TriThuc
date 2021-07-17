@@ -118,7 +118,7 @@ $(document).ready(function () {
 //Phân trang
 function pagination(data){
 
-    var rowsShown=4;
+    var rowsShown=8;
     var rowsTotal=data.length;
     var numPages=Math.floor(rowsTotal/rowsShown)+((rowsTotal%rowsShown>0)?1:0);
     if(rowsTotal>0){
