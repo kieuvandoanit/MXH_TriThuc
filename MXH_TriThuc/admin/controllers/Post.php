@@ -74,7 +74,7 @@
                         $user=$this->UserModel->getProfile($post[0]['Member_id']);
                         $this->UserModel->updatePoint($post[0]['Member_id'],$user[0]['point'] +5);
                     }
-                    // $this->redirect('/admin/post/postDetail/'.$idPost);
+                    $this->redirect('/admin/post/postPage/');
                 }
                 else{
                     $results= $this->PostModel->updatePost($id,'','','Đã duyệt');

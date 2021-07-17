@@ -10,16 +10,36 @@
               <li class="name">
                 <h1><?php echo isset($data['user'][0]['Name'])?$data['user'][0]['Name']:'Chưa nhập họ tên' ?></h1>
               </li>
-              <li class="job"><?php echo isset($data['user'][0]['level_id'])?$data['user'][0]['level_id']:'Chưa có level';  ?></li>
+              <li class="job"><?php 
+            
+            if(isset($data['user'][0]['Level_id'])){
+              if($data['user'][0]['Level_id'] == 1){
+                echo "Cấp bậc: Học sinh";
+              }else if($data['user'][0]['Level_id'] == 2){
+                echo "Cấp bậc: Sinh viên";
+              }else if($data['user'][0]['Level_id'] == 3){
+                echo "Cấp bậc: Thạc sĩ";
+              }else if($data['user'][0]['Level_id'] == 4){
+                echo "Cấp bậc: Tiến sĩ";
+              }else if($data['user'][0]['Level_id'] == 5){
+                echo "Cấp bậc: Giáo sư";
+              }else{
+                echo "Cấp bậc: Chưa cập nhật";
+              }
+            }
+              else{
+                'Level chưa cập nhật';} 
+            
+            ?></li>
             </ul>
             <div class="posts_react col-md-6 col-md-offset-3">
               <div class="posts_like">
                 <i class="fas fa-file-alt"></i>
-                <p class="posts_num">25</p>
+                <p class="posts_num"><?php if(isset($data['user'][0])){ echo $data['user'][0]['PostAmount'];} ?></p>
               </div>
               <div class="posts_comment">
                 <i class="fas fa-comment"></i>
-                <p class="posts_comment_num">99</p>
+                <p class="posts_comment_num"><?php if(isset($data['user'][0])){ echo $data['user'][0]['CommentAmount'];} ?></p>
               </div>
             </div>
           </div>
@@ -41,9 +61,10 @@
                       </div>
                       <input type="hidden" class="form-control" name="user_thumb" value="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>">
                       <input type="file" name="file" id="upload_file" class="form-control"/>
-                      <br><br>
-                      <img src="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>" alt="" width="200">
+                      <br>
                     </div>
+                    <img src="<?php if(isset($data['user'][0]['Avatar'])){echo $data['user'][0]['Avatar'];};?>" alt="" width="200">
+
                  <!-- </form> -->
                 </div>
                 <div class="info">

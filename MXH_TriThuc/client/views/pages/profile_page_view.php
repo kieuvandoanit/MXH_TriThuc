@@ -14,7 +14,27 @@
           <li class="name">
             <p><?php echo isset($data['user'][0]['gender'])?$data['user'][0]['gender']:'Giới tính chưa cập nhật'; ?></p>
           </li>
-          <li class="job"><?php echo isset($data['user'][0]['Level_id'])?$data['user'][0]['Level_id']:'Level chưa cập nhật'; ?></li>
+          <li class="job"><?php 
+            
+            if(isset($data['user'][0]['Level_id'])){
+              if($data['user'][0]['Level_id'] == 1){
+                echo "Cấp bậc: Học sinh";
+              }else if($data['user'][0]['Level_id'] == 2){
+                echo "Cấp bậc: Sinh viên";
+              }else if($data['user'][0]['Level_id'] == 3){
+                echo "Cấp bậc: Thạc sĩ";
+              }else if($data['user'][0]['Level_id'] == 4){
+                echo "Cấp bậc: Tiến sĩ";
+              }else if($data['user'][0]['Level_id'] == 5){
+                echo "Cấp bậc: Giáo sư";
+              }else{
+                echo "Cấp bậc: Chưa cập nhật";
+              }
+            }
+              else{
+                'Level chưa cập nhật';} 
+            
+            ?></li>
           <li class="phone"><?php echo isset($data['user'][0]['Phone'])?$data['user'][0]['Phone']:'Số điện thoại chưa cập nhật';?></li>
           <li class="mail"><?php echo isset($data['user'][0]['Email'])?$data['user'][0]['Email']:'Email chưa cập nhật';?></li>
           <li class="address"><?php echo isset($data['user'][0]['address'])?$data['user'][0]['address']:'Địa chỉ chưa cập nhật';?></li>

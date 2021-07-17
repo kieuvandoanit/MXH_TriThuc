@@ -67,7 +67,9 @@
     <!-- Bình luận  -->
     <h3>Bình luận</h3>
     <!-- form bình luận  -->
-    <form action="<?php echo HEADERLINK.'/comment/handleAddComment'; ?>" class="comment" method="POST">
+    <?php if(isset($_SESSION['userID'])){
+      ?>
+      <form action="<?php echo HEADERLINK.'/comment/handleAddComment'; ?>" class="comment" method="POST">
       <div class="form-group">
         <label for="comment">Nội dung bình luận:</label>
         <textarea class="form-control" name="content" rows="5" id="content"></textarea><br>
@@ -77,6 +79,9 @@
         <input type="submit" class="btn btn-primary" name="btn_addComment" value="Bình luận" >
       </div>
     </form>
+      <?php  
+    } ?>
+    
     <!-- Tất cả bình luận  -->
     <div id="table">
       <ul id="postTable" class="list_comment">
@@ -84,7 +89,9 @@
       </ul>
     </div>
     <!-- Thông tin đánh giá  -->
-    <form data-action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
+    <?php if(isset($_SESSION['userID'])){
+      ?>
+      <form data-action="<?php echo HEADERLINK.'/post/rating/'.$data['post'][0]['Post_id']; ?>" id="form_rating_post" method="POST">
       <div class="form-group col-md-3">
         <select name="rating" class="form-control">
           <option value="0">==Đánh giá==</option>
@@ -97,7 +104,10 @@
       </div>
       <div class="col-md-2"><input class="btn btn-primary" type="submit" name="btn_rating_post" id="btn_rating_post" value="Đánh giá" <?php echo !isset($_SESSION['userID'])?'disabled':''; ?>/></div>
       <div class="col-md-7"></div>
-    </form><br><br><br>
+    </form>
+      <?php  
+    } ?>
+    <br><br><br>
     <h3>Đánh giá</h3>
     <div class="row rating">
       <div class="rating_score">

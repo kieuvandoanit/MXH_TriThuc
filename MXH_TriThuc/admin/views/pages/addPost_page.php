@@ -39,7 +39,7 @@
         </select>
       </div>
     <div class="button-class" style="float: right;">
-        <a class="btn btn-outline-secondary" href="#"><i class="fas fa-ban"></i> Hủy</a>
+        <a class="btn btn-outline-secondary" href="<?php echo HEADERLINK.'/admin/post/postPage'; ?>"><i class="fas fa-ban"></i> Hủy</a>
         <button name="btn_create" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo</button>
     </div>
 </form>

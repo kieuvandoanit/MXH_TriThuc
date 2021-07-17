@@ -39,7 +39,7 @@
     </div>
     <br>
     <div class="button-class" style="float: right;">
-        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-ban"></i> Hủy</button>
+        <a href="<?php echo HEADERLINK.'/admin/user/adminPage';?>" class="btn btn-outline-secondary"><i class="fas fa-ban"></i> Hủy</a>
         <input type="submit" class="btn btn-primary" value=" + Tạo" name="btn_createAdmin"/>
     </div>
 </form>

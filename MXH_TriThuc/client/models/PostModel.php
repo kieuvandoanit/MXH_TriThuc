@@ -227,7 +227,7 @@ class PostModel extends DB{
 
     public function getTop5HighestFromTable($table,$selectOption,$orderby)
     {
-        $sql='SELECT  '.$selectOption.' FROM '.$table.' p ORDER BY '.$orderby.' DESC LIMIT 5';
+        $sql='SELECT  '.$selectOption.' FROM '.$table.' p WHERE `Status` = "Đã duyệt" OR `Status`="Duyệt tự động" ORDER BY '.$orderby.' DESC LIMIT 5';
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -237,7 +237,7 @@ class PostModel extends DB{
     }
 
     public function SearchCategory($category){
-        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Category_id` = $category AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động')";
+        $sql = "SELECT p.*, u.Name, c.CategoryName FROM `post` p, `user_profile` u, `category` c WHERE u.User_id = p.Member_id AND c.Category_id = p.Category_id AND p.Category_id = $category AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động')";
         // echo $sql;
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);

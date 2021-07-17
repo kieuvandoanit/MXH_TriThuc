@@ -47,8 +47,8 @@
             contentHtml+= '<td>'+((data[key]["CategoryName"])?data[key]["CategoryName"]:"khong")+'</td>';
             contentHtml+= '<td>'+((data[key]["Description"])?data[key]["Description"]:"khong")+'</td>';
             contentHtml+= '<td class="user-btn">';
-            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/category/delete/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
-            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/category/detailCategory/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+            contentHtml+='<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/category/delete/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="delete category"><i class="far fa-trash-alt"></i></a>';
+            contentHtml+='<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/category/detailCategory/'+((data[key]['Category_id'])?data[key]['Category_id']:-1)+'" title="information of category"><i class="fas fa-info-circle"></i></a></td></tr>';
         };
         $("#postTable").html(contentHtml);
     };

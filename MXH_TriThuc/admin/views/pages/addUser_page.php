@@ -107,7 +107,7 @@
     </div>
     <br>
     <div class="button-class" style="float: right;">
-        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-ban"></i> Hủy</button>
+        <a href="<?php echo HEADERLINK.'/admin/user/userPage'; ?>" class="btn btn-primary">- Hủy</a>
         <input type="submit" class="btn btn-primary" name="btn_createUser" value="+ Tạo">
     </div>
 </form>

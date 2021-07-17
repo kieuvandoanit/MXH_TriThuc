@@ -44,9 +44,9 @@
             contentHtml+='<td>'+((data[key]['UserName'])?data[key]['UserName']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['email'])?data[key]['email']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td class="category-btn">';
-            contentHtml+= '<a class="edit-icon" href="<?php echo HEADERLINK; ?>/admin/user/editUser/'+data[key]['User_id']+'" title="edit post"><i class="fas fa-pencil-alt"></i></a>';
-            contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK; ?>/admin/user/deleteUser/'+data[key]['User_id']+'" title="delete post"><i class="fas fa-trash-alt"></i></a>';
-            contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';
+            contentHtml+= '<a class="edit-icon" href="<?php echo HEADERLINK; ?>/admin/user/editUser/'+data[key]['User_id']+'" title="edit admin"><i class="fas fa-pencil-alt"></i></a>';
+            contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK; ?>/admin/user/deleteUser/'+data[key]['User_id']+'" title="delete admin"><i class="fas fa-trash-alt"></i></a>';
+            contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of admin"><i class="fas fa-info-circle"></i></a></td></tr>';
                 
         };
         $("#postTable").html(contentHtml);
