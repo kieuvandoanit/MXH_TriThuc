@@ -1,5 +1,5 @@
 <div id="post_page" style="min-height: calc(100vh - 235px);">
-<h3><?php if(!empty($data['category'])){echo 'Danh sách sản phẩm thuộc nhóm: '.$data['category'][0]['CategoryName'];} ?></h3>
+<h3><?php if(!empty($data['category'])){echo 'Danh sách bài viết thuộc nhóm: '.$data['category'][0]['CategoryName'];} ?></h3>
 
     <div id="top_home_page" style="width: 1140px;">
       <div id="" style="width: 100%;">
