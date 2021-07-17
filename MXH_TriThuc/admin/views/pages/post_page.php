@@ -5,7 +5,7 @@
         <div >
             <form action="<?php echo HEADERLINK.'/admin/post/postPage'; ?>" method="POST" >
                 <select name="selectBox" id="selectBox" class="cmtFilterClass" onchange="this.form.submit()" autofocus>
-                    <option value="Tất cả" checked>Tất cả</option>
+                    <option value="Tất cả" >Tất cả</option>
                     <option value="Chờ duyệt" >Chờ Duyệt</option>
                     <option value="Tự động duyệt" >Tự động duyệt</option>
                     <option value="Đã duyệt" >Đã duyệt</option>
@@ -45,7 +45,11 @@
 <script>
     $(document).ready(function(){
         data=<?php echo json_encode($data) ?>;
-        pagination(data);
+        $(`.cmtFilterClass  option[value="${data['selectoption']}"]`).prop("selected", true);
+        $('.cmtFilterClass').change(function(){
+            this.form.submit();
+        });
+        pagination(data['post']);
     });
     function showData(data){
         contentHtml='';
@@ -56,7 +60,7 @@
             contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['viewed'])?data[key]['viewed']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td class="cut-text">'+((data[key]['Content'])?data[key]['Content']:"Chưa cập nhật")+'</td>';
+            contentHtml+=`<td class="cut-text">'${((data[key]["Content"])?data[key]["Content"]:"Chưa cập nhật")}'</td>`;
             contentHtml+='<td>'+((data[key]['CreatedDate'])?data[key]['CreatedDate']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td>'+((data[key]['UpdatedDate'])?data[key]['UpdatedDate']:"Chưa cập nhật")+'</td>';
             contentHtml+='<td class="cmt-btn" style="display: flex; justify-content: flex-end;">';
