@@ -92,6 +92,7 @@ INSERT INTO `comment` (`Comment_id`, `Content`, `CreateDate`, `UpdateDate`, `isS
 (18, 'Môi trường sống rất quan trọng.', '2021-07-17 18:20:52', '2021-07-17 18:20:52', 1, 0, 11, 29),
 (19, 'Ai nếm thử rồi cho mình xin review với!', '2021-07-17 18:21:56', '2021-07-17 18:21:56', 0, 0, 11, 32);
 
+
 -- --------------------------------------------------------
 
 --
@@ -178,6 +179,7 @@ INSERT INTO `liked_post` (`LP_id`, `User_id`, `Post_id`, `CreatedDate`) VALUES
 (43, '10', 30, '2021-07-17 18:56:59'),
 (44, '10', 28, '2021-07-17 18:58:42');
 
+
 -- --------------------------------------------------------
 
 --
@@ -244,6 +246,7 @@ INSERT INTO `post` (`Post_id`, `Title`, `thumb`, `HashTag`, `Content`, `Status`,
 (32, 'Thiên nhiên bận rộn lắm!', 'uploads/8.png', 'thiennhien tunhien thoigian', 'Trên con đường đầy nắng, ta luôn hối hả tìm cho mình một bóng râm chật hẹp để nép vào. Thiên nhiên bận rộn lắm, đâu dư thời gian để an ủi nhiều ngày.', 'Đã duyệt', 2, 1, 4, 1, 2, 0, 0, '2021-07-17 18:05:00', '2021-07-17 18:05:00', 11, 1),
 (33, 'Vị thiên nhiên', 'uploads/9.png', 'thiennhien vithiennhien', 'Không thể nếm trải vị của thiên nhiên là hoang phí cả một đời người.', 'Đã duyệt', 2, 1, 3, 1, 2, 0, 0, '2021-07-17 18:06:00', '2021-07-17 18:06:00', 11, 1),
 (34, 'Thơ hay sưu tầm', 'uploads/11.png', 'thoca thiennhien', 'Xin...ta được làm chim \r\nBay thăm vùng đỉnh núi\r\nNơi văn minh từ chối\r\nSự sống là mồ hôi !\r\n\r\nBàn tay vạch núi đồi\r\nBuộc núi trồi lương thực\r\nNhốt thiên nhiên vào ngực\r\nChưa từng biết bon chen !\r\n\r\nMặt trời hóa thân quen\r\nNúi rừng là bằng hữu\r\nChê khen không màng tới\r\nCòn gì hạnh phúc hơn !\r\n', 'Đã duyệt', 2, 1, 4, 1, 3, 0, 0, '2021-07-17 18:08:01', '2021-07-17 18:08:01', 11, 2);
+
 
 -- --------------------------------------------------------
 
@@ -590,3 +593,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
