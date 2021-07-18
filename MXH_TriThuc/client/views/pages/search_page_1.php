@@ -23,6 +23,19 @@ $(document).ready(function(){
       $("#postTable").html(contentHtml);
     }
 });
+function showStar(sao){
+  let result = '';
+  let count = 1;
+  for(let i = 0; i < 5; i++){
+    if(count < sao + 0.5){
+      result = result + '<i class="fas fa-star"></i>';
+      count++;
+    }else{
+      result = result + '<i class="far fa-star"></i>';
+    }
+  }
+  return result;
+}
 function showData(data){
     const likedUser=<?php echo json_encode(isset($data['liked'])?$data['liked']:[]) ?>;
     var isLike=false;
@@ -46,13 +59,9 @@ function showData(data){
             </div>
           </div>
           <div class="post_rating">
-            <div class="rate">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
+            <div class="rate">`+`
+            ${showStar(data[key]["AvgRating"])}` 
+            +`</div>
             <div class="rate_num">${data[key]['rateAmount']}</div>
           </div>
           <div class="post_react"><div class="post_like `;

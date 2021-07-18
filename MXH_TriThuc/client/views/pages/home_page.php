@@ -86,11 +86,19 @@
                   </div>
                   <div class="post_rating">
                     <div class="rate">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
+                      <?php
+                        $count_sao = 1;
+                        for($j = 0; $j <5; $j++){
+        
+                          if($count_sao < $data['post_view'][$i]['AvgRating'] + 0.5){
+                            echo '<i class="fas fa-star"></i>';
+                            $count_sao= $count_sao + 1;
+                          }else{
+                            echo '<i class="far fa-star"></i>';
+                          }
+                        }
+                        $count_sao = 1;
+                      ?>
                     </div>
                     <div class="rate_num">
                       (<?php echo $data['post_view'][$i]['rateAmount']; ?>)
@@ -164,11 +172,19 @@
                     </div>
                     <div class="post_rating">
                       <div class="rate">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                      <?php
+                        $count_sao = 1;
+                        for($j = 0; $j <5; $j++){
+        
+                          if($count_sao < $data['post_new'][$i]['AvgRating'] + 0.5){
+                            echo '<i class="fas fa-star"></i>';
+                            $count_sao= $count_sao + 1;
+                          }else{
+                            echo '<i class="far fa-star"></i>';
+                          }
+                        }
+                        $count_sao = 1;
+                      ?>
                       </div>
                       <div class="rate_num">
                         (<?php echo $data['post_new'][$i]['rateAmount']; ?>)
