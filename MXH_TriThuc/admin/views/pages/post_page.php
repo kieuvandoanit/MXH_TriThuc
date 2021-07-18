@@ -7,7 +7,7 @@
                 <select name="selectBox" id="selectBox" class="cmtFilterClass" onchange="this.form.submit()" autofocus>
                     <option value="Tất cả" >Tất cả</option>
                     <option value="Chờ duyệt" >Chờ Duyệt</option>
-                    <option value="Tự động duyệt" >Tự động duyệt</option>
+                    <option value="Duyệt tự động" >Duyệt tự động</option>
                     <option value="Đã duyệt" >Đã duyệt</option>
                     <option value="Không được duyệt" >Không được duyệt</option>
                     <option value="Đã xóa" >Đã xóa</option>

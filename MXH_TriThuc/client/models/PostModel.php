@@ -31,7 +31,7 @@ class PostModel extends DB{
     }
 
     public function getPostByID($id){
-        $sql ="SELECT p.*,u.User_id, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id AND `Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động'";
+        $sql ="SELECT p.*,u.User_id, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động')";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -41,7 +41,7 @@ class PostModel extends DB{
     }
 
     public function getPostSortView($sort){
-        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động' ORDER BY `viewed` $sort";
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động') ORDER BY `viewed` $sort";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -51,7 +51,7 @@ class PostModel extends DB{
     }
 
     public function getPostSortID($sort){
-        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động' ORDER BY `Post_id` $sort";
+        $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động') ORDER BY `Post_id` $sort";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
