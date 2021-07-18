@@ -20,7 +20,9 @@
   </div>
 </div>
 <br>
-<table id="table" class="content-table table-sorttable">
+
+<div style="height: 320px;" id="table">
+<table class="content-table table-sorttable" style="width: 100%;">
     <thead>
         <tr>
             <th>ID <i class="fas fa-sort"></i></th>
@@ -33,6 +35,10 @@
      
     </tbody>
 </table>
+</div>
+
+
+
 <script type="text/javascript">
     $(document).ready(function(){
         var data=<?php echo json_encode($data) ?>;

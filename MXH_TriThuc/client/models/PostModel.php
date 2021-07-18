@@ -40,6 +40,16 @@ class PostModel extends DB{
         return $arr;
     }
 
+    public function getPostByIDToEdit($id){
+        $sql ="SELECT p.*,u.User_id, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND `Post_id` = $id";
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
+
     public function getPostSortView($sort){
         $sql = "SELECT p.*, u.Name FROM `post` p, `user_profile` u WHERE u.User_id = p.Member_id AND (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động') ORDER BY `viewed` $sort";
         $arr = [];

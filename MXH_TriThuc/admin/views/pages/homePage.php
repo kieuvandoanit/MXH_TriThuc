@@ -10,7 +10,7 @@
                 <b><?php echo (isset($data['commentNumber'])?$data['commentNumber'][0]['number']:'Đang cập nhật'); ?> Bình luận <i class="far fa-comment-alt"></i></b> 
             </div>
             <div>
-                <b><?php echo (isset($data['userNumber'])?$data['userNumber'][0]['number']:'Đang cập nhật'); ?> Bài viết <i class="fas fa-user-friends"></i></b>
+                <b><?php echo (isset($data['userNumber'])?$data['userNumber'][0]['number']:'Đang cập nhật'); ?> Người dùng <i class="fas fa-user-friends"></i></b>
             </div>
     </div>
     <br>

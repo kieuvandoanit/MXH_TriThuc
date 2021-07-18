@@ -98,8 +98,11 @@
           contentHtml+='<td>'+((data[key]['Status'])?data[key]['Status']:"Chưa cập nhật")+'</td>';
           contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
           contentHtml+='<td>';
-          contentHtml+= '<a href="<?php echo HEADERLINK?>/post/editPost/'+data[key]['Post_id']+'">Sửa</a>';
-          contentHtml+= '<a href="<?php echo HEADERLINK?>/post/deletePost/'+data[key]['Post_id']+'">Xóa</a></td></tr>';
+          if(data[key]['Status'] != 'Đã duyệt' && data[key]['Status'] != 'Duyệt tự động'){
+            contentHtml+= '<a class="btn btn-primary" style="height: 20px; padding-top: 0px;" href="<?php echo HEADERLINK?>/post/editPost/'+data[key]['Post_id']+'">Sửa</a> ';
+          }
+          contentHtml+= '<a class="btn btn-danger" style="height: 20px; padding-top: 0px;" href="<?php echo HEADERLINK?>/post/deletePost/'+data[key]['Post_id']+'">Xóa</a></td></tr>';
+          
       };
       $("#postTable").html(contentHtml);
   };

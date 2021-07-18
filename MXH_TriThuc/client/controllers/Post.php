@@ -158,7 +158,7 @@ class Post extends Controller{
 
     public function editPost($id){
         $data['page_title'] = 'Chỉnh sửa bài viết';
-        $data['post'] = $this->postModel->getPostByID($id);
+        $data['post'] = $this->postModel->getPostByIDToEdit($id);
         $data['category'] = $this->categoryModel->getAllCategory();
         if(!empty($data['post'])){
             $this->ViewClient('inc/header',$data);
@@ -215,8 +215,9 @@ class Post extends Controller{
             $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
         }
         $data['comment']=$this->commentModel->getCommentSortID($id, 'ASC');
-
-        $this->postModel->updateViewed($id, $data['post'][0]['viewed'] + 1);
+        if(!empty($data['post'])){
+            $this->postModel->updateViewed($id, $data['post'][0]['viewed'] + 1);
+        }
         $sao1 = $this->postModel->getRatingHistory($id, '1 sao');
         $sao2 = $this->postModel->getRatingHistory($id, '2 sao');
         $sao3 = $this->postModel->getRatingHistory($id, '3 sao');

@@ -9,14 +9,15 @@
   </div>
 </div>
  <br>
-<table id="table" class="content-table table-sorttable">
+ <div style="height: 320px;" id="table">
+<table class="content-table table-sorttable" style="width: 100%;">
   <thead>
       <tr>
-          <th>Số thứ tự <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;">Họ tên <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;">Email <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;">Hạng thành viên <i class="fas fa-sort"></i></th>
-          <th style="min-width: 10px;"></th>
+          <th style="width: 10%;">Số thứ tự <i class="fas fa-sort"></i></th>
+          <th style="width: 30%;">Họ tên <i class="fas fa-sort"></i></th>
+          <th style="width: 30%;">Email <i class="fas fa-sort"></i></th>
+          <th style="width: 10%;">Hạng thành viên <i class="fas fa-sort"></i></th>
+          <th style="width: 20%;"></th>
       </tr>
   </thead>
   <tbody id="postTable">
@@ -31,11 +32,11 @@
     function showData(data){
         contentHtml='';
         for(const key in data){
-            contentHtml+='<tr><td>'+(parseInt(key) +1)+'</td>';
-            contentHtml+='<td>'+((data[key]['Name'])?data[key]['Name']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['Email'])?data[key]['Email']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+data[key]['Level_id']+'</td>';
-            contentHtml+='<td class="user-btn">';
+            contentHtml+='<tr><td style="width: 10%;">'+(parseInt(key) +1)+'</td>';
+            contentHtml+='<td style="width: 30%; overflow: hidden;">'+((data[key]['Name'])?data[key]['Name']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 30%; overflow: hidden;">'+((data[key]['Email'])?data[key]['Email']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 20%;">'+data[key]['Level_id']+'</td>';
+            contentHtml+='<td style="width: 10%;" class="user-btn">';
             contentHtml+= '<a class="edit-icon" href="<?php echo HEADERLINK; ?>/admin/user/editUser/'+data[key]['User_id']+'" title="edit user"><i class="fas fa-pencil-alt"></i></a>';
             contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK; ?>/admin/user/deleteUser/'+data[key]['User_id']+'" title="delete user"><i class="fas fa-trash-alt"></i></a>';
             contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK; ?>/admin/user/profile/'+data[key]['User_id']+'" title="information of user"><i class="fas fa-info-circle"></i></a></td></tr>';

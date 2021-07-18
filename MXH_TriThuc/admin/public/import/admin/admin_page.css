@@ -98,9 +98,13 @@ form label{
 #pagination{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 #pagination .active{
-    color: blue !important;
+    color: white !important;
+    background-color: blue;
+    border-radius: 50%;
+    text-align: center;
 }
 #pagination a{
     min-width: 20px;

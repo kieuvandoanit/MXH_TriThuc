@@ -38,7 +38,7 @@ thead th{
     overflow: hidden !important; 
     max-width: 300px;
     /* max-height: 100px; */
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
     white-space: nowrap;
     flex-grow: 1;

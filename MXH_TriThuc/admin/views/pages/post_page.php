@@ -24,7 +24,8 @@
     </div>
 </div>
 <br>
-<table id='table'  class="content-table table-sorttable">
+<div id='table' style="height: 450px;">
+<table class="content-table table-sorttable" style="width: 100%; height: 90%;">
     <thead>
         <tr>
             <th>Tiêu đề<i class="fas fa-sort"></i></th>
@@ -41,7 +42,7 @@
     </thead>
     <tbody id="postTable">
 </table>
-
+</div>
 <script>
     $(document).ready(function(){
         data=<?php echo json_encode($data) ?>;
@@ -55,26 +56,26 @@
         contentHtml='';
         console.log(data);
         for(const key in data){
-            contentHtml+='<tr><td style="max-width: 300px;">'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['LikesAmount'])?data[key]['LikesAmount']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['viewed'])?data[key]['viewed']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td class="cut-text">';
+            contentHtml+='<tr><td style="width: 25%;">'+((data[key]['Title'])?data[key]['Title']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 5%;">'+((data[key]['LikesAmount'])?data[key]['LikesAmount']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 5%;">'+((data[key]['AvgRating'])?data[key]['AvgRating']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 5%;">'+((data[key]['commentAmount'])?data[key]['commentAmount']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 5%;">'+((data[key]['viewed'])?data[key]['viewed']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td class="cut-text" style="width: 25%;">';
             contentHtml+=convertToPlain(data[key]["Content"]);
             contentHtml+='</td>';
-            contentHtml+='<td>'+((data[key]['CreatedDate'])?data[key]['CreatedDate']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td>'+((data[key]['UpdatedDate'])?data[key]['UpdatedDate']:"Chưa cập nhật")+'</td>';
-            contentHtml+='<td class="cmt-btn" style="display: flex; justify-content: flex-end;">';
+            contentHtml+='<td style="width: 10%;">'+((data[key]['CreatedDate'])?data[key]['CreatedDate']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 10%;">'+((data[key]['UpdatedDate'])?data[key]['UpdatedDate']:"Chưa cập nhật")+'</td>';
+            contentHtml+='<td style="width: 10%; display: flex; justify-content: flex-end;" class="cmt-btn" >';
             if (data[key]["Status"]=="Chờ duyệt") {
                 contentHtml+= '<form action="<?php echo HEADERLINK;?>/admin/post/handleAprovePost/'+((data[key]['Post_id'])?data[key]['Post_id']:0)+'" method="POST" style="display:flex">';
                 contentHtml+= `<button type="submit" name="btn_aprove" class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></button>
                 <button type="submit" name="btn_inject" class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></button></form>`;
             } else if (data[key]["Status"]=="Không được duyệt"){
-                contentHtml+= '<div class="reject-icon" href="" title="reject post"><i class="far fa-times-circle"></i></div>';
+                contentHtml+= '<div class="reject-icon"  href="" title="reject post"><i class="far fa-times-circle"></i></div>';
             }
             else{
-                contentHtml+= '<div class="approve-icon" href="" title="approve post"><i class="fas fa-check-circle"></i></div>';
+                contentHtml+= '<div class="approve-icon"  href="" title="approve post"><i class="fas fa-check-circle"></i></div>';
             };
             contentHtml+= '<a class="delete-icon" href="<?php echo HEADERLINK;?>/admin/post/deletePost/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="delete post"><i class="far fa-trash-alt"></i></a>';
             contentHtml+= '<a class="info-icon" href="<?php echo HEADERLINK;?>/admin/post/postDetail/'+((data[key]['Post_id'])?data[key]['Post_id']:-1)+'" title="information of post"><i class="fas fa-info-circle"></i></a></td></tr>';

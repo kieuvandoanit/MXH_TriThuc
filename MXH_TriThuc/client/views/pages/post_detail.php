@@ -1,4 +1,7 @@
-
+<?php  
+if(!empty($data['post'])){ 
+  ?>
+  
 <div id="post_detail">
     <!-- header post  -->
     <div class="row header_post">
@@ -111,7 +114,7 @@
     <h3>Đánh giá</h3>
     <div class="row rating">
       <div class="rating_score">
-        <p class="rating_score_info" id="post_rating_score_number"><?php echo $data['post'][0]['AvgRating']; ?></p>
+        <p class="rating_score_info" id="post_rating_score_number"><?php echo round($data['post'][0]['AvgRating'],1); ?></p>
         <div class="post_rank text-center post_rating_score_start">
           <?php  
           $count = 1;
@@ -182,7 +185,10 @@
       </div>
     </div>
   </div>
+  <?php  
+}
 
+?>
 <script>
 $(document).ready(function(){
     data=<?php echo json_encode($data['comment']) ?>;
