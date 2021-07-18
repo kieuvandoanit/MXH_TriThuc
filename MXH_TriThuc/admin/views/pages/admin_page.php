@@ -20,7 +20,8 @@
   </div>
 </div>
  <br>
-<table id="table" class="content-table table-sorttable">
+ <div id="table" style="height: 350px;">
+ <table class="content-table table-sorttable" style="width: 100%;">
   <thead>
       <tr>
           <th>STT <i class="fas fa-sort"></i></th>
@@ -31,7 +32,9 @@
   </thead>
   <tbody id="postTable">
     </tbody>
-</div>
+</table>
+ </div>
+
 <script>
     $(document).ready(function(){
         data=<?php echo json_encode($data) ?>;
