@@ -22,46 +22,51 @@
              * trả về kết quả theo sắp xếp tăng dần.
              */
             header('Cache-Control: no cache'); //no cache
-                if(isset($_POST['searchInput']) and strlen($_POST['searchInput'])!=0){
-                    $data=[];
-                    $isHashTag = TRUE;
-                    $searchInput=$_POST['searchInput'];
-                    $searchArray=preg_split("/[\s,]+/",$searchInput,0,PREG_SPLIT_NO_EMPTY);
-                    foreach($searchArray as $item){
-                        if($item[0] != '#' or substr_count($item,'#') != 1){
-                            $isHashTag= false;
-                            break;
-                        }
-                    };
-                    $isNHashTag= (count($searchArray)>1 and $isHashTag==TRUE)? true: false;
-                    if($isHashTag==false){
-                        //full-text search theo content=$searchInput
-                        $data['resultValue']=$this->postModel->getPostByContent($searchInput);
-                        $data['resultType']='Nội dung';
-                        
-                        }
-                    else{
-                        //search theo 1 hashtag $searchArray
-                        $data['resultValue']=$this->postModel->getPostByHashTag($searchArray);
-                        $data['resultType']='HashTag';
-                    };
-                    if(isset($_SESSION['userID'])){
-                        $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
-
+            if(isset($_POST['searchInput']) and strlen($_POST['searchInput'])!=0){
+                $data=[];
+                $isHashTag = TRUE;
+                $searchInput=$_POST['searchInput'];
+                $searchArray=preg_split("/[\s,]+/",$searchInput,0,PREG_SPLIT_NO_EMPTY);
+                foreach($searchArray as $item){
+                    if($item[0] != '#' or substr_count($item,'#') != 1){
+                        $isHashTag= false;
+                        break;
                     }
-                    else{
-                        $data['liked']=[];
+                };
+                $isNHashTag= (count($searchArray)>1 and $isHashTag==TRUE)? true: false;
+                if($isHashTag==false){
+                    //full-text search theo content=$searchInput
+                    $data['resultValue']=$this->postModel->getPostByTitle($searchInput);
+                    if(count($data['resultValue'])<=0){
+                        $searchArray[0]='+'.$searchArray[0];
+                        $searchArray=join(' +',$searchArray);
+                        $data['resultValue']=$this->postModel->getPostByContent('title',$searchArray);
+                        if(count($data['resultValue'])<=0){
+                            $data['resultValue']=$this->postModel->getPostByContent('content',$searchArray);
+                            $data['resultType']='Nội dung';
+                        }
                     }
-                    $this->ViewClient('inc/header');
-                    $this->ViewClient('pages/search_page',$data);
-                    $this->ViewClient('inc/footer');
+                    }
+                else{
+                    //search theo 1 hashtag $searchArray
+                    $data['resultValue']=$this->postModel->getPostByHashTag($searchArray);
+                    $data['resultType']='HashTag';
+                };
+                if(isset($_SESSION['userID'])){
+                    $data['liked'] = $this->postModel->getLiked($_SESSION['userID']);
                 }
                 else{
-                    
-                    $this->ViewClient('inc/header');
-                    $this->ViewClient('pages/search_page');
-                    $this->ViewClient('inc/footer');
+                    $data['liked']=[];
                 }
+                $this->ViewClient('inc/header');
+                $this->ViewClient('pages/search_page',$data);
+                $this->ViewClient('inc/footer');
+            }
+            else{
+                $this->ViewClient('inc/header');
+                $this->ViewClient('pages/search_page');
+                $this->ViewClient('inc/footer');
+            }
         }
         
         public function SearchCategory($category){

@@ -195,6 +195,17 @@ class PostModel extends DB{
         return $arr;
     }
     //full-text seach
+    public function getPostByTitle($content)
+    {
+        $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE p.title like "%'.$content.'%" AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động")';
+        // echo $sql;
+        $arr = [];
+        $rows = mysqli_query($this->conn, $sql);
+        while($row = mysqli_fetch_array($rows)){
+            $arr[] = $row;
+        }
+        return $arr;
+    }
     public function getPostByContent($content)
     {
         $sql='SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Title) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động") UNION SELECT  p.*,u.Name FROM POST p, user_profile u WHERE MATCH (Content) AGAINST ("'.$content.'" WITH QUERY EXPANSION) AND U.User_id=P.Member_id AND (`Status` = "Đã duyệt" OR `Status` = "Duyệt tự động")';
