@@ -89,7 +89,7 @@
                       }
                      ?></div>
                     <div class="cut-text"><a href="<?php echo HEADERLINK.'/post/postDetail/'.$item["Post_id"];?>"><?php echo (isset($item['Title']))?$item['Title']:'Đang cập nhật'; ?></a></div>
-                    <div> <?php echo (isset($item['AvgRating']))?$item['AvgRating']:'Đang cập nhật'; ?></div>
+                    <div> <?php echo (isset($item['AvgRating']))?round($item['AvgRating'],1):'Đang cập nhật'; ?></div>
                 </div>
             <?php
                     $i++;
