@@ -57,7 +57,7 @@ function showData(data){
           <div class="post_rating">
             <div class="rate">`
             +`
-            ${showStar(data[key]["AvgRating"])}` 
+            ${showStar(Number(data[key]["AvgRating"]))}` 
             +`
             </div>
             <div class="rate_num">${data[key]['rateAmount']}</div>
@@ -67,13 +67,13 @@ function showData(data){
             if(likedUser[i]==data[key]['Post_id']){
               isLike=True;
               contentHtml+=`post_liked" id="${data[key]['Post_id']}">
-                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" style="color:black"></i>`;
+                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" id="${data[key]['Post_id']}" style="color:black"></i>`;
               break;
             }
           }
           if(isLike!=true){
             contentHtml+=`" id="${data[key]['Post_id']}">
-                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" style=""></i>`;
+                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" id="${data[key]['Post_id']}" style=""></i>`;
           }
         contentHtml+=`<p class="post_like_num postLikeNum_${data[key]['Post_id']}">${data[key]['LikesAmount']}</p>
             </div><div class="post_comment">

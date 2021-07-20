@@ -1,5 +1,5 @@
 <div id="post_page" style="min-height: calc(100vh - 235px);">
-<h3><?php if(!empty($data['category']['CateogoryName'])){echo 'Danh sách bài viết thuộc nhóm: '.$data['category'][0]['CategoryName'];} ?></h3>
+<h3><?php if(!empty($data['category'][0]['CategoryName'])){echo 'Danh sách bài viết thuộc nhóm: '.$data['category'][0]['CategoryName'];} ?></h3>
 
     <div id="top_home_page" style="width: 1140px;">
       <div id="" style="width: 100%;">
@@ -60,7 +60,7 @@ function showData(data){
           </div>
           <div class="post_rating">
             <div class="rate">`+`
-            ${showStar(data[key]["AvgRating"])}` 
+            ${showStar(Number(data[key]["AvgRating"]))}` 
             +`</div>
             <div class="rate_num">${data[key]['rateAmount']}</div>
           </div>
@@ -69,13 +69,13 @@ function showData(data){
             if(likedUser[i]==data[key]['Post_id']){
               isLike=True;
               contentHtml+=`post_liked" id="${data[key]['Post_id']}">
-                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" style="color:black"></i>`;
+                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" id="${data[key]['Post_id']}" style="color:black"></i>`;
               break;
             }
           }
           if(isLike!=true){
             contentHtml+=`" id="${data[key]['Post_id']}">
-                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" style=""></i>`;
+                      <i class="fas fa-thumbs-up fa-thumbs-up-${data[key]['Post_id']}" id="${data[key]['Post_id']}" style=""></i>`;
           }
         contentHtml+=`<p class="post_like_num postLikeNum_${data[key]['Post_id']}">${data[key]['LikesAmount']}</p>
             </div><div class="post_comment">
@@ -83,8 +83,10 @@ function showData(data){
               <p class="post_comment_num">${data[key]['commentAmount']}</p>
               </div>
             </div></div></div>`;
+            
     };
     contentHtml+='<div class="clearfix"></div>';
+    // console.log(showStar(data[key]["AvgRating"]));
     $("#postTable").html(contentHtml);
     
 };

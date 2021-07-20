@@ -71,6 +71,7 @@
         
         public function SearchCategory($category){
             $data['category'] = $this->postModel->SearchCategory($category);
+            
             $this->ViewClient('inc/header');
             $this->ViewClient('pages/search_page_1',$data);
             $this->ViewClient('inc/footer');

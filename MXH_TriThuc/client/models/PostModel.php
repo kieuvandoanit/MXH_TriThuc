@@ -21,7 +21,7 @@ class PostModel extends DB{
     }
 
     public function getPostByUser($userID){
-        $sql ="SELECT * FROM `post` WHERE `member_id` = $userID";
+        $sql ="SELECT * FROM `post` WHERE `member_id` = $userID ORDER BY `Post_id` DESC";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
@@ -89,7 +89,7 @@ class PostModel extends DB{
     }
 
     public function getSlider(){
-        $sql = "SELECT `thumb` FROM `post` ORDER BY `viewed` ASC LIMIT 5";
+        $sql = "SELECT `thumb` FROM `post` WHERE (`Status` = 'Đã duyệt' OR `Status` = 'Duyệt tự động') ORDER BY `viewed` DESC LIMIT 5";
         $arr = [];
         $rows = mysqli_query($this->conn, $sql);
         while($row = mysqli_fetch_array($rows)){
