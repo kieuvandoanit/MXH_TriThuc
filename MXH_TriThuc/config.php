@@ -1,4 +1,6 @@
 <?php
+// <!-- password website: so important: gKkuYU^u)r@lPPmA2ANQ -->
+// <!-- password database: kieuvandoan +3)j/yAQaM~=oBiH -->
 // Tao link base html
 define('_BASELINK_','http://localhost:8080/MXH_TriThuc/MXH_TriThuc/');
 
@@ -12,4 +14,3 @@ define('HOST','http://localhost:8080/MXH_TriThuc');
 define('HOSTAPI','localhost:3000');
 ?>
 
-<!-- password: so important: gKkuYU^u)r@lPPmA2ANQ -->
