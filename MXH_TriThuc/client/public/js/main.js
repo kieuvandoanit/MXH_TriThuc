@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var url = "http://localhost:8080";
     //Xử lý like
     $(document).on("click", ".post_like", function(event) { 
         var id = $(event.target).attr('id');
@@ -6,7 +7,7 @@ $(document).ready(function () {
         // console.log(event.target);
         if($(event.target).hasClass("post_liked")){
             $.ajax({
-                url: "http://localhost:8080/MXH_TriThuc/post/handleDisLike",
+                url: url+"/MXH_TriThuc/post/handleDisLike",
                 method: "POST",
                 dataType: 'text',
                 data:{id:id},
@@ -19,14 +20,14 @@ $(document).ready(function () {
                         $(classLike).css("color","white");
     
                     }else{
-                        window.location.href = "http://localhost:8080/MXH_TriThuc/user";
+                        window.location.href = url+"/MXH_TriThuc/user";
                     }
                 }
     
             });
         }else{
             $.ajax({
-                url: "http://localhost:8080/MXH_TriThuc/post/handleLike",
+                url: url+"/MXH_TriThuc/post/handleLike",
                 method: "POST",
                 dataType: 'text',
                 data:{id:id},
@@ -39,7 +40,7 @@ $(document).ready(function () {
                         $(classLike).css("color","black");
     
                     }else{
-                        window.location.href = "http://localhost:8080/MXH_TriThuc/user";
+                        window.location.href = url+"/MXH_TriThuc/user";
                     }
                 }
     
@@ -110,6 +111,42 @@ $(document).ready(function () {
             }
 
         });
+    });
+
+    //Xử lý validate username
+    $('.validate').on('keypress', function (event) {
+        // console.log(event);
+        var regex = new RegExp("^[a-zA-Z0-9# ]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+           event.preventDefault();
+           alert("Kí tự nhập không phù hợp. Vui lòng nhập lại!");
+        }
+    });
+    
+    //Xử lý login form
+    $("#formLogin").submit(function(e){
+        let uri = $("#formLogin").attr("data-action");
+        let method = $("#formLogin").attr("method");
+        let username = $("#username").val();
+        let password = $("#password").val();
+        
+        $.ajax({
+            url: url+uri,
+            method: method,
+            dataType: 'text',
+            data: {username: username, password: password, btn_login:'Đăng nhập'},
+            success: function(data){
+                if(data == 1){
+                    window.location.href = url+"/MXH_TriThuc";
+                }else{
+                    alert("Thông tin đăng nhập không chính xác! Vui lòng đăng nhập lại!");
+                }
+            }
+        });
+        
+
+        
     });
 
     

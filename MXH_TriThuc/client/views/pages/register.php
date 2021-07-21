@@ -3,7 +3,7 @@
           <h3 class="text-center">Đăng kí</h3>
 
           <label for="username">Tên đăng nhập (<span>*</span>):</label><br>
-          <input type="text" name="username" id="username" placeholder="Nhập tên đăng nhập">
+          <input type="text" class="validate" name="username" id="username" placeholder="Nhập tên đăng nhập">
           <br>
           <label for="password">Mật khẩu (<span>*</span>):</label><br>
           <input type="password" name="password" id="password" placeholder="Nhập mật khẩu"><br>

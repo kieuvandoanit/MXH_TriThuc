@@ -81,10 +81,14 @@ class User extends Controller{
                 $_SESSION['username'] = $username;
                 $_SESSION['isLogin'] = true;
                 $_SESSION['auth'] = 'user';
-                $this->redirect('/');
+                echo 1;
+                // $this->redirect('/');
             }else{
-                $this->redirect('/user');
+                echo 0;
+                // $this->redirect('/user');
             }
+        }else{
+            echo 0;
         }
     }
 

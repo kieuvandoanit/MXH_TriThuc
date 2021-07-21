@@ -62,7 +62,7 @@ class Post extends Controller{
                 );
                 $data = http_build_query($data);
                 // echo $data;
-                $result = CallAPI("POST", "localhost:3000/browsing", $data);
+                $result = CallAPI("POST", HOSTAPI."/browsing", $data);
                 if($result == 'true'){
                     $status = 'Duyệt tự động';
                     if($this->postModel->addPost($title, $thumb,$hashtag, $content,$status, $member_id, $category)){

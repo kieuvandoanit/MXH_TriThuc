@@ -8,11 +8,8 @@ define('HEADERLINK','/MXH_TriThuc');
 //HOST
 define('HOST','http://localhost:8080/MXH_TriThuc');
 
-//Email admin recieve notification
-// $adminEmail = 'kieuvandoanit@gmail.com';
-
-
-// //Bat/tat duyet post tu dong
-// $browsingAuto = true;
-// $NotificationAddPostToAdmin = 0;
+//HOST API 
+define('HOSTAPI','localhost:3000');
 ?>
+
+<!-- password: so important: gKkuYU^u)r@lPPmA2ANQ -->
